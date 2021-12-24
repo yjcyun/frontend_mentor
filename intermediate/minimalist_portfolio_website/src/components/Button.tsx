@@ -16,7 +16,7 @@ interface StyledButtonProps {
 const StyledButton = styled.button<StyledButtonProps>`
   display: flex;
   align-items: center;
-  transition: 0.1s ease-in-out;
+  transition: var(--transition);
   cursor: pointer;
   opacity: ${(props) => (props.disabled ? '0.2' : '1')};
   pointer-events: ${(props) => (props.disabled ? 'none' : 'auto')};

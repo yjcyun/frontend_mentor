@@ -13,7 +13,9 @@ const GlobalStyle = createGlobalStyle`
 
     /* fonts */
     --headingFF: 'Ibarra Real Nova', serif;
-    --bodyFF: 'Public Sans', sans-serif
+    --bodyFF: 'Public Sans', sans-serif;
+
+    --transition: 0.1s ease-in-out;
   }
 
   /* Initialize */
@@ -26,6 +28,7 @@ const GlobalStyle = createGlobalStyle`
   html {
     font-size: 62.5%;
   }
+
 
   /* 2. Typography */
   h1,h2,h3 {
