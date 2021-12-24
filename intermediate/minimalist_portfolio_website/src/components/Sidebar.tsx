@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
 
 import { ReactComponent as HamburgerIcon } from '../assets/icons/hamburger.svg';
 import { ReactComponent as CloseIcon } from '../assets/icons/close.svg';
-import { menu } from './Header';
+
+import MenuList from './MenuList';
 
 interface SidebarProps {
   open: boolean;
@@ -37,11 +37,6 @@ const StyledNav = styled.nav`
 
   a {
     color: var(--white);
-    font-size: 1.2rem;
-    letter-spacing: 2px;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: var(--transition);
     text-align: center;
 
     &.active {
@@ -60,18 +55,7 @@ const Sidebar: React.FC = () => {
       </Hamburger>
       <StyledSidebar open={openMenu}>
         <StyledNav>
-          {menu.map((m) => {
-            return (
-              <NavLink
-                className={(navData) => (navData.isActive ? 'active' : '')}
-                key={m.label}
-                onClick={() => setOpenMenu(false)}
-                to={m.to}
-              >
-                {m.label}
-              </NavLink>
-            );
-          })}
+          <MenuList onClick={() => setOpenMenu(false)} />
         </StyledNav>
       </StyledSidebar>
     </>
