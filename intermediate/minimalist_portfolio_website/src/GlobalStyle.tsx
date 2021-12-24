@@ -5,8 +5,9 @@ const GlobalStyle = createGlobalStyle`
     /* 1. colors */
     --cyan: #5FB4A2;
     --dark-blue: #203A4C;
-    --black: #33323D;
-    --white: #FAFAFA;
+    --light-black: #33323D;
+    --very-light-grey: #FAFAFA;
+    --white: #FFFFFF;
     --light-grey: #EAEAEB;
     --red: #F43030;
 
@@ -18,6 +19,8 @@ const GlobalStyle = createGlobalStyle`
   /* Initialize */
   * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
   html {
