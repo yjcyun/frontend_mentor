@@ -13,7 +13,7 @@ interface SidebarProps {
 const Hamburger = styled.button`
   display: none;
 
-  @media (max-width: 568px) {
+  @media (max-width: 680px) {
     display: flex;
   }
 `;

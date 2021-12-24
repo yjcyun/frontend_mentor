@@ -6,11 +6,12 @@ import { ReactComponent as Logo } from '../assets/logo.svg';
 import Sidebar from './Sidebar';
 import MenuList from './MenuList';
 
-const StyledHeader = styled.div`
+const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
+  height: 32px;
 `;
 
 const StyledNav = styled.nav`
@@ -24,7 +25,7 @@ const StyledNav = styled.nav`
     }
   }
 
-  @media (max-width: 568px) {
+  @media (max-width: 680px) {
     display: none;
   }
 `;
