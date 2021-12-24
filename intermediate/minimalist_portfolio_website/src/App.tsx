@@ -1,8 +1,12 @@
 import React from 'react';
-import './App.css';
 
 function App() {
-  return <div>App</div>;
+  return (
+    <div>
+      <h1>Jived fox nymph grabs quick waltz</h1>
+      <button>Button</button>
+    </div>
+  );
 }
 
 export default App;
