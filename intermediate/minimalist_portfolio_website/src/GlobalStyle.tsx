@@ -29,6 +29,10 @@ const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
   }
 
+  body {
+    font-family: var(--bodyFF);
+  }
+
 
   /* 2. Typography */
   h1,h2,h3 {
@@ -71,6 +75,7 @@ const GlobalStyle = createGlobalStyle`
     border: none;
     outline: none;
     font-family: var(--bodyFF);
+    cursor: pointer;
   }
 `;
 

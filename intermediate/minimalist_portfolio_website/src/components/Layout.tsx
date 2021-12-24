@@ -10,6 +10,11 @@ const StyledLayout = styled.div`
   max-width: 1190px;
   padding: 0 40px;
   margin: 64px auto 0;
+
+  @media (max-width: 568px) {
+    margin-top: 32px;
+    padding: 0 35px;
+  }
 `;
 
 const Layout = ({ children }: LayoutProps) => {
