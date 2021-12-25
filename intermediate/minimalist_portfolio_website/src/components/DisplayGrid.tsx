@@ -26,14 +26,21 @@ const StyledGrid = styled.div`
   @media (max-width: 680px) {
     gap: 0;
     flex-direction: column;
+
+    &:nth-of-type(2n) {
+      flex-direction: column;
+    }
   }
 `;
 
 const GridImg = styled.div`
   max-width: 540px;
+  display: flex;
+  align-items: center;
 
   img {
     width: 100%;
+    height: fit-content;
   }
 
   @media (max-width: 680px) {
@@ -60,7 +67,7 @@ const GridContent = styled.div<{ isHome: boolean }>`
 
   @media (max-width: 680px) {
     max-width: fit-content;
-    margin-top: ${(props) => (props.isHome ? '32px' : '24px')};
+    margin-top: 32px;
 
     .content {
       padding: ${(props) => (props.isHome ? '32px 0 51px' : '24px 0')};

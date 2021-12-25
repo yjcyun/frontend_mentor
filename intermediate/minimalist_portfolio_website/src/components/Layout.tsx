@@ -26,6 +26,10 @@ const ContentCont = styled.div<{ isHome: boolean }>`
   @media (max-width: 996px) {
     margin: ${(props) => (props.isHome ? '47px 0 96px' : '94px 0 96px')};
   }
+
+  @media (max-width: 680px) {
+    margin: 40px 0 80px;
+  }
 `;
 
 const Layout = ({ children }: LayoutProps) => {
