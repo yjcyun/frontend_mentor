@@ -10,6 +10,7 @@ import preview from '../assets/detail/desktop/image-manage-preview-1@2x.jpg';
 import preview2 from '../assets/detail/desktop/image-manage-preview-2@2x.jpg';
 import { useWindowDimensions } from '../hooks/useWindowDimensions';
 import ContactBanner from '../components/ContactBanner';
+import Pagination from '../components/Pagination';
 
 const HeroWrapper = styled.section`
   img {
@@ -192,6 +193,7 @@ const PortfolioDetailPage = () => {
           </PreviewContent>
         </DetailsWrapper>
       </Grid>
+      <Pagination />
       <ContactBanner />
     </Layout>
   );
