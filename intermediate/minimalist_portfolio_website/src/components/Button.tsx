@@ -31,6 +31,7 @@ const StyledButton = styled.button<StyledButtonProps>`
     letter-spacing: 2px;
     text-transform: uppercase;
     font-size: 12px;
+    white-space: nowrap;
   }
 
   ${(props) =>

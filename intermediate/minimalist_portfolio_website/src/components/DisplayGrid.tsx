@@ -16,7 +16,7 @@ const StyledGrid = styled.div`
   justify-content: space-between;
   max-width: 1015px;
 
-  &:nth-child(odd) {
+  &:nth-of-type(2n) {
     flex-direction: row-reverse;
     margin-left: auto;
   }

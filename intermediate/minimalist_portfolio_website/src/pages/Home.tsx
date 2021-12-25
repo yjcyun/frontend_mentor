@@ -6,8 +6,9 @@ import DisplayGrid from '../components/DisplayGrid';
 
 import hero from '../assets/homepage/desktop/image-homepage-hero@2x.jpg';
 import profile from '../assets/homepage/desktop/image-homepage-profile@2x.jpg';
+import ContactBanner from '../components/ContactBanner';
 
-const Hero = styled.section`
+const HeroSection = styled.section`
   background-image: url(${hero});
   background-size: cover;
   height: 600px;
@@ -25,22 +26,29 @@ const HeroContent = styled.div`
   }
 `;
 
+const ProfileSection = styled.section`
+  margin: 150px 0;
+`;
+
 const HomePage = () => {
   return (
     <Layout>
-      <Hero>
+      <HeroSection>
         <HeroContent>
           <h1>Hey, I’m Alex Spencer and I love building beautiful websites</h1>
           <Button adornment>about me</Button>
         </HeroContent>
-      </Hero>
-      <DisplayGrid
-        alt='A sideview photo of Alex Spencer'
-        description='I’m a junior front-end developer looking for a new role in an exciting company. I focus on writing accessible HTML, using modern CSS practices and writing clean JavaScript. When writing JavaScript code, I mostly use React, but I can adapt to whatever tools are required. I’m based in London, UK, but I’m happy working remotely and have experience in remote teams. When I’m not coding, you’ll find me outdoors. I love being out in nature whether that’s going for a walk, run or cycling. I’d love you to check out my work.'
-        img={profile}
-        label='go to portfolio'
-        title='About Me'
-      />
+      </HeroSection>
+      <ProfileSection>
+        <DisplayGrid
+          alt='A sideview photo of Alex Spencer'
+          description='I’m a junior front-end developer looking for a new role in an exciting company. I focus on writing accessible HTML, using modern CSS practices and writing clean JavaScript. When writing JavaScript code, I mostly use React, but I can adapt to whatever tools are required. I’m based in London, UK, but I’m happy working remotely and have experience in remote teams. When I’m not coding, you’ll find me outdoors. I love being out in nature whether that’s going for a walk, run or cycling. I’d love you to check out my work.'
+          img={profile}
+          label='go to portfolio'
+          title='About Me'
+        />
+      </ProfileSection>
+      <ContactBanner />
     </Layout>
   );
 };

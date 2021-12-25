@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Footer from './Footer';
 
@@ -18,16 +19,21 @@ const Container = styled.div`
   }
 `;
 
-const ContentCont = styled.div`
+const ContentCont = styled.div<{ isHome: boolean }>`
   min-height: calc(100vh - 178px);
+  margin: ${(props) => (props.isHome ? '54px 0 150px' : '94px 0 150px')};
 `;
 
 const Layout = ({ children }: LayoutProps) => {
+  const location = useLocation();
+
+  const isHome = location.pathname === '/';
+
   return (
     <>
       <Container>
         <Header />
-        <ContentCont>{children}</ContentCont>
+        <ContentCont isHome={isHome}>{children}</ContentCont>
       </Container>
       <Footer />
     </>
