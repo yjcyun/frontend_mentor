@@ -38,7 +38,7 @@ const InnerFooter = styled.div`
   }
 
   @media (max-width: 680px) {
-    padding: 0 35px;
+    padding: 0 32px;
     flex-direction: column;
   }
 `;

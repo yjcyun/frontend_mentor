@@ -15,13 +15,17 @@ const Container = styled.div`
 
   @media (max-width: 680px) {
     margin-top: 32px;
-    padding: 0 35px;
+    padding: 0 32px;
   }
 `;
 
 const ContentCont = styled.div<{ isHome: boolean }>`
   min-height: calc(100vh - 178px);
   margin: ${(props) => (props.isHome ? '54px 0 150px' : '94px 0 150px')};
+
+  @media (max-width: 996px) {
+    margin: ${(props) => (props.isHome ? '47px 0 96px' : '94px 0 96px')};
+  }
 `;
 
 const Layout = ({ children }: LayoutProps) => {
