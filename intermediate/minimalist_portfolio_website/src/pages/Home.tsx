@@ -1,7 +1,10 @@
 import styled from 'styled-components';
+
 import Layout from '../components/Layout';
+import Button from '../components/Button';
+
 import hero from '../assets/homepage/desktop/image-homepage-hero@2x.jpg';
-import { Button } from '../components/Button';
+import Divider from '../components/Divider';
 
 const Hero = styled.section`
   background-image: url(${hero});
@@ -30,6 +33,7 @@ const HomePage = () => {
           <Button adornment>about me</Button>
         </HeroContent>
       </Hero>
+      <Divider />
     </Layout>
   );
 };
