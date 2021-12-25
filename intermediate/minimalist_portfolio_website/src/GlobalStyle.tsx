@@ -31,12 +31,14 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: var(--bodyFF);
+    color: var(--light-black);
   }
 
 
   /* 2. Typography */
   h1,h2,h3 {
     font-family: var(--headingFF);
+    color: var(--light-black);
   }
 
   h1 {
