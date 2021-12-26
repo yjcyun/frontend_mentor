@@ -1,22 +1,22 @@
-import manage from '../assets/portfolio/desktop/image-portfolio-manage@2x.jpg';
-import manageDetailHero from '../assets/detail/desktop/image-manage-hero@2x.jpg';
-import manageDetailPreview1 from '../assets/detail/desktop/image-manage-preview-1@2x.jpg';
-import manageDetailPreview2 from '../assets/detail/desktop/image-manage-preview-2@2x.jpg';
+import manage from '../assets/portfolio/image-portfolio-manage@2x.jpg';
+import manageDetailHero from '../assets/detail/image-manage-hero@2x.jpg';
+import manageDetailPreview1 from '../assets/detail/image-manage-preview-1@2x.jpg';
+import manageDetailPreview2 from '../assets/detail/image-manage-preview-2@2x.jpg';
 
-import bookmark from '../assets/portfolio/desktop/image-portfolio-bookmark@2x.jpg';
-import bookmarkDetailHero from '../assets/detail/desktop/image-bookmark-hero@2x.jpg';
-import bookmarkDetailPreview1 from '../assets/detail/desktop/image-bookmark-preview-1@2x.jpg';
-import bookmarkDetailPreview2 from '../assets/detail/desktop/image-bookmark-preview-2@2x.jpg';
+import bookmark from '../assets/portfolio/image-portfolio-bookmark@2x.jpg';
+import bookmarkDetailHero from '../assets/detail/image-bookmark-hero@2x.jpg';
+import bookmarkDetailPreview1 from '../assets/detail/image-bookmark-preview-1@2x.jpg';
+import bookmarkDetailPreview2 from '../assets/detail/image-bookmark-preview-2@2x.jpg';
 
-import insure from '../assets/portfolio/desktop/image-portfolio-insure@2x.jpg';
-import insureDetailHero from '../assets/detail/desktop/image-insure-hero@2x.jpg';
-import insureDetailPreview1 from '../assets/detail/desktop/image-insure-preview-1@2x.jpg';
-import insureDetailPreview2 from '../assets/detail/desktop/image-insure-preview-2@2x.jpg';
+import insure from '../assets/portfolio/image-portfolio-insure@2x.jpg';
+import insureDetailHero from '../assets/detail/image-insure-hero@2x.jpg';
+import insureDetailPreview1 from '../assets/detail/image-insure-preview-1@2x.jpg';
+import insureDetailPreview2 from '../assets/detail/image-insure-preview-2@2x.jpg';
 
-import fylo from '../assets/portfolio/desktop/image-portfolio-fylo@2x.jpg';
-import fyloDetailHero from '../assets/detail/desktop/image-fylo-hero@2x.jpg';
-import fyloDetailPreview1 from '../assets/detail/desktop/image-fylo-preview-1@2x.jpg';
-import fyloDetailPreview2 from '../assets/detail/desktop/image-fylo-preview-2@2x.jpg';
+import fylo from '../assets/portfolio/image-portfolio-fylo@2x.jpg';
+import fyloDetailHero from '../assets/detail/image-fylo-hero@2x.jpg';
+import fyloDetailPreview1 from '../assets/detail/image-fylo-preview-1@2x.jpg';
+import fyloDetailPreview2 from '../assets/detail/image-fylo-preview-2@2x.jpg';
 
 export interface PortfolioType {
   id: number;
