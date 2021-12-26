@@ -91,7 +91,7 @@ export const DisplayGrid: React.FC<DisplyGridProps> = ({
   to,
 }) => {
   return (
-    <StyledGrid role='region' aria-labelledby={`Information on ${title}`}>
+    <StyledGrid role='region' aria-label={`Information on ${title}`}>
       <GridImg>
         <img src={img} alt={alt} />
       </GridImg>

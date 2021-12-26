@@ -57,7 +57,7 @@ export const Sidebar: React.FC = () => {
       <Hamburger onClick={() => setOpenMenu(!openMenu)}>
         {!openMenu ? <HamburgerIcon /> : <CloseIcon />}
       </Hamburger>
-      <StyledSidebar open={openMenu}>
+      <StyledSidebar open={openMenu} id='sidebar-nav'>
         <StyledNav>
           <MenuList onClick={() => setOpenMenu(false)} />
         </StyledNav>

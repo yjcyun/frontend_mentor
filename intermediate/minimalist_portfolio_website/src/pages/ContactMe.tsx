@@ -112,7 +112,7 @@ const ContactMePage: React.FC = () => {
       <SEO title='Contact Me' />
       <Layout>
         <Divider />
-        <ContactGrid role='region' aria-labelledby={`Get in touch`}>
+        <ContactGrid role='region' aria-label={`Get in touch`}>
           <h2 className='subtitle'>Get in Touch</h2>
 
           <div className='content-div'>
@@ -131,7 +131,7 @@ const ContactMePage: React.FC = () => {
           </div>
         </ContactGrid>
         <Divider />
-        <ContactGrid role='form' aria-labelledby={`Contact form`}>
+        <ContactGrid role='form' aria-label={`Contact form`}>
           <h2 className='subtitle'>Contact Me</h2>
 
           <form className='content-div' onSubmit={(e) => handleSubmit(e)}>
