@@ -3,14 +3,9 @@ import styled from 'styled-components';
 import { ContactBanner } from '../components/ContactBanner';
 import { DisplayGrid } from '../components/DisplayGrid';
 import { Layout } from '../components/Layout';
+import { SEO } from '../components/SEO';
 
 import { portfolio } from '../data/portfolio';
-
-import manage from '../assets/portfolio/image-portfolio-manage@2x.jpg';
-import bookmark from '../assets/portfolio/image-portfolio-bookmark@2x.jpg';
-import insure from '../assets/portfolio/image-portfolio-insure@2x.jpg';
-import fylo from '../assets/portfolio/image-portfolio-fylo@2x.jpg';
-import { SEO } from '../components/SEO';
 
 const StyledPortfolio = styled.section`
   margin-bottom: 150px;
