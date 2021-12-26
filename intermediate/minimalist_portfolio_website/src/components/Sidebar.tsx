@@ -19,7 +19,7 @@ const Hamburger = styled.button`
 `;
 
 const StyledSidebar = styled.div<SidebarProps>`
-  display: ${(props) => (props.open ? 'flex' : 'none')};
+  display: none;
   position: absolute;
   right: 0;
   top: 56px;
@@ -28,6 +28,10 @@ const StyledSidebar = styled.div<SidebarProps>`
   align-items: center;
   justify-content: center;
   padding: 40px 0;
+
+  @media (max-width: 680px) {
+    display: ${(props) => (props.open ? 'flex' : 'none')};
+  }
 `;
 
 const StyledNav = styled.nav`
