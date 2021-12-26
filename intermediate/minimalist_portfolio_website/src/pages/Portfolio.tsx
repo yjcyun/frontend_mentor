@@ -8,6 +8,8 @@ import bookmark from '../assets/portfolio/desktop/image-portfolio-bookmark@2x.jp
 import insure from '../assets/portfolio/desktop/image-portfolio-insure@2x.jpg';
 import fylo from '../assets/portfolio/desktop/image-portfolio-fylo@2x.jpg';
 import ContactBanner from '../components/ContactBanner';
+import { portfolio } from '../data/portfolio';
+import { idText } from 'typescript';
 
 const StyledPortfolio = styled.section`
   margin-bottom: 150px;
@@ -46,34 +48,17 @@ const PortfolioPage = () => {
   return (
     <Layout>
       <StyledPortfolio>
-        <DisplayGrid
-          alt='A mockup of Manage site'
-          description='This project required me to build a fully responsive landing page to the designs provided. I used HTML5, along with CSS Grid and JavaScript for the areas that required interactivity, such as the testimonial slider.'
-          img={getImage('manage')}
-          label='view project'
-          title='Manage'
-        />
-        <DisplayGrid
-          alt='A mockup of Bookmark site'
-          description='This project required me to build a fully responsive landing page to the designs provided. I used HTML5, along with CSS Grid and JavaScript for the areas that required interactivity, such as the features section.'
-          img={getImage('bookmark')}
-          label='view project'
-          title='Bookmark'
-        />
-        <DisplayGrid
-          alt='A mockup of Insure site'
-          description='This was a small project which mostly consisted of HTML and CSS. I built a fully-responsive landing page. The only JavaScript this project required was to enable the toggling of the mobile navigation.'
-          img={getImage('insure')}
-          label='view project'
-          title='Insure'
-        />
-        <DisplayGrid
-          alt='A mockup of Fylo site'
-          description='This project was built in pure HTML and CSS. I had mobile and desktop designs to work to and built it so that it was fully-responsive. I took a mobile-first approach and used modern CSS like Flexbox and Grid for layout purposes.'
-          img={getImage('fylo')}
-          label='view project'
-          title='Fylo'
-        />
+        {portfolio.map((p) => (
+          <DisplayGrid
+            key={p.id}
+            alt={p.overviewImgAlt}
+            description={p.description}
+            img={p.overviewImg}
+            label='view project'
+            title={p.title}
+            to={p.slug}
+          />
+        ))}
       </StyledPortfolio>
       <ContactBanner />
     </Layout>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Button from './Button';
@@ -10,6 +11,7 @@ interface DisplyGridProps {
   isHome?: boolean;
   label: string;
   title: string;
+  to?: string;
 }
 
 const StyledGrid = styled.div`
@@ -55,6 +57,10 @@ const GridContent = styled.div<{ isHome: boolean }>`
 
   .content {
     padding: 32px 0;
+
+    a {
+      text-decoration: none;
+    }
   }
 
   p {
@@ -82,6 +88,7 @@ const DisplayGrid: React.FC<DisplyGridProps> = ({
   isHome = false,
   label,
   title,
+  to,
 }) => {
   return (
     <StyledGrid>
@@ -93,7 +100,13 @@ const DisplayGrid: React.FC<DisplyGridProps> = ({
         <div className='content'>
           <h2>{title}</h2>
           <p>{description}</p>
-          <Button variant='secondary'>{label}</Button>
+          {to ? (
+            <Link to={to}>
+              <Button variant='secondary'>{label}</Button>
+            </Link>
+          ) : (
+            <Button variant='secondary'>{label}</Button>
+          )}
         </div>
         <Divider />
       </GridContent>

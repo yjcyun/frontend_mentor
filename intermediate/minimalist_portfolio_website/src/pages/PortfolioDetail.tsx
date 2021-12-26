@@ -5,12 +5,10 @@ import Button from '../components/Button';
 import Divider from '../components/Divider';
 import Layout from '../components/Layout';
 
-import img from '../assets/detail/desktop/image-manage-hero@2x.jpg';
-import preview from '../assets/detail/desktop/image-manage-preview-1@2x.jpg';
-import preview2 from '../assets/detail/desktop/image-manage-preview-2@2x.jpg';
-import { useWindowDimensions } from '../hooks/useWindowDimensions';
 import ContactBanner from '../components/ContactBanner';
 import Pagination from '../components/Pagination';
+import { portfolio, PortfolioType } from '../data/portfolio';
+import { useEffect, useState } from 'react';
 
 const HeroWrapper = styled.section`
   img {
@@ -131,69 +129,85 @@ const PreviewContent = styled.div`
 `;
 const PortfolioDetailPage = () => {
   const { portfolioId } = useParams();
-  const { width } = useWindowDimensions();
+  const [data, setData] = useState<PortfolioType>(portfolio[0]);
+
+  useEffect(() => {
+    portfolio.forEach((p) => {
+      if (p.slug === portfolioId) {
+        setData(p);
+      }
+    });
+  }, [portfolioId]);
+
+  const {
+    id,
+    hero_img,
+    hero_img_alt,
+    title,
+    description,
+    skills,
+    project_background,
+    preview1,
+    preview2,
+  } = data;
+
+  const getIndex = (id: number, direction: 'prev' | 'next') => {
+    const dataLength = portfolio.length;
+    let index = id;
+
+    if (id === 0) {
+      index = direction === 'prev' ? dataLength - 1 : id + 1;
+    } else if (id === dataLength - 1) {
+      index = direction === 'prev' ? id - 1 : 0;
+    } else {
+      index = direction === 'prev' ? id - 1 : id + 1;
+    }
+
+    return index;
+  };
+
+  const prev = portfolio[getIndex(id, 'prev')];
+  const next = portfolio[getIndex(id, 'next')];
 
   return (
     <Layout>
       <HeroWrapper>
-        <img src={img} alt='' />
+        <img src={hero_img} alt={hero_img_alt} />
       </HeroWrapper>
       <Grid>
         <SummaryWrapper>
           <Divider />
           <SummaryContent>
             <div>
-              <h2>Manage</h2>
-
-              <p className='body2 mobile'>
-                This project required me to build a fully responsive landing
-                page to the designs provided. I used HTML5, along with CSS Grid
-                and JavaScript for the areas that required interactivity, such
-                as the testimonial slider.
-              </p>
-
+              <h2>{title}</h2>
+              <p className='body2 mobile'>{description}</p>
               <ul>
-                <li>
-                  <p>Interaction Design / Front End Development</p>
-                </li>
-                <li>
-                  <p>HTML / CSS / JS</p>
-                </li>
+                {skills.map((s, i) => (
+                  <li key={i}>
+                    <p>{s}</p>
+                  </li>
+                ))}
               </ul>
               <Button variant='secondary'>visit website</Button>
             </div>
 
-            <p className='body2 tablet'>
-              This project required me to build a fully responsive landing page
-              to the designs provided. I used HTML5, along with CSS Grid and
-              JavaScript for the areas that required interactivity, such as the
-              testimonial slider.
-            </p>
+            <p className='body2 tablet'>{description}</p>
           </SummaryContent>
           <Divider />
         </SummaryWrapper>
         <DetailsWrapper>
           <DetailsContent>
             <Subtitle>Project Background</Subtitle>
-            <p className='body2'>
-              This project was a front-end challenge from Frontend Mentor. It’s
-              a platform that enables you to practice building websites to a
-              design and project brief. Each challenge includes mobile and
-              desktop designs to show how the website should look at different
-              screen sizes. Creating these projects has helped me refine my
-              workflow and solve real-world coding problems. I’ve learned
-              something new with each project, helping me to improve and adapt
-              my style.
-            </p>
+            <p className='body2'>{project_background}</p>
           </DetailsContent>
           <PreviewContent>
             <Subtitle>Static Previews</Subtitle>
-            <img src={preview} alt='' />
-            <img src={preview2} alt='' />
+            <img src={preview1} alt={hero_img_alt} />
+            <img src={preview2} alt={hero_img_alt} />
           </PreviewContent>
         </DetailsWrapper>
       </Grid>
-      <Pagination />
+      <Pagination prev={prev} next={next} />
       <ContactBanner />
     </Layout>
   );

@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 
 import { ReactComponent as PrevArrow } from '../assets/icons/arrow-left.svg';
 import { ReactComponent as NextArrow } from '../assets/icons/arrow-right.svg';
+import { PortfolioType } from '../data/portfolio';
+
+interface PaginationProps {
+  prev: PortfolioType;
+  next: PortfolioType;
+}
 
 const StyledPagination = styled.div`
   border-top: 1px solid rgba(51, 50, 61, 0.15);
@@ -58,22 +64,22 @@ const PaginationButton = styled(Link)`
   }
 `;
 
-const Pagination: React.FC = () => {
+const Pagination: React.FC<PaginationProps> = ({ prev, next }) => {
   return (
     <StyledPagination>
       <PaginationBlock>
-        <PaginationButton to='/'>
+        <PaginationButton to={`/portfolio/${prev.slug}`}>
           <PrevArrow />
           <div>
-            <h3>Fylo</h3>
+            <h3>{prev.title}</h3>
             <p>Previous Project</p>
           </div>
         </PaginationButton>
       </PaginationBlock>
       <PaginationBlock>
-        <PaginationButton to='/'>
+        <PaginationButton to={`/portfolio/${next.slug}`}>
           <div>
-            <h3>Fylo</h3>
+            <h3>{next.title}</h3>
             <p>Next Project</p>
           </div>
           <NextArrow />
