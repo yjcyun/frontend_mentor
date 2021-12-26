@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+
 import { Button } from '../components/Button';
-import Divider from '../components/Divider';
-import Input from '../components/Input';
-import Layout from '../components/Layout';
-import SocialShare from '../components/SocialShare';
+import { Divider } from '../components/Divider';
+import { Input } from '../components/Input';
+import { Layout } from '../components/Layout';
+import { SocialShare } from '../components/SocialShare';
 
 const ContactGrid = styled.div`
   display: flex;
@@ -147,6 +148,7 @@ const ContactMePage: React.FC = () => {
           <Input
             error={errors.message}
             label='Message'
+            multiline
             onChange={(e) => setMessage(e.target.value)}
             placeholder='How can I help?'
             value={message}

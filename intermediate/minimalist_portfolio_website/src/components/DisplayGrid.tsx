@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import { Button } from './Button';
-import Divider from './Divider';
+import { Divider } from './Divider';
 
 interface DisplyGridProps {
   alt: string;
@@ -12,6 +12,10 @@ interface DisplyGridProps {
   label: string;
   title: string;
   to?: string;
+}
+
+interface GridContentProps {
+  isHome: boolean;
 }
 
 const StyledGrid = styled.div`
@@ -26,8 +30,8 @@ const StyledGrid = styled.div`
   }
 
   @media (max-width: 680px) {
-    gap: 0;
     flex-direction: column;
+    gap: 0;
 
     &:nth-of-type(2n) {
       flex-direction: column;
@@ -36,9 +40,9 @@ const StyledGrid = styled.div`
 `;
 
 const GridImg = styled.div`
-  max-width: 540px;
   display: flex;
   align-items: center;
+  max-width: 540px;
 
   img {
     width: 100%;
@@ -49,18 +53,19 @@ const GridImg = styled.div`
     max-width: 100%;
   }
 `;
-const GridContent = styled.div<{ isHome: boolean }>`
-  max-width: 350px;
+
+const GridContent = styled.div<GridContentProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  max-width: 350px;
 
   .content {
     padding: 32px 0;
-  }
 
-  p {
-    padding: 28px 0 24px;
+    p {
+      padding: 28px 0 24px;
+    }
   }
 
   @media (max-width: 996px) {
@@ -77,7 +82,7 @@ const GridContent = styled.div<{ isHome: boolean }>`
   }
 `;
 
-const DisplayGrid: React.FC<DisplyGridProps> = ({
+export const DisplayGrid: React.FC<DisplyGridProps> = ({
   alt,
   description,
   img,
@@ -109,5 +114,3 @@ const DisplayGrid: React.FC<DisplyGridProps> = ({
     </StyledGrid>
   );
 };
-
-export default DisplayGrid;

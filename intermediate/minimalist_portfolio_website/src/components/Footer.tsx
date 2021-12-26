@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import MenuList from './MenuList';
-import SocialShare from './SocialShare';
+import { MenuList } from './MenuList';
+import { SocialShare } from './SocialShare';
 
 import { ReactComponent as Logo } from '../assets/logo.svg';
 
@@ -18,15 +18,12 @@ const StyledFooter = styled.footer`
 `;
 
 const InnerFooter = styled.div`
-  max-width: 1190px;
-  margin: auto;
-  padding: 0 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: auto;
 
   @media (max-width: 680px) {
-    padding: 0 32px;
     flex-direction: column;
   }
 `;
@@ -68,10 +65,10 @@ const StyledNav = styled.nav`
   }
 `;
 
-const Footer: React.FC = () => {
+export const Footer: React.FC = () => {
   return (
     <StyledFooter>
-      <InnerFooter>
+      <InnerFooter className='gutter'>
         <Left>
           <Link to='/'>
             <Logo />
@@ -85,5 +82,3 @@ const Footer: React.FC = () => {
     </StyledFooter>
   );
 };
-
-export default Footer;

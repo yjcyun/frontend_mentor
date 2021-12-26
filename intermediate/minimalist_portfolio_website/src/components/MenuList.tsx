@@ -20,7 +20,7 @@ const StyledNavLink = styled(NavLink)`
   transition: var(--transition);
 `;
 
-const MenuList = (props: MenuListProps) => {
+export const MenuList: React.FC<MenuListProps> = (props) => {
   return (
     <>
       {menu.map((m) => {
@@ -38,5 +38,3 @@ const MenuList = (props: MenuListProps) => {
     </>
   );
 };
-
-export default MenuList;

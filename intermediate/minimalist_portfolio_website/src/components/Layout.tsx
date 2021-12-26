@@ -1,25 +1,26 @@
-import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import Footer from './Footer';
+import { useLocation } from 'react-router-dom';
 
-import Header from './Header';
+import { Footer } from './Footer';
+import { Header } from './Header';
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
+interface ContentContProps {
+  isHome: boolean;
+}
+
 const Container = styled.div`
-  padding: 0 40px;
-  max-width: 1190px;
   margin: 64px auto 0;
 
   @media (max-width: 680px) {
     margin-top: 32px;
-    padding: 0 32px;
   }
 `;
 
-const ContentCont = styled.div<{ isHome: boolean }>`
+const ContentCont = styled.div<ContentContProps>`
   min-height: calc(100vh - 178px);
   margin: ${(props) => (props.isHome ? '54px 0 150px' : '94px 0 150px')};
 
@@ -32,14 +33,14 @@ const ContentCont = styled.div<{ isHome: boolean }>`
   }
 `;
 
-const Layout = ({ children }: LayoutProps) => {
+export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
 
   const isHome = location.pathname === '/';
 
   return (
     <>
-      <Container>
+      <Container className='gutter'>
         <Header />
         <ContentCont isHome={isHome}>{children}</ContentCont>
       </Container>
@@ -47,5 +48,3 @@ const Layout = ({ children }: LayoutProps) => {
     </>
   );
 };
-
-export default Layout;

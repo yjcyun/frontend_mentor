@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 
-import DisplayGrid from '../components/DisplayGrid';
-import Layout from '../components/Layout';
+import { ContactBanner } from '../components/ContactBanner';
+import { DisplayGrid } from '../components/DisplayGrid';
+import { Layout } from '../components/Layout';
+
+import { portfolio } from '../data/portfolio';
 
 import manage from '../assets/portfolio/image-portfolio-manage@2x.jpg';
 import bookmark from '../assets/portfolio/image-portfolio-bookmark@2x.jpg';
 import insure from '../assets/portfolio/image-portfolio-insure@2x.jpg';
 import fylo from '../assets/portfolio/image-portfolio-fylo@2x.jpg';
-import ContactBanner from '../components/ContactBanner';
-import { portfolio } from '../data/portfolio';
 
 const StyledPortfolio = styled.section`
   margin-bottom: 150px;
@@ -31,19 +32,6 @@ const StyledPortfolio = styled.section`
 `;
 
 const PortfolioPage = () => {
-  const getImage = (project: 'manage' | 'bookmark' | 'insure' | 'fylo') => {
-    switch (project) {
-      case 'manage':
-        return manage;
-      case 'bookmark':
-        return bookmark;
-      case 'insure':
-        return insure;
-      case 'fylo':
-        return fylo;
-    }
-  };
-
   return (
     <Layout>
       <StyledPortfolio>

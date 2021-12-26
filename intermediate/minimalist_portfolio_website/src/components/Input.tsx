@@ -1,13 +1,35 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-interface InputProps {
+interface InputProps<T> {
   error: string;
   label: string;
   multiline?: boolean;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: React.ChangeEvent<{ value: T }>) => void;
   placeholder: string;
   value: string;
 }
+
+const textStyles = css`
+  background: rgba(51, 50, 61, 0.1);
+  border: 1px solid transparent;
+  font-size: 1.3rem;
+  line-height: 3rem;
+  padding: 9px 16px;
+
+  ::placeholder,
+  ::-webkit-input-placeholder {
+    color: rgba(51, 50, 61, 0.4);
+  }
+
+  :-ms-input-placeholder {
+    color: rgba(51, 50, 61, 0.4);
+  }
+
+  :focus {
+    outline: none;
+    border: 1px solid var(--cyan) !important;
+  }
+`;
 
 const FormControl = styled.div`
   display: flex;
@@ -31,30 +53,14 @@ const FormControl = styled.div`
 `;
 
 const StyledInput = styled.input`
-  background: rgba(51, 50, 61, 0.1);
-  border: 1px solid transparent;
-  font-size: 1.3rem;
-  line-height: 3rem;
-  padding: 9px 16px;
-
-  ::placeholder,
-  ::-webkit-input-placeholder {
-    color: rgba(51, 50, 61, 0.4);
-  }
-
-  :-ms-input-placeholder {
-    color: rgba(51, 50, 61, 0.4);
-  }
-
-  :focus {
-    outline: none;
-    border: 1px solid var(--cyan) !important;
-  }
+  ${textStyles}
 `;
 
-const StyledTextarea = styled.textarea``;
+const StyledTextarea = styled.textarea`
+  ${textStyles}
+`;
 
-const Input: React.FC<InputProps> = ({
+export const Input: React.FC<InputProps<string>> = ({
   error,
   label,
   multiline = false,
@@ -66,7 +72,11 @@ const Input: React.FC<InputProps> = ({
     <FormControl>
       <label>{label}</label>
       {multiline ? (
-        <StyledTextarea />
+        <StyledTextarea
+          onChange={onChange}
+          placeholder={placeholder}
+          rows={3}
+        />
       ) : (
         <StyledInput
           onChange={onChange}
@@ -79,5 +89,3 @@ const Input: React.FC<InputProps> = ({
     </FormControl>
   );
 };
-
-export default Input;

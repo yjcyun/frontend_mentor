@@ -1,10 +1,10 @@
-import styled from 'styled-components';
 import { useState } from 'react';
+import styled from 'styled-components';
 
 import { ReactComponent as HamburgerIcon } from '../assets/icons/hamburger.svg';
 import { ReactComponent as CloseIcon } from '../assets/icons/close.svg';
 
-import MenuList from './MenuList';
+import { MenuList } from './MenuList';
 
 interface SidebarProps {
   open: boolean;
@@ -49,7 +49,7 @@ const StyledNav = styled.nav`
   }
 `;
 
-const Sidebar: React.FC = () => {
+export const Sidebar: React.FC = () => {
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
@@ -65,5 +65,3 @@ const Sidebar: React.FC = () => {
     </>
   );
 };
-
-export default Sidebar;

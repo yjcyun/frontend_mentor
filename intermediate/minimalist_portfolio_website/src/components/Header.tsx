@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 import { ReactComponent as Logo } from '../assets/logo.svg';
 
-import Sidebar from './Sidebar';
-import MenuList from './MenuList';
+import { MenuList } from './MenuList';
+import { Sidebar } from './Sidebar';
 
 const StyledHeader = styled.header`
   display: flex;
@@ -30,7 +30,7 @@ const StyledNav = styled.nav`
   }
 `;
 
-const Header: React.FC = () => {
+export const Header: React.FC = () => {
   return (
     <StyledHeader>
       <Link to='/'>
@@ -46,5 +46,3 @@ const Header: React.FC = () => {
     </StyledHeader>
   );
 };
-
-export default Header;

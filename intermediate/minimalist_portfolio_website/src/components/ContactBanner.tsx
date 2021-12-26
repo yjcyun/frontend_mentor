@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 import { useWindowDimensions } from '../hooks/useWindowDimensions';
+
 import { Button } from './Button';
-import Divider from './Divider';
+import { Divider } from './Divider';
 
 const StyledContactBanner = styled.section`
   display: flex;
@@ -33,7 +35,7 @@ const StyledContactBanner = styled.section`
   }
 `;
 
-const ContactBanner = () => {
+export const ContactBanner: React.FC = () => {
   const { width } = useWindowDimensions();
 
   return (
@@ -46,5 +48,3 @@ const ContactBanner = () => {
     </StyledContactBanner>
   );
 };
-
-export default ContactBanner;

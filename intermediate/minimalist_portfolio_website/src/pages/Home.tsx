@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components';
 
-import Layout from '../components/Layout';
 import { Button } from '../components/Button';
-import DisplayGrid from '../components/DisplayGrid';
-import ContactBanner from '../components/ContactBanner';
+import { ContactBanner } from '../components/ContactBanner';
+import { DisplayGrid } from '../components/DisplayGrid';
+import { Layout } from '../components/Layout';
+
 import { useWindowDimensions } from '../hooks/useWindowDimensions';
 
 import hero from '../assets/homepage/desktop/image-homepage-hero@2x.jpg';
@@ -13,6 +14,10 @@ import heroMobile from '../assets/homepage/mobile/image-homepage-hero@2x.jpg';
 import profile from '../assets/homepage/desktop/image-homepage-profile@2x.jpg';
 import profileTablet from '../assets/homepage/tablet/image-homepage-profile@2x.jpg';
 import profileMobile from '../assets/homepage/mobile/image-homepage-profile@2x.jpg';
+
+interface HeroContentProps {
+  isMobile: boolean;
+}
 
 const HeroSection = styled.section`
   background-image: url(${hero});
@@ -43,17 +48,11 @@ const MobileHero = styled.section`
   }
 `;
 
-const HeroContent = styled.div<{ isMobile: boolean }>`
+const HeroContent = styled.div<HeroContentProps>`
   width: 445px;
-  position: absolute;
+  position: ${(props) => (props.isMobile ? 'static' : 'absolute')};
   bottom: 0;
   background: var(--white);
-
-  ${(props) =>
-    props.isMobile &&
-    css`
-      position: static;
-    `}
 
   h1 {
     padding: 56px 55px 53px 0;

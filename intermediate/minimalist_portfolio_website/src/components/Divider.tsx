@@ -7,8 +7,6 @@ const StyledDivider = styled.div`
   opacity: 0.15;
 `;
 
-const Divider = () => {
+export const Divider: React.FC = () => {
   return <StyledDivider />;
 };
-
-export default Divider;

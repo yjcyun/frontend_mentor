@@ -1,14 +1,14 @@
-import styled from 'styled-components';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
 
 import { Button } from '../components/Button';
-import Divider from '../components/Divider';
-import Layout from '../components/Layout';
+import { ContactBanner } from '../components/ContactBanner';
+import { Divider } from '../components/Divider';
+import { Layout } from '../components/Layout';
+import { Pagination } from '../components/Pagination';
 
-import ContactBanner from '../components/ContactBanner';
-import Pagination from '../components/Pagination';
 import { portfolio, PortfolioType } from '../data/portfolio';
-import { useEffect, useState } from 'react';
 
 const HeroWrapper = styled.section`
   img {

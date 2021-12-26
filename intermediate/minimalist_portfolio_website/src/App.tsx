@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
-import ContactMePage from './pages/ContactMe';
 
 import HomePage from './pages/Home';
 import PortfolioPage from './pages/Portfolio';
 import PortfolioDetailPage from './pages/PortfolioDetail';
+import ContactMePage from './pages/ContactMe';
 
 const App = () => {
   return (

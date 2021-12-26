@@ -24,7 +24,7 @@ const StyledSocialShare = styled.div<{ isDark: boolean }>`
   }
 `;
 
-const SocialShare: React.FC<SocialShareProps> = ({ dark = false }) => {
+export const SocialShare: React.FC<SocialShareProps> = ({ dark = false }) => {
   return (
     <StyledSocialShare isDark={dark}>
       {socialMenu.map((m) => (
@@ -35,5 +35,3 @@ const SocialShare: React.FC<SocialShareProps> = ({ dark = false }) => {
     </StyledSocialShare>
   );
 };
-
-export default SocialShare;

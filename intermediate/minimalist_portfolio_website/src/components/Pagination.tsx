@@ -1,8 +1,9 @@
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import { ReactComponent as PrevArrow } from '../assets/icons/arrow-left.svg';
 import { ReactComponent as NextArrow } from '../assets/icons/arrow-right.svg';
+
 import { PortfolioType } from '../data/portfolio';
 
 interface PaginationProps {
@@ -63,7 +64,7 @@ const PaginationButton = styled(Link)`
   }
 `;
 
-const Pagination: React.FC<PaginationProps> = ({ prev, next }) => {
+export const Pagination: React.FC<PaginationProps> = ({ prev, next }) => {
   return (
     <StyledPagination>
       <PaginationBlock>
@@ -87,5 +88,3 @@ const Pagination: React.FC<PaginationProps> = ({ prev, next }) => {
     </StyledPagination>
   );
 };
-
-export default Pagination;

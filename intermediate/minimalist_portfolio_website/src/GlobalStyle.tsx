@@ -80,8 +80,22 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
+  /* General */
   a {
     text-decoration: none;
+  }
+
+  .gutter {
+    padding: 0 40px;
+    max-width: 1190px;
+  }
+
+  @media (max-width: 680px) {
+    .gutter {
+      margin-top: 32px;
+      padding: 0 32px;
+
+    }
   }
 `;
 
