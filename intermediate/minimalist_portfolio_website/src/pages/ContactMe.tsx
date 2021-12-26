@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import Button from '../components/Button';
+import { Button } from '../components/Button';
 import Divider from '../components/Divider';
 import Input from '../components/Input';
 import Layout from '../components/Layout';

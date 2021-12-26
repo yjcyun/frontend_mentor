@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 
-import Button from '../components/Button';
+import { Button } from '../components/Button';
 import Divider from '../components/Divider';
 import Layout from '../components/Layout';
 

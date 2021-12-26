@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import Layout from '../components/Layout';
-import Button from '../components/Button';
+import { Button } from '../components/Button';
 import DisplayGrid from '../components/DisplayGrid';
 import ContactBanner from '../components/ContactBanner';
 import { useWindowDimensions } from '../hooks/useWindowDimensions';

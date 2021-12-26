@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useWindowDimensions } from '../hooks/useWindowDimensions';
-import Button from './Button';
+import { Button } from './Button';
 import Divider from './Divider';
 
 const StyledContactBanner = styled.section`

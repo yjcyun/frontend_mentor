@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+
 import { ReactComponent as DownArrow } from '../assets/icons/down-arrows.svg';
 import { ReactComponent as Loading } from '../assets/icons/loading.svg';
 
@@ -76,7 +77,7 @@ const StyledButton = styled.button<StyledButtonProps>`
         `}
 `;
 
-const Button: React.FC<ButtonProps> = ({
+export const Button: React.FC<ButtonProps> = ({
   adornment = false,
   children,
   disabled = false,
@@ -94,5 +95,3 @@ const Button: React.FC<ButtonProps> = ({
     </StyledButton>
   );
 };
-
-export default Button;
