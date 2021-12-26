@@ -7,6 +7,7 @@ import { ContactBanner } from '../components/ContactBanner';
 import { Divider } from '../components/Divider';
 import { Layout } from '../components/Layout';
 import { Pagination } from '../components/Pagination';
+import { SEO } from '../components/SEO';
 
 import { portfolio, PortfolioType } from '../data/portfolio';
 
@@ -170,46 +171,49 @@ const PortfolioDetailPage = () => {
   const next = portfolio[getIndex(id, 'next')];
 
   return (
-    <Layout>
-      <HeroWrapper>
-        <img src={hero_img} alt={hero_img_alt} />
-      </HeroWrapper>
-      <Grid>
-        <SummaryWrapper>
-          <Divider />
-          <SummaryContent>
-            <div>
-              <h2>{title}</h2>
-              <p className='body2 mobile'>{description}</p>
-              <ul>
-                {skills.map((s, i) => (
-                  <li key={i}>
-                    <p>{s}</p>
-                  </li>
-                ))}
-              </ul>
-              <Button variant='secondary'>visit website</Button>
-            </div>
+    <>
+      <SEO title={`${title} Project`} />
+      <Layout>
+        <HeroWrapper>
+          <img src={hero_img} alt={hero_img_alt} />
+        </HeroWrapper>
+        <Grid>
+          <SummaryWrapper>
+            <Divider />
+            <SummaryContent>
+              <div>
+                <h2>{title}</h2>
+                <p className='body2 mobile'>{description}</p>
+                <ul>
+                  {skills.map((s, i) => (
+                    <li key={i}>
+                      <p>{s}</p>
+                    </li>
+                  ))}
+                </ul>
+                <Button variant='secondary'>visit website</Button>
+              </div>
 
-            <p className='body2 tablet'>{description}</p>
-          </SummaryContent>
-          <Divider />
-        </SummaryWrapper>
-        <DetailsWrapper>
-          <DetailsContent>
-            <Subtitle>Project Background</Subtitle>
-            <p className='body2'>{project_background}</p>
-          </DetailsContent>
-          <PreviewContent>
-            <Subtitle>Static Previews</Subtitle>
-            <img src={preview1} alt={hero_img_alt} />
-            <img src={preview2} alt={hero_img_alt} />
-          </PreviewContent>
-        </DetailsWrapper>
-      </Grid>
-      <Pagination prev={prev} next={next} />
-      <ContactBanner />
-    </Layout>
+              <p className='body2 tablet'>{description}</p>
+            </SummaryContent>
+            <Divider />
+          </SummaryWrapper>
+          <DetailsWrapper>
+            <DetailsContent>
+              <Subtitle>Project Background</Subtitle>
+              <p className='body2'>{project_background}</p>
+            </DetailsContent>
+            <PreviewContent>
+              <Subtitle>Static Previews</Subtitle>
+              <img src={preview1} alt={hero_img_alt} />
+              <img src={preview2} alt={hero_img_alt} />
+            </PreviewContent>
+          </DetailsWrapper>
+        </Grid>
+        <Pagination prev={prev} next={next} />
+        <ContactBanner />
+      </Layout>
+    </>
   );
 };
 

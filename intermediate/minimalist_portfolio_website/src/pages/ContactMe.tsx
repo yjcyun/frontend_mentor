@@ -5,6 +5,7 @@ import { Button } from '../components/Button';
 import { Divider } from '../components/Divider';
 import { Input } from '../components/Input';
 import { Layout } from '../components/Layout';
+import { SEO } from '../components/SEO';
 import { SocialShare } from '../components/SocialShare';
 
 const ContactGrid = styled.div`
@@ -107,56 +108,60 @@ const ContactMePage: React.FC = () => {
   };
 
   return (
-    <Layout>
-      <Divider />
-      <ContactGrid>
-        <h2 className='subtitle'>Get in Touch</h2>
+    <>
+      <SEO title='Contact Me' />
+      <Layout>
+        <Divider />
+        <ContactGrid>
+          <h2 className='subtitle'>Get in Touch</h2>
 
-        <div className='content-div'>
-          <p className='content-body'>
-            I’d love to hear about what you’re working on and how I could help.
-            I’m currently looking for a new role and am open to a wide range of
-            opportunities. My preference would be to find a position in a
-            company in London. But I’m also happy to hear about opportunites
-            that don’t fit that description. I’m a hard-working and positive
-            person who will always approach each task with a sense of purpose
-            and attention to detail. Please do feel free to check out my online
-            profiles below and get in touch using the form.
-          </p>
-          <SocialShare />
-        </div>
-      </ContactGrid>
-      <Divider />
-      <ContactGrid>
-        <h2 className='subtitle'>Contact Me</h2>
+          <div className='content-div'>
+            <p className='content-body'>
+              I’d love to hear about what you’re working on and how I could
+              help. I’m currently looking for a new role and am open to a wide
+              range of opportunities. My preference would be to find a position
+              in a company in London. But I’m also happy to hear about
+              opportunites that don’t fit that description. I’m a hard-working
+              and positive person who will always approach each task with a
+              sense of purpose and attention to detail. Please do feel free to
+              check out my online profiles below and get in touch using the
+              form.
+            </p>
+            <SocialShare />
+          </div>
+        </ContactGrid>
+        <Divider />
+        <ContactGrid>
+          <h2 className='subtitle'>Contact Me</h2>
 
-        <form className='content-div' onSubmit={(e) => handleSubmit(e)}>
-          <Input
-            error={errors.name}
-            label='Name'
-            onChange={(e) => setName(e.target.value)}
-            placeholder='Jane Appleseed'
-            value={name}
-          />
-          <Input
-            error={errors.email}
-            label='Email'
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder='email@example.com'
-            value={email}
-          />
-          <Input
-            error={errors.message}
-            label='Message'
-            multiline
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder='How can I help?'
-            value={message}
-          />
-          <Button loading={loading}>send message</Button>
-        </form>
-      </ContactGrid>
-    </Layout>
+          <form className='content-div' onSubmit={(e) => handleSubmit(e)}>
+            <Input
+              error={errors.name}
+              label='Name'
+              onChange={(e) => setName(e.target.value)}
+              placeholder='Jane Appleseed'
+              value={name}
+            />
+            <Input
+              error={errors.email}
+              label='Email'
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder='email@example.com'
+              value={email}
+            />
+            <Input
+              error={errors.message}
+              label='Message'
+              multiline
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder='How can I help?'
+              value={message}
+            />
+            <Button loading={loading}>send message</Button>
+          </form>
+        </ContactGrid>
+      </Layout>
+    </>
   );
 };
 

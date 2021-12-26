@@ -10,6 +10,7 @@ import manage from '../assets/portfolio/image-portfolio-manage@2x.jpg';
 import bookmark from '../assets/portfolio/image-portfolio-bookmark@2x.jpg';
 import insure from '../assets/portfolio/image-portfolio-insure@2x.jpg';
 import fylo from '../assets/portfolio/image-portfolio-fylo@2x.jpg';
+import { SEO } from '../components/SEO';
 
 const StyledPortfolio = styled.section`
   margin-bottom: 150px;
@@ -33,22 +34,25 @@ const StyledPortfolio = styled.section`
 
 const PortfolioPage = () => {
   return (
-    <Layout>
-      <StyledPortfolio>
-        {portfolio.map((p) => (
-          <DisplayGrid
-            key={p.id}
-            alt={p.overviewImgAlt}
-            description={p.description}
-            img={p.overviewImg}
-            label='view project'
-            title={p.title}
-            to={p.slug}
-          />
-        ))}
-      </StyledPortfolio>
-      <ContactBanner />
-    </Layout>
+    <>
+      <SEO title='My Projects' />
+      <Layout>
+        <StyledPortfolio>
+          {portfolio.map((p) => (
+            <DisplayGrid
+              key={p.id}
+              alt={p.overviewImgAlt}
+              description={p.description}
+              img={p.overviewImg}
+              label='view project'
+              title={p.title}
+              to={p.slug}
+            />
+          ))}
+        </StyledPortfolio>
+        <ContactBanner />
+      </Layout>
+    </>
   );
 };
 
