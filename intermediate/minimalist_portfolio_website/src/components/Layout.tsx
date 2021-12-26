@@ -20,7 +20,7 @@ const Container = styled.div`
   }
 `;
 
-const ContentCont = styled.div<ContentContProps>`
+const ContentCont = styled.main<ContentContProps>`
   min-height: calc(100vh - 178px);
   margin: ${(props) => (props.isHome ? '54px 0 150px' : '94px 0 150px')};
 

@@ -38,7 +38,7 @@ export const ContactBanner: React.FC = () => {
   const { width } = useWindowDimensions();
 
   return (
-    <StyledContactBanner>
+    <StyledContactBanner role='region' aria-label='Contact banner'>
       <h2>Interested in doing a project together?</h2>
       {width > 680 && <Divider />}
       <Button variant='secondary' to='/contact-me'>

@@ -73,7 +73,7 @@ export const Footer: React.FC = () => {
           <Link to='/' aria-label='Navigate to homepage'>
             <Logo />
           </Link>
-          <StyledNav id='footer-nav'>
+          <StyledNav aria-label='footer-nav'>
             <MenuList />
           </StyledNav>
         </Left>

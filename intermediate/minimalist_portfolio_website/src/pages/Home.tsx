@@ -117,7 +117,9 @@ const HomePage = () => {
           {renderHeroContent()}
         </MobileHero>
 
-        <HeroSection>{renderHeroContent()}</HeroSection>
+        <HeroSection role='region' aria-label='Introduction hero region'>
+          {renderHeroContent()}
+        </HeroSection>
         <ProfileSection role='region' aria-label='About Alex Spencer'>
           <DisplayGrid
             alt='A sideview photo of Alex Spencer'

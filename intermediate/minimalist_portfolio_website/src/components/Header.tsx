@@ -39,7 +39,7 @@ export const Header: React.FC = () => {
 
       <div>
         <Sidebar />
-        <StyledNav id='header-nav'>
+        <StyledNav aria-label='header-nav'>
           <MenuList />
         </StyledNav>
       </div>
