@@ -1,10 +1,12 @@
 import styled, { css } from 'styled-components';
 import { ReactComponent as DownArrow } from '../assets/icons/down-arrows.svg';
+import { ReactComponent as Loading } from '../assets/icons/loading.svg';
 
 interface ButtonProps {
   adornment?: boolean;
   children: string;
   disabled?: boolean;
+  loading?: boolean;
   variant?: 'primary' | 'secondary';
 }
 
@@ -32,6 +34,7 @@ const StyledButton = styled.button<StyledButtonProps>`
     text-transform: uppercase;
     font-size: 12px;
     white-space: nowrap;
+    line-height: 4rem;
   }
 
   ${(props) =>
@@ -43,7 +46,7 @@ const StyledButton = styled.button<StyledButtonProps>`
           min-width: 162px;
 
           .text {
-            padding: 16px 35px 16px 31px;
+            padding: 4px 35px 4px 31px;
           }
 
           &:hover {
@@ -60,7 +63,7 @@ const StyledButton = styled.button<StyledButtonProps>`
           min-width: 200px;
 
           .text {
-            padding: 15.5px 16px;
+            padding: 4px 16px;
           }
 
           &:hover {
@@ -77,6 +80,7 @@ const Button: React.FC<ButtonProps> = ({
   adornment = false,
   children,
   disabled = false,
+  loading = false,
   variant = 'primary',
 }) => {
   return (
@@ -86,7 +90,7 @@ const Button: React.FC<ButtonProps> = ({
           <DownArrow />
         </div>
       )}
-      <span className='text'>{children}</span>
+      <span className='text'>{loading ? <Loading /> : children}</span>
     </StyledButton>
   );
 };

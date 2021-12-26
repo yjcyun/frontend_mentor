@@ -1,18 +1,10 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { ReactComponent as Logo } from '../assets/logo.svg';
-import { ReactComponent as Github } from '../assets/icons/github.svg';
-import { ReactComponent as LinkedIn } from '../assets/icons/linkedin.svg';
-import { ReactComponent as Twitter } from '../assets/icons/twitter.svg';
-
 import MenuList from './MenuList';
+import SocialShare from './SocialShare';
 
-const socialMenu = [
-  { label: <Github />, to: 'https://github.com' },
-  { label: <Twitter />, to: 'https://twitter.com' },
-  { label: <LinkedIn />, to: 'https://linkedin.com' },
-];
+import { ReactComponent as Logo } from '../assets/logo.svg';
 
 const StyledFooter = styled.footer`
   background: var(--light-black);
@@ -33,10 +25,6 @@ const InnerFooter = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  svg path {
-    fill: var(--white);
-  }
-
   @media (max-width: 680px) {
     padding: 0 32px;
     flex-direction: column;
@@ -46,6 +34,10 @@ const InnerFooter = styled.div`
 const Left = styled.div`
   display: flex;
   align-items: center;
+
+  svg path {
+    fill: var(--white);
+  }
 
   @media (max-width: 680px) {
     flex-direction: column;
@@ -76,12 +68,6 @@ const StyledNav = styled.nav`
   }
 `;
 
-const SocialMediaCont = styled.div`
-  a:not(:first-child) {
-    margin-left: 15px;
-  }
-`;
-
 const Footer: React.FC = () => {
   return (
     <StyledFooter>
@@ -94,13 +80,7 @@ const Footer: React.FC = () => {
             <MenuList />
           </StyledNav>
         </Left>
-        <SocialMediaCont>
-          {socialMenu.map((m) => (
-            <a href={m.to} key={m.to}>
-              {m.label}
-            </a>
-          ))}
-        </SocialMediaCont>
+        <SocialShare dark />
       </InnerFooter>
     </StyledFooter>
   );

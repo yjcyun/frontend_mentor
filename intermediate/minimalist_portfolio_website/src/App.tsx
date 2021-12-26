@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import ContactMePage from './pages/ContactMe';
 
 import HomePage from './pages/Home';
 import PortfolioPage from './pages/Portfolio';
@@ -14,6 +15,7 @@ const App = () => {
           path='portfolio/:portfolioId'
           element={<PortfolioDetailPage />}
         />
+        <Route path='contact-me' element={<ContactMePage />} />
       </Routes>
     </>
   );
