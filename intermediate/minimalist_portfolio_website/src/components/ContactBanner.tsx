@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 import { useWindowDimensions } from '../hooks/useWindowDimensions';
 
 import { Button } from './Button';
 import { Divider } from './Divider';
 
-const StyledContactBanner = styled.section`
+const StyledContactBanner = styled.div`
   display: flex;
   align-items: center;
 
@@ -42,9 +41,9 @@ export const ContactBanner: React.FC = () => {
     <StyledContactBanner>
       <h2>Interested in doing a project together?</h2>
       {width > 680 && <Divider />}
-      <Link to='/contact-me'>
-        <Button variant='secondary'>contact me</Button>
-      </Link>
+      <Button variant='secondary' to='/contact-me'>
+        contact me
+      </Button>
     </StyledContactBanner>
   );
 };

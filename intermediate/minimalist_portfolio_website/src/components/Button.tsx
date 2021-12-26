@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import { ReactComponent as DownArrow } from '../assets/icons/down-arrows.svg';
@@ -8,6 +9,8 @@ interface ButtonProps {
   children: string;
   disabled?: boolean;
   loading?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  to?: string;
   variant?: 'primary' | 'secondary';
 }
 
@@ -82,14 +85,25 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   disabled = false,
   loading = false,
+  onClick,
+  to,
   variant = 'primary',
 }) => {
+  const navigate = useNavigate();
+
   return (
-    <StyledButton disabled={disabled} variant={variant}>
+    <StyledButton
+      disabled={disabled}
+      variant={variant}
+      onClick={(e) => {
+        if (onClick) onClick(e);
+        if (to) navigate(to);
+      }}
+    >
       {adornment && (
-        <div className='icon-wrapper'>
+        <span className='icon-wrapper'>
           <DownArrow />
-        </div>
+        </span>
       )}
       <span className='text'>{loading ? <Loading /> : children}</span>
     </StyledButton>

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 import { Button } from './Button';
 import { Divider } from './Divider';
@@ -102,9 +101,9 @@ export const DisplayGrid: React.FC<DisplyGridProps> = ({
           <h2>{title}</h2>
           <p>{description}</p>
           {to ? (
-            <Link to={to}>
-              <Button variant='secondary'>{label}</Button>
-            </Link>
+            <Button variant='secondary' to={to}>
+              {label}
+            </Button>
           ) : (
             <Button variant='secondary'>{label}</Button>
           )}

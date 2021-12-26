@@ -70,7 +70,7 @@ export const Footer: React.FC = () => {
     <StyledFooter>
       <InnerFooter className='gutter'>
         <Left>
-          <Link to='/'>
+          <Link to='/' aria-label='Navigate to homepage'>
             <Logo />
           </Link>
           <StyledNav>

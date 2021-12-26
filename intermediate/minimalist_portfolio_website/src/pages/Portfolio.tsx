@@ -7,7 +7,7 @@ import { SEO } from '../components/SEO';
 
 import { portfolio } from '../data/portfolio';
 
-const StyledPortfolio = styled.section`
+const StyledPortfolio = styled.div`
   margin-bottom: 150px;
 
   @media (max-width: 996px) {

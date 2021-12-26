@@ -33,7 +33,7 @@ const StyledNav = styled.nav`
 export const Header: React.FC = () => {
   return (
     <StyledHeader>
-      <Link to='/'>
+      <Link to='/' aria-label='Navigate to homepage'>
         <Logo />
       </Link>
 

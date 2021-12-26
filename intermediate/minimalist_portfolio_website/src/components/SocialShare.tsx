@@ -28,7 +28,13 @@ export const SocialShare: React.FC<SocialShareProps> = ({ dark = false }) => {
   return (
     <StyledSocialShare isDark={dark}>
       {socialMenu.map((m) => (
-        <a href={m.to} key={m.to}>
+        <a
+          href={m.to}
+          key={m.to}
+          target='_blank'
+          rel='noreferrer'
+          aria-label={`Navigate to ${m.to} in a new tab`}
+        >
           {m.label}
         </a>
       ))}

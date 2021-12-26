@@ -11,13 +11,13 @@ import { SEO } from '../components/SEO';
 
 import { portfolio, PortfolioType } from '../data/portfolio';
 
-const HeroWrapper = styled.section`
+const HeroWrapper = styled.div`
   img {
     width: 100%;
   }
 `;
 
-const Grid = styled.section`
+const Grid = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 115px;

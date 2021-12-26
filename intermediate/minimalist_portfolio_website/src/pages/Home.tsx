@@ -20,7 +20,7 @@ interface HeroContentProps {
   isMobile: boolean;
 }
 
-const HeroSection = styled.section`
+const HeroSection = styled.div`
   background-image: url(${hero});
   background-size: cover;
   background-repeat: no-repeat;
@@ -36,7 +36,7 @@ const HeroSection = styled.section`
   }
 `;
 
-const MobileHero = styled.section`
+const MobileHero = styled.div`
   display: none;
 
   img {
@@ -78,7 +78,7 @@ const HeroContent = styled.div<HeroContentProps>`
   }
 `;
 
-const ProfileSection = styled.section`
+const ProfileSection = styled.div`
   margin: 150px 0;
 
   @media (max-width: 996px) {
