@@ -124,6 +124,7 @@ const HomePage = () => {
           isHome
           label='go to portfolio'
           title='About Me'
+          to='portfolio'
         />
       </ProfileSection>
       <ContactBanner />

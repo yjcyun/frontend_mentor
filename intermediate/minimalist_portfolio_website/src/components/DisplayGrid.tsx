@@ -57,10 +57,6 @@ const GridContent = styled.div<{ isHome: boolean }>`
 
   .content {
     padding: 32px 0;
-
-    a {
-      text-decoration: none;
-    }
   }
 
   p {

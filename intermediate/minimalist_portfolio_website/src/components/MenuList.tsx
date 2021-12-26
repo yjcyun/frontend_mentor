@@ -16,7 +16,6 @@ const StyledNavLink = styled(NavLink)`
   font-family: var(--bodyFF);
   font-size: 1.2rem;
   letter-spacing: 2px;
-  text-decoration: none;
   text-transform: uppercase;
   transition: var(--transition);
 `;

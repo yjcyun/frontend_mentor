@@ -50,7 +50,6 @@ const PaginationButton = styled(Link)`
   display: flex;
   align-items: center;
   gap: 32px;
-  text-decoration: none;
 
   p {
     opacity: 0.5;

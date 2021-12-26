@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useWindowDimensions } from '../hooks/useWindowDimensions';
 import Button from './Button';
@@ -39,7 +40,9 @@ const ContactBanner = () => {
     <StyledContactBanner>
       <h2>Interested in doing a project together?</h2>
       {width > 680 && <Divider />}
-      <Button variant='secondary'>contact me</Button>
+      <Link to='/contact-me'>
+        <Button variant='secondary'>contact me</Button>
+      </Link>
     </StyledContactBanner>
   );
 };

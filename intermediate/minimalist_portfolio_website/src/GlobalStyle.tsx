@@ -79,6 +79,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--bodyFF);
     cursor: pointer;
   }
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 export default GlobalStyle;
