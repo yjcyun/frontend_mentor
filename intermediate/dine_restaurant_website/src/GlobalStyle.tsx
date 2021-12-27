@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
     --mirage: #17192b;
     --ebony-clay: #242b37;
     --shuttle-gray: #5c6779;
+    --white: #ffffff;
 
     /* fonts */
     --ff: 'Spartan', sans-serif;
@@ -59,6 +60,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 600;
     letter-spacing: 2px;
     line-height: 2.8rem;
+    text-transform: uppercase;
   }
 
   p {

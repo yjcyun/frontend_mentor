@@ -1,4 +1,15 @@
 import ReactDOM from 'react-dom';
-import App from './App';
+import { BrowserRouter } from 'react-router-dom';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import App from './App';
+import GlobalStyle from './GlobalStyle';
+
+ReactDOM.render(
+  <>
+    <GlobalStyle />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </>,
+  document.getElementById('root')
+);
