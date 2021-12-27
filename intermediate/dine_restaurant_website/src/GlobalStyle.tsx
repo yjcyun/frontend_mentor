@@ -88,6 +88,18 @@ const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
   }
+
+  .gutter {
+    padding: 0 40px;
+    max-width: 1190px;
+    margin: auto;
+  }
+
+  @media (max-width: 680px) {
+    .gutter {
+      padding: 0 24px;
+    }
+  }
 `;
 
 export default GlobalStyle;
