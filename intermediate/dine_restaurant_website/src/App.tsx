@@ -1,12 +1,14 @@
-import { Footer } from './components/Footer';
-import { ReserveBanner } from './components/ReserveBanner';
+import { Route, Routes } from 'react-router-dom';
+
+import HomePage from './pages/Home';
 
 const App = () => {
   return (
-    <div>
-      <ReserveBanner />
-      <Footer />
-    </div>
+    <>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+      </Routes>
+    </>
   );
 };
 

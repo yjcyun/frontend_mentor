@@ -10,7 +10,6 @@ const StyledReserveBanner = styled.div`
   background-image: url(${hero});
   background-size: cover;
   background-repeat: no-repeat;
-  position: relative;
   color: var(--white);
   padding: 92px 0;
 
