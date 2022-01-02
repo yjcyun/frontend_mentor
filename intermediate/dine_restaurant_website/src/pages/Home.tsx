@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
+import { useWindowDimensions } from '../hooks/useWindowDimensions';
+
 import { Button } from '../components/Button';
+import { FeatureContent } from '../components/FeatureContent';
 import { Footer } from '../components/Footer';
 import { ReserveBanner } from '../components/ReserveBanner';
 
@@ -8,6 +11,18 @@ import { ReactComponent as Logo } from '../assets/logo.svg';
 import hero from '../assets/homepage/hero-bg-desktop@2x.jpg';
 import heroTablet from '../assets/homepage/hero-bg-tablet@2x.jpg';
 import heroMobile from '../assets/homepage/hero-bg-mobile@2x.jpg';
+
+import enjoyable from '../assets/homepage/enjoyable-place-desktop@2x.jpg';
+import enjoyableTablet from '../assets/homepage/enjoyable-place-tablet@2x.jpg';
+import enjoyableMobile from '../assets/homepage/enjoyable-place-mobile@2x.jpg';
+
+import locally from '../assets/homepage/locally-sourced-desktop@2x.jpg';
+import locallyTablet from '../assets/homepage/locally-sourced-tablet@2x.jpg';
+import locallyMobile from '../assets/homepage/locally-sourced-mobile@2x.jpg';
+
+import CurveTopRight from '../assets/patterns/pattern-curve-top-right.svg';
+import CurveTopLeft from '../assets/patterns/pattern-curve-top-left.svg';
+import Lines from '../assets/patterns/pattern-lines.svg';
 
 const HeroWrapper = styled.div`
   width: 100%;
@@ -17,6 +32,7 @@ const HeroWrapper = styled.div`
   background-repeat: no-repeat;
   position: relative;
   color: var(--white);
+  z-index: -1;
 
   .overlay-whole {
     position: absolute;
@@ -60,6 +76,10 @@ const HeroWrapper = styled.div`
     .overlay-whole {
       width: 100%;
       height: 43vh;
+    }
+
+    .overlay-left {
+      width: auto;
     }
 
     .hero-content {
@@ -111,7 +131,106 @@ const HeroWrapper = styled.div`
   }
 `;
 
+const FeaturesWrapper = styled.div<{ reverse: boolean }>`
+  z-index: 1;
+  margin-top: -6rem !important;
+  margin-bottom: -6rem !important;
+  position: relative;
+  overflow: hidden;
+
+  .feature-img {
+    width: 100%;
+    max-width: 540px;
+  }
+
+  .grid {
+    display: flex;
+    align-items: center;
+    gap: 125px;
+    flex-direction: ${(props) => (props.reverse ? 'row-reverse' : 'row')};
+    padding-bottom: ${(props) => (props.reverse ? '0' : '181px')};
+  }
+
+  .pattern {
+    position: absolute;
+    left: ${(props) => (props.reverse ? 'undefined' : '0')};
+    right: ${(props) => (props.reverse ? '0' : 'undefined')};
+    bottom: ${(props) => (props.reverse ? '6rem' : 'undefined')};
+    top: ${(props) => (props.reverse ? 'undefined' : '42%')};
+  }
+
+  .pattern-lines {
+    position: absolute;
+    right: 4%;
+    top: 40%;
+  }
+
+  @media (max-width: 1024px) {
+    margin-bottom: 0 !important;
+
+    .grid {
+      flex-direction: column;
+      gap: 56px;
+      padding-bottom: ${(props) => (props.reverse ? '120px' : '180px')};
+      text-align: center;
+    }
+
+    .pattern {
+      left: ${(props) => (props.reverse ? 'undefined' : '-50rem')};
+      right: ${(props) => (props.reverse ? '-50rem' : 'undefined')};
+      bottom: ${(props) => (props.reverse ? '0rem' : 'undefined')};
+      top: ${(props) => (props.reverse ? 'undefined' : '30%')};
+    }
+
+    .pattern-lines {
+      right: 9%;
+      top: 25%;
+    }
+  }
+
+  @media (max-width: 680px) {
+    margin-top: -9rem !important;
+
+    .grid {
+      gap: 48px;
+      padding-bottom: ${(props) => (props.reverse ? '80px' : '140px')};
+    }
+
+    .pattern,
+    .pattern-lines {
+      display: none;
+    }
+  }
+`;
+
 const HomePage = () => {
+  const { width } = useWindowDimensions();
+
+  const getImage = (img: 'enjoyable' | 'locally') => {
+    if (width > 1024) {
+      switch (img) {
+        case 'enjoyable':
+          return enjoyable;
+        case 'locally':
+          return locally;
+      }
+    } else if (width > 680) {
+      switch (img) {
+        case 'enjoyable':
+          return enjoyableTablet;
+        case 'locally':
+          return locallyTablet;
+      }
+    } else {
+      switch (img) {
+        case 'enjoyable':
+          return enjoyableMobile;
+        case 'locally':
+          return locallyMobile;
+      }
+    }
+  };
+
   return (
     <div>
       <HeroWrapper>
@@ -132,6 +251,28 @@ const HomePage = () => {
           </div>
         </div>
       </HeroWrapper>
+      <FeaturesWrapper className='' reverse={false}>
+        <div className='grid gutter'>
+          <img src={getImage('enjoyable')} alt='' className='feature-img' />
+          <FeatureContent
+            title='Enjoyable place
+for all the family'
+            description='Our relaxed surroundings make dining with us a great experience for everyone. We can even arrange a tour of the farm before your meal.'
+          />
+        </div>
+        <img src={CurveTopRight} alt='' className='pattern' />
+      </FeaturesWrapper>
+      <FeaturesWrapper reverse>
+        <div className='grid gutter'>
+          <img src={getImage('locally')} alt='' className='feature-img' />
+          <FeatureContent
+            title='The most locally sourced food'
+            description='All our ingredients come directly from our farm or local fishery. So you can be sure that you’re eating the freshest, most sustainable food.'
+          />
+        </div>
+        <img src={CurveTopLeft} alt='' className='pattern' />
+        <img src={Lines} alt='' className='pattern-lines' />
+      </FeaturesWrapper>
       <ReserveBanner />
       <Footer />
     </div>
