@@ -16,6 +16,10 @@ const StyledFeatureContent = styled.div<{ dark: boolean }>`
     padding: 48px 0 16px;
   }
 
+  @media (max-width: 1024px) {
+    text-align: center;
+  }
+
   @media (max-width: 680px) {
     width: 100%;
 

@@ -23,6 +23,7 @@ import locallyMobile from '../assets/homepage/locally-sourced-mobile@2x.jpg';
 import CurveTopRight from '../assets/patterns/pattern-curve-top-right.svg';
 import CurveTopLeft from '../assets/patterns/pattern-curve-top-left.svg';
 import Lines from '../assets/patterns/pattern-lines.svg';
+import { MenuHighlights } from '../components/MenuHighlights';
 
 const HeroWrapper = styled.div`
   width: 100%;
@@ -273,6 +274,7 @@ for all the family'
         <img src={CurveTopLeft} alt='' className='pattern' />
         <img src={Lines} alt='' className='pattern-lines' />
       </FeaturesWrapper>
+      <MenuHighlights />
       <ReserveBanner />
       <Footer />
     </div>
