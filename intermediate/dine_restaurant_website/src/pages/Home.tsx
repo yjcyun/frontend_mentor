@@ -25,6 +25,7 @@ import locallyMobile from '../assets/homepage/locally-sourced-mobile@2x.jpg';
 import CurveTopRight from '../assets/patterns/pattern-curve-top-right.svg';
 import CurveTopLeft from '../assets/patterns/pattern-curve-top-left.svg';
 import Lines from '../assets/patterns/pattern-lines.svg';
+import { HeroText } from '../components/HeroText';
 
 const HeroWrapper = styled.div`
   width: 100%;
@@ -57,19 +58,6 @@ const HeroWrapper = styled.div`
     padding-top: 65px;
   }
 
-  .hero-text {
-    margin-top: 153px;
-
-    h1 {
-      width: 523px;
-    }
-
-    p {
-      width: 445px;
-      margin: 24px 0 42px;
-    }
-  }
-
   @media (max-width: 1024px) {
     background-image: url(${heroTablet});
     min-height: 992px;
@@ -87,22 +75,6 @@ const HeroWrapper = styled.div`
       padding-top: 394px;
       text-align: center;
     }
-
-    .hero-text {
-      margin-top: 32px;
-
-      h1 {
-        width: auto;
-        font-size: 4.8rem;
-        line-height: 6.4rem;
-        letter-spacing: -0.6px;
-      }
-
-      p {
-        width: 573px;
-        margin: 24px auto;
-      }
-    }
   }
 
   @media (max-width: 680px) {
@@ -115,19 +87,6 @@ const HeroWrapper = styled.div`
 
     .hero-content {
       padding-top: 270px;
-    }
-
-    .hero-text {
-      h1 {
-        width: auto;
-        font-size: 3.2rem;
-        line-height: 4rem;
-        letter-spacing: -0.4px;
-      }
-
-      p {
-        width: auto;
-      }
     }
   }
 `;
@@ -239,17 +198,18 @@ const HomePage = () => {
         <div className='overlay-whole' />
         <div className='hero-content gutter'>
           <Logo />
-          <div className='hero-text'>
-            <h1>
-              Exquisite dining
-              <br /> since 1989
-            </h1>
-            <p>
-              Experience our seasonal menu in beautiful country surroundings.
-              Eat the freshest produce from the comfort of our farmhouse.
-            </p>
-            <Button>book a table</Button>
-          </div>
+          <HeroText
+            title={
+              <>
+                Exquisite dining
+                <br /> since 1989
+              </>
+            }
+            description='Experience our seasonal menu in beautiful country surroundings.
+            Eat the freshest produce from the comfort of our farmhouse.'
+            btnLabel='book a table'
+            btnTo='/book-a-table'
+          />
         </div>
       </HeroWrapper>
       <FeaturesWrapper className='' reverse={false}>
