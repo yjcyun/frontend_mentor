@@ -31,13 +31,15 @@ const StyledButton = styled.button<StyledButtonProps>`
     props.variant === 'light'
       ? css`
           border: 1px solid var(--cod-gray);
-          color: var(--cod-gray);
+          background: var(--cod-gray);
+          color: var(--white);
 
           &:hover {
-            background: var(--cod-gray);
+            border: 1px solid var(--cod-gray);
+            background: var(--white);
 
             h3.small {
-              color: var(--white);
+              color: var(--cod-gray);
             }
           }
         `

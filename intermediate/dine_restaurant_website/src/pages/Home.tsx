@@ -34,7 +34,6 @@ const HeroWrapper = styled.div`
   background-repeat: no-repeat;
   position: relative;
   color: var(--white);
-  z-index: -1;
 
   .overlay-whole {
     position: absolute;
