@@ -20,6 +20,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   pointer-events: ${(props) => (props.disabled ? 'none' : 'auto')};
   padding: 23px 53px;
   background: transparent;
+  width: fit-content;
 
   h3.small {
     line-height: 1.6rem;

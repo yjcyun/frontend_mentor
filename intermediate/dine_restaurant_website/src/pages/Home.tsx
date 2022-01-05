@@ -6,6 +6,8 @@ import { Button } from '../components/Button';
 import { FeatureContent } from '../components/FeatureContent';
 import { Footer } from '../components/Footer';
 import { ReserveBanner } from '../components/ReserveBanner';
+import { MenuHighlights } from '../components/MenuHighlights';
+import { Slide } from '../components/Slide';
 
 import { ReactComponent as Logo } from '../assets/logo.svg';
 import hero from '../assets/homepage/hero-bg-desktop@2x.jpg';
@@ -23,7 +25,6 @@ import locallyMobile from '../assets/homepage/locally-sourced-mobile@2x.jpg';
 import CurveTopRight from '../assets/patterns/pattern-curve-top-right.svg';
 import CurveTopLeft from '../assets/patterns/pattern-curve-top-left.svg';
 import Lines from '../assets/patterns/pattern-lines.svg';
-import { MenuHighlights } from '../components/MenuHighlights';
 
 const HeroWrapper = styled.div`
   width: 100%;
@@ -157,7 +158,7 @@ const FeaturesWrapper = styled.div<{ reverse: boolean }>`
     left: ${(props) => (props.reverse ? 'undefined' : '0')};
     right: ${(props) => (props.reverse ? '0' : 'undefined')};
     bottom: ${(props) => (props.reverse ? '6rem' : 'undefined')};
-    top: ${(props) => (props.reverse ? 'undefined' : '42%')};
+    top: ${(props) => (props.reverse ? 'undefined' : '33%')};
   }
 
   .pattern-lines {
@@ -180,7 +181,7 @@ const FeaturesWrapper = styled.div<{ reverse: boolean }>`
       left: ${(props) => (props.reverse ? 'undefined' : '-50rem')};
       right: ${(props) => (props.reverse ? '-50rem' : 'undefined')};
       bottom: ${(props) => (props.reverse ? '0rem' : 'undefined')};
-      top: ${(props) => (props.reverse ? 'undefined' : '30%')};
+      top: ${(props) => (props.reverse ? 'undefined' : '22%')};
     }
 
     .pattern-lines {
@@ -275,6 +276,7 @@ for all the family'
         <img src={Lines} alt='' className='pattern-lines' />
       </FeaturesWrapper>
       <MenuHighlights />
+      <Slide />
       <ReserveBanner />
       <Footer />
     </div>
