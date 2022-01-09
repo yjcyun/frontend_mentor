@@ -16,7 +16,7 @@ export const CardGroup: React.FC<CardGroupProps> = ({ data }) => {
   return (
     <StyledCardGroup>
       {data.map((d) => (
-        <Card {...d} />
+        <Card {...d} key={d.label} />
       ))}
     </StyledCardGroup>
   );
