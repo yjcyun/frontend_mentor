@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
     --orange: #CD5120;
     --purple: #6f2ed6;
     --mint: #1ec2a4;
+    --white: #fff;
 
     /* fonts */
     --headingFF: 'Antonio', sans-serif;;
@@ -83,6 +84,7 @@ const GlobalStyle = createGlobalStyle`
     border: none;
     outline: none;
     cursor: pointer;
+    font-family: var(--bodyFF);
   }
 
   /* General */
