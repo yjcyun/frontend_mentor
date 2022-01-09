@@ -1,8 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 interface ButtonProps {
-  bg: string;
   active?: boolean;
+  bg: string;
+  index: number;
+  onChange: (index: number) => void;
+  text: string;
+  to?: string;
 }
 
 interface StyledButtonProps {
@@ -20,6 +25,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   background: transparent;
   padding: 12px 28px;
   transition: var(--transition);
+  width: 100%;
 
   .index {
     margin-right: 28px;
@@ -36,11 +42,29 @@ const StyledButton = styled.button<StyledButtonProps>`
   }
 `;
 
-export const Button: React.FC<ButtonProps> = ({ bg, active = false }) => {
+export const Button: React.FC<ButtonProps> = ({
+  active = false,
+  bg,
+  index,
+  onChange,
+  text,
+  to,
+}) => {
+  const navigate = useNavigate();
+
+  const indexText = "0" + (index + 1).toString();
+
   return (
-    <StyledButton bg={bg} className={`${active ? "active" : ""}`}>
-      <span className="index">01</span>
-      <span>overview</span>
+    <StyledButton
+      bg={bg}
+      className={`${active ? "active" : ""}`}
+      onClick={() => {
+        if (onChange) onChange(index);
+        if (to) navigate(to);
+      }}
+    >
+      <span className="index">{indexText}</span>
+      <span>{text}</span>
     </StyledButton>
   );
 };
