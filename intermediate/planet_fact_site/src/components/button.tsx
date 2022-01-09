@@ -10,7 +10,7 @@ interface StyledButtonProps {
 }
 
 const StyledButton = styled.button<StyledButtonProps>`
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--white-20);
   font-weight: 700;
   line-height: 2.5rem;
   letter-spacing: 2.57px;
@@ -23,11 +23,11 @@ const StyledButton = styled.button<StyledButtonProps>`
 
   .index {
     margin-right: 28px;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--white-50);
   }
 
   &:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--white-20);
   }
 
   &.active {

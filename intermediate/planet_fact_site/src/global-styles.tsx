@@ -12,6 +12,8 @@ const GlobalStyle = createGlobalStyle`
     --purple: #6f2ed6;
     --mint: #1ec2a4;
     --white: #fff;
+    --white-50: rgba(255,255,255,0.5);
+    --white-20: rgba(255,255,255,0.2);
 
     /* fonts */
     --headingFF: 'Antonio', sans-serif;;
