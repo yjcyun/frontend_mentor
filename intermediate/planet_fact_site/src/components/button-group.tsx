@@ -3,15 +3,15 @@ import styled from "styled-components";
 import { Button } from "./button";
 
 interface ButtonGroupProps {
-  activeIndex: number;
+  activeButton: string;
   bg: string;
-  onChange: (index: number) => void;
+  onChange: (index: string) => void;
 }
 
 const buttons = [
-  { index: 0, text: "overview" },
-  { index: 1, text: "internal structure" },
-  { index: 2, text: "surface geology" },
+  { index: "01", text: "overview", category: "overview" },
+  { index: "02", text: "internal structure", category: "structure" },
+  { index: "03", text: "surface geology", category: "geology" },
 ];
 
 const StyledButtonGroup = styled.div`
@@ -21,7 +21,7 @@ const StyledButtonGroup = styled.div`
 `;
 
 export const ButtonGroup: React.FC<ButtonGroupProps> = ({
-  activeIndex,
+  activeButton,
   bg,
   onChange,
 }) => {
@@ -29,12 +29,13 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
     <StyledButtonGroup>
       {buttons.map((b) => (
         <Button
+          active={activeButton === b.category}
           bg={bg}
+          category={b.category}
           index={b.index}
-          text={b.text}
           key={b.index}
-          active={activeIndex === b.index}
           onChange={onChange}
+          text={b.text}
         />
       ))}
     </StyledButtonGroup>

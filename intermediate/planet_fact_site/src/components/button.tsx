@@ -4,8 +4,9 @@ import styled from "styled-components";
 interface ButtonProps {
   active?: boolean;
   bg: string;
-  index: number;
-  onChange: (index: number) => void;
+  category: string;
+  index: string;
+  onChange: (text: string) => void;
   text: string;
   to?: string;
 }
@@ -45,6 +46,7 @@ const StyledButton = styled.button<StyledButtonProps>`
 export const Button: React.FC<ButtonProps> = ({
   active = false,
   bg,
+  category,
   index,
   onChange,
   text,
@@ -52,18 +54,16 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const navigate = useNavigate();
 
-  const indexText = "0" + (index + 1).toString();
-
   return (
     <StyledButton
       bg={bg}
       className={`${active ? "active" : ""}`}
       onClick={() => {
-        if (onChange) onChange(index);
+        if (onChange) onChange(category);
         if (to) navigate(to);
       }}
     >
-      <span className="index">{indexText}</span>
+      <span className="index">{index}</span>
       <span>{text}</span>
     </StyledButton>
   );

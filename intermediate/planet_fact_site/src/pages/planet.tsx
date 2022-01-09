@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export const PlanetPage = () => {
   const { planetId } = useParams();
-  const [activeIndex, setaActiveIndex] = useState(0);
+  const [activeButton, setActiveButton] = useState("overview");
 
   const planet = data.filter((d) => d.name.toLowerCase() === planetId)[0];
 
@@ -22,17 +22,19 @@ export const PlanetPage = () => {
     images,
   } = planet;
 
-  const buttonHandler = (index: number) => {
-    setaActiveIndex(index);
+  const buttonHandler = (text: string) => {
+    console.log(text);
+    setActiveButton(text);
   };
 
   return (
     <div>
       <h1>{name}</h1>
+      <p>{}</p>
       <ButtonGroup
         bg="var(--blue)"
         onChange={buttonHandler}
-        activeIndex={activeIndex}
+        activeButton={activeButton}
       />
     </div>
   );
