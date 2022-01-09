@@ -4,6 +4,9 @@ import data from "../data.json";
 import { ButtonGroup } from "../components/button-group";
 import { useState } from "react";
 import { Information } from "../components/information";
+import { Card } from "../components/card";
+import { CardGroup } from "../components/card-group";
+import { CardType } from "../types";
 
 export const PlanetPage = () => {
   const { planetId } = useParams();
@@ -38,6 +41,13 @@ export const PlanetPage = () => {
     }
   };
 
+  const cardData: CardType[] = [
+    { label: "rotation", content: rotation },
+    { label: "revolution", content: revolution },
+    { label: "radius", content: radius },
+    { label: "temperature", content: temperature },
+  ];
+
   return (
     <div>
       <Information
@@ -50,6 +60,7 @@ export const PlanetPage = () => {
         onChange={buttonHandler}
         activeButton={activeButton}
       />
+      <CardGroup data={cardData} />
     </div>
   );
 };

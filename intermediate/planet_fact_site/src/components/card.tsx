@@ -10,6 +10,7 @@ const StyledCard = styled.div`
   background: transparent;
   padding: 20px 23px 27px;
   text-transform: uppercase;
+  width: 100%;
 
   h4 {
     margin-bottom: 4px;
