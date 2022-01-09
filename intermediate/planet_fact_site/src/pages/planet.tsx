@@ -3,6 +3,7 @@ import data from "../data.json";
 
 import { ButtonGroup } from "../components/button-group";
 import { useState } from "react";
+import { Information } from "../components/information";
 
 export const PlanetPage = () => {
   const { planetId } = useParams();
@@ -23,14 +24,27 @@ export const PlanetPage = () => {
   } = planet;
 
   const buttonHandler = (text: string) => {
-    console.log(text);
     setActiveButton(text);
+  };
+
+  const getActiveInformation = () => {
+    switch (activeButton) {
+      case "overview":
+        return overview;
+      case "structure":
+        return structure;
+      case "geology":
+        return geology;
+    }
   };
 
   return (
     <div>
-      <h1>{name}</h1>
-      <p>{}</p>
+      <Information
+        name={name}
+        content={getActiveInformation()!.content}
+        source={getActiveInformation()!.source}
+      />
       <ButtonGroup
         bg="var(--blue)"
         onChange={buttonHandler}

@@ -55,7 +55,8 @@ const GlobalStyle = createGlobalStyle`
   h1 {
     font-size: 8rem;
     font-weight: 500;
-    line-height: 10.3rem,;
+    line-height: 10.3rem;
+    text-transform: uppercase;
   }
 
   h2 {
