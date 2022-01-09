@@ -27,6 +27,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   padding: 12px 28px;
   transition: var(--transition);
   width: 100%;
+  text-align: left;
 
   .index {
     margin-right: 28px;

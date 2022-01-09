@@ -18,6 +18,11 @@ const StyledButtonGroup = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-top: 39px;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
 `;
 
 export const ButtonGroup: React.FC<ButtonGroupProps> = ({

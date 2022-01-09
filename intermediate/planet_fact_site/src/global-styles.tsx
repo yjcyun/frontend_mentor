@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
     --orange: #CD5120;
     --purple: #6f2ed6;
     --mint: #1ec2a4;
+    --dark-blue: #2D68F0;
     --white: #fff;
     --white-50: rgba(255,255,255,0.5);
     --white-20: rgba(255,255,255,0.2);
@@ -101,18 +102,41 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
-  .gutter {
-    padding: 0 40px;
-    max-width: 1190px;
-  }
 
-  @media (max-width: 680px) {
-    .gutter {
-      margin-top: 32px;
-      padding: 0 32px;
 
+  @media (max-width: 996px) {
+    h1 {
+      font-size: 4.8rem;
+      line-height: 100%;
+    }
+
+    h2 {
+      font-size: 2.4rem;
+      line-height: 100%;
+      letter-spacing: 0.9px;
+    }
+
+    h4 {
+      font-size: 0.8rem;
+      line-height: 1.6rem;
+      letter-spacing: 0.73px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 2.2rem;
     }
   }
+
+  @media (max-width: 767px) {
+    h2 {
+      font-size: 2rem;
+      letter-spacing: -0.75px;
+    }
+  }
+
+
+  
 `;
 
 export default GlobalStyle;

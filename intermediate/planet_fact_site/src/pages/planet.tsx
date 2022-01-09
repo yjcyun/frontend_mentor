@@ -10,16 +10,35 @@ import { CardGroup } from "../components/card-group";
 import { CardType } from "../types";
 
 import bgStars from "../assets/background-stars.svg";
+import { colours } from "./colour-data";
 
 const StyledPlanet = styled.div`
   background: url(${bgStars});
-  padding: 126px 165px 56px;
   min-height: calc(100vh - 85px);
+`;
+
+const InnerDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  max-width: 1190px;
+  margin: auto;
+  padding: 0 40px 56px;
+  height: calc(1024px - 85px);
+
+  @media (max-width: 996px) {
+    height: fit-content;
+  }
+
+  @media (max-width: 767px) {
+    padding: 0 24px 56px;
+  }
 `;
 
 const TopDiv = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 87px;
 
   .img-cont {
     flex: 1;
@@ -37,6 +56,47 @@ const TopDiv = styled.div`
 
   .content-cont {
     width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  @media (max-width: 996px) {
+    flex-direction: column;
+    margin-bottom: 27px;
+
+    .img-cont {
+      min-height: 460px;
+      max-width: 369px;
+      margin: auto;
+    }
+
+    img {
+      width: 63%;
+    }
+
+    .content-cont {
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .img-cont {
+      min-height: 304px;
+      padding: 0;
+    }
+
+    img {
+      width: 40%;
+    }
+
+    .geology-img {
+      width: 20%;
+      bottom: 10%;
+    }
   }
 `;
 
@@ -84,6 +144,10 @@ export const PlanetPage = () => {
     }
   };
 
+  const getPlanetColour = () => {
+    return colours.filter((c) => c.planet === planetId)[0];
+  };
+
   const cardData: CardType[] = [
     { label: "rotation", content: rotation },
     { label: "revolution", content: revolution },
@@ -91,39 +155,39 @@ export const PlanetPage = () => {
     { label: "temperature", content: temperature },
   ];
 
-  console.log("." + getActiveImage());
-
   return (
     <StyledPlanet>
-      <TopDiv>
-        <div className="img-cont">
-          {activeButton === "geology" ? (
-            <>
-              <img src={images["planet"]} alt={activeButton} />
-              <img
-                src={getActiveImage()}
-                alt={activeButton}
-                className="geology-img"
-              />
-            </>
-          ) : (
-            <img src={getActiveImage()} alt={activeButton} />
-          )}
-        </div>
-        <div className="content-cont">
-          <Information
-            name={name}
-            content={getActiveInformation()!.content}
-            source={getActiveInformation()!.source}
-          />
-          <ButtonGroup
-            bg="var(--blue)"
-            onChange={buttonHandler}
-            activeButton={activeButton}
-          />
-        </div>
-      </TopDiv>
-      <CardGroup data={cardData} />
+      <InnerDiv>
+        <TopDiv>
+          <div className="img-cont">
+            {activeButton === "geology" ? (
+              <>
+                <img src={images["planet"]} alt={activeButton} />
+                <img
+                  src={getActiveImage()}
+                  alt={activeButton}
+                  className="geology-img"
+                />
+              </>
+            ) : (
+              <img src={getActiveImage()} alt={activeButton} />
+            )}
+          </div>
+          <div className="content-cont">
+            <Information
+              name={name}
+              content={getActiveInformation()!.content}
+              source={getActiveInformation()!.source}
+            />
+            <ButtonGroup
+              bg={getPlanetColour().colour}
+              onChange={buttonHandler}
+              activeButton={activeButton}
+            />
+          </div>
+        </TopDiv>
+        <CardGroup data={cardData} />
+      </InnerDiv>
     </StyledPlanet>
   );
 };

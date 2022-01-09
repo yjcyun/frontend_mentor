@@ -16,6 +16,18 @@ const StyledCard = styled.div`
     margin-bottom: 4px;
     color: var(--white-50);
   }
+
+  @media (max-width: 767px) {
+    padding: 9px 24px 13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h4 {
+      margin-bottom: 0;
+      padding-top: 7px;
+    }
+  }
 `;
 
 export const Card: React.FC<CardProps> = ({ label, content }) => {

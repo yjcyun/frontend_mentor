@@ -25,6 +25,15 @@ const StyledInformation = styled.div`
   .source-icon {
     margin-left: 8px;
   }
+
+  @media (max-width: 996px) {
+    width: 339px;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 export const Information: React.FC<InformationProps> = ({

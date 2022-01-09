@@ -10,6 +10,11 @@ interface CardGroupProps {
 const StyledCardGroup = styled.div`
   display: flex;
   gap: 30px;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    gap: 8px;
+  }
 `;
 
 export const CardGroup: React.FC<CardGroupProps> = ({ data }) => {
