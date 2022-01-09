@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     --white: #fff;
     --white-50: rgba(255,255,255,0.5);
     --white-20: rgba(255,255,255,0.2);
+    --white-10: rgba(255,255,255,0.1);
 
     /* fonts */
     --headingFF: 'Antonio', sans-serif;;

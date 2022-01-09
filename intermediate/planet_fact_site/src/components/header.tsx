@@ -1,4 +1,17 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { Sidebar } from "./sidebar";
+
+export const menu = [
+  { label: "mercury", color: "#DEF4FC" },
+  { label: "venus", color: "#F7CC7F" },
+  { label: "earth", color: "#545BFE" },
+  { label: "mars", color: "#FF6A45" },
+  { label: "jupiter", color: "#ECAD7A" },
+  { label: "saturn", color: "#FCCB6B" },
+  { label: "uranus", color: "#65F0D5" },
+  { label: "neptune", color: "#497EFA" },
+];
 
 const StyledHeader = styled.header`
   height: 8.5rem;
@@ -15,10 +28,14 @@ const StyledHeader = styled.header`
     padding-top: 22px;
   }
 
-  ul {
+  .desktop-nav {
     display: flex;
     gap: 33px;
     padding-top: 33px;
+  }
+
+  a {
+    color: var(--white);
   }
 
   @media (max-width: 996px) {
@@ -31,35 +48,41 @@ const StyledHeader = styled.header`
       padding-top: 32px;
     }
 
-    ul {
+    .desktop-nav {
       padding-top: 39px;
       padding-bottom: 27px;
     }
   }
-`;
 
-const menu = [
-  "mercury",
-  "venus",
-  "earth",
-  "mars",
-  "jupiter",
-  "saturn",
-  "uranus",
-  "neptune",
-];
+  @media (max-width: 767px) {
+    height: 6.8rem;
+    flex-direction: row;
+    padding: 16px 24px;
+
+    .logo {
+      padding-top: 0;
+    }
+
+    .desktop-nav {
+      display: none;
+    }
+  }
+`;
 
 export const Header: React.FC = () => {
   return (
     <StyledHeader>
       <div className="logo">the planets</div>
-      <ul>
-        {menu.map((m) => (
-          <li key={m}>
-            <h4>{m}</h4>
-          </li>
-        ))}
-      </ul>
+      <div>
+        <Sidebar />
+        <nav className="desktop-nav">
+          {menu.map((m) => (
+            <Link key={m.label} to={m.label}>
+              <h4>{m.label}</h4>
+            </Link>
+          ))}
+        </nav>
+      </div>
     </StyledHeader>
   );
 };
