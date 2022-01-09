@@ -36,6 +36,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: var(--bodyFF);
     color: var(--white);
+    background-color: var(--navy);
   }
 
 
@@ -92,6 +93,10 @@ const GlobalStyle = createGlobalStyle`
   /* General */
   a {
     text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
   }
 
   .gutter {
