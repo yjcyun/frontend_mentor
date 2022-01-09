@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 interface InputProps<T> {
   error: string;
@@ -8,8 +8,8 @@ interface InputProps<T> {
 }
 
 const textStyles = css`
-  background: rgba(51, 50, 61, 0.1);
   border: 1px solid transparent;
+  border-bottom: 1px solid #8e8e8e;
   font-size: 1.3rem;
   line-height: 3rem;
   padding: 9px 16px;
@@ -58,7 +58,7 @@ export const Input: React.FC<InputProps<string>> = ({
       <StyledInput
         onChange={onChange}
         placeholder={placeholder}
-        type='text'
+        type="text"
         value={value}
       />
 
