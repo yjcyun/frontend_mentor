@@ -19,6 +19,7 @@ const StyledButtonGroup = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin-top: 39px;
+  gap: 16px;
 
   @media (max-width: 767px) {
     flex-direction: row;

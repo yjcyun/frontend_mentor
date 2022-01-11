@@ -1,7 +1,7 @@
 export type ButtonType = "overview" | "structure" | "geology";
 export type CardLabelType =
   | "rotation"
-  | "revolution"
+  | "revolution time"
   | "radius"
-  | "temperature";
+  | "average temp.";
 export type CardType = { label: CardLabelType; content: string };

@@ -161,9 +161,9 @@ export const PlanetPage = () => {
 
   const cardData: CardType[] = [
     { label: "rotation", content: rotation },
-    { label: "revolution", content: revolution },
+    { label: "revolution time", content: revolution },
     { label: "radius", content: radius },
-    { label: "temperature", content: temperature },
+    { label: "average temp.", content: temperature },
   ];
 
   return (
