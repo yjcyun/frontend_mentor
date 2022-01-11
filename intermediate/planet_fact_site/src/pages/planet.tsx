@@ -10,10 +10,15 @@ import { useWindowDimensions } from "../hooks/useWindowDimensions";
 import { ButtonGroup } from "../components/button-group";
 import { Information } from "../components/information";
 import { CardGroup } from "../components/card-group";
+import { SEO } from "../components/seo";
 
 import { CardType } from "../types";
 
 import bgStars from "../assets/background-stars.svg";
+
+export type MyParams = {
+  planetId: string;
+};
 
 const StyledPlanet = styled.div`
   background: url(${bgStars});
@@ -106,8 +111,8 @@ const TopDiv = styled.div`
 `;
 
 export const PlanetPage = () => {
-  const { planetId } = useParams();
   const [activeButton, setActiveButton] = useState("overview");
+  const { planetId } = useParams<keyof MyParams>() as MyParams;
   const { width } = useWindowDimensions();
 
   const planet = data.filter((d) => d.name.toLowerCase() === planetId)[0];
@@ -162,47 +167,51 @@ export const PlanetPage = () => {
   ];
 
   return (
-    <StyledPlanet>
-      {width <= 767 && (
-        <ButtonGroup
-          bg={getPlanetColour().colour}
-          onChange={buttonHandler}
-          activeButton={activeButton}
-        />
-      )}
-      <InnerDiv>
-        <TopDiv>
-          <div className="img-cont">
-            {activeButton === "geology" ? (
-              <>
-                <img src={images["planet"]} alt={activeButton} />
-                <img
-                  src={getActiveImage()}
-                  alt={activeButton}
-                  className="geology-img"
-                />
-              </>
-            ) : (
-              <img src={getActiveImage()} alt={activeButton} />
-            )}
-          </div>
-          <div className="content-cont">
-            <Information
-              name={name}
-              content={getActiveInformation()!.content}
-              source={getActiveInformation()!.source}
-            />
-            {width > 767 && (
-              <ButtonGroup
-                bg={getPlanetColour().colour}
-                onChange={buttonHandler}
-                activeButton={activeButton}
+    <>
+      <SEO title={planetId.charAt(0).toUpperCase() + planetId.slice(1)} />
+
+      <StyledPlanet>
+        {width <= 767 && (
+          <ButtonGroup
+            bg={getPlanetColour().colour}
+            onChange={buttonHandler}
+            activeButton={activeButton}
+          />
+        )}
+        <InnerDiv>
+          <TopDiv>
+            <div className="img-cont">
+              {activeButton === "geology" ? (
+                <>
+                  <img src={images["planet"]} alt={activeButton} />
+                  <img
+                    src={getActiveImage()}
+                    alt={activeButton}
+                    className="geology-img"
+                  />
+                </>
+              ) : (
+                <img src={getActiveImage()} alt={activeButton} />
+              )}
+            </div>
+            <div className="content-cont">
+              <Information
+                name={name}
+                content={getActiveInformation()!.content}
+                source={getActiveInformation()!.source}
               />
-            )}
-          </div>
-        </TopDiv>
-        <CardGroup data={cardData} />
-      </InnerDiv>
-    </StyledPlanet>
+              {width > 767 && (
+                <ButtonGroup
+                  bg={getPlanetColour().colour}
+                  onChange={buttonHandler}
+                  activeButton={activeButton}
+                />
+              )}
+            </div>
+          </TopDiv>
+          <CardGroup data={cardData} />
+        </InnerDiv>
+      </StyledPlanet>
+    </>
   );
 };
