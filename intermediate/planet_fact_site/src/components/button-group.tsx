@@ -21,7 +21,10 @@ const StyledButtonGroup = styled.div`
   margin-top: 39px;
 
   @media (max-width: 767px) {
-    display: none;
+    flex-direction: row;
+    margin-top: 0;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--white-20);
   }
 `;
 

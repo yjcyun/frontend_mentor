@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useWindowDimensions } from "../hooks/useWindowDimensions";
 
 interface ButtonProps {
   active?: boolean;
@@ -42,6 +43,37 @@ const StyledButton = styled.button<StyledButtonProps>`
     background: ${(props) => props.bg};
     border-color: ${(props) => props.bg};
   }
+
+  @media (max-width: 767px) {
+    border: none;
+    text-align: center;
+    line-height: 100%;
+    padding: 0;
+    color: var(--white-50);
+    font-size: 0.9rem;
+    letter-spacing: 1.93px;
+
+    .index {
+      display: none;
+    }
+
+    &:hover {
+      background: none;
+    }
+
+    &.active {
+      background: transparent;
+
+      .label {
+        border-bottom: 4px solid white;
+        color: var(--white);
+      }
+    }
+
+    .label {
+      padding-bottom: 16px;
+    }
+  }
 `;
 
 export const Button: React.FC<ButtonProps> = ({
@@ -53,6 +85,7 @@ export const Button: React.FC<ButtonProps> = ({
   text,
   to,
 }) => {
+  const { width } = useWindowDimensions();
   const navigate = useNavigate();
 
   return (
@@ -65,7 +98,8 @@ export const Button: React.FC<ButtonProps> = ({
       }}
     >
       <span className="index">{index}</span>
-      <span>{text}</span>
+
+      <span className="label">{width > 767 ? text : category}</span>
     </StyledButton>
   );
 };

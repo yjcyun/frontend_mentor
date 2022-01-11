@@ -3,14 +3,17 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import data from "./data.json";
+import { colours } from "./colour-data";
+
+import { useWindowDimensions } from "../hooks/useWindowDimensions";
 
 import { ButtonGroup } from "../components/button-group";
 import { Information } from "../components/information";
 import { CardGroup } from "../components/card-group";
+
 import { CardType } from "../types";
 
 import bgStars from "../assets/background-stars.svg";
-import { colours } from "./colour-data";
 
 const StyledPlanet = styled.div`
   background: url(${bgStars});
@@ -39,6 +42,7 @@ const TopDiv = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 87px;
+  gap: 10rem;
 
   .img-cont {
     flex: 1;
@@ -64,6 +68,7 @@ const TopDiv = styled.div`
   @media (max-width: 996px) {
     flex-direction: column;
     margin-bottom: 27px;
+    gap: 0;
 
     .img-cont {
       min-height: 460px;
@@ -103,6 +108,7 @@ const TopDiv = styled.div`
 export const PlanetPage = () => {
   const { planetId } = useParams();
   const [activeButton, setActiveButton] = useState("overview");
+  const { width } = useWindowDimensions();
 
   const planet = data.filter((d) => d.name.toLowerCase() === planetId)[0];
 
@@ -157,6 +163,13 @@ export const PlanetPage = () => {
 
   return (
     <StyledPlanet>
+      {width <= 767 && (
+        <ButtonGroup
+          bg={getPlanetColour().colour}
+          onChange={buttonHandler}
+          activeButton={activeButton}
+        />
+      )}
       <InnerDiv>
         <TopDiv>
           <div className="img-cont">
@@ -179,11 +192,13 @@ export const PlanetPage = () => {
               content={getActiveInformation()!.content}
               source={getActiveInformation()!.source}
             />
-            <ButtonGroup
-              bg={getPlanetColour().colour}
-              onChange={buttonHandler}
-              activeButton={activeButton}
-            />
+            {width > 767 && (
+              <ButtonGroup
+                bg={getPlanetColour().colour}
+                onChange={buttonHandler}
+                activeButton={activeButton}
+              />
+            )}
           </div>
         </TopDiv>
         <CardGroup data={cardData} />
