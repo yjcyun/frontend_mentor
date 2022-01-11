@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-import data from "./data.json";
-import { colours } from "./colour-data";
+import data from "../data/data.json";
+import { colours } from "../data/colour-data";
 
 import { useWindowDimensions } from "../hooks/useWindowDimensions";
 

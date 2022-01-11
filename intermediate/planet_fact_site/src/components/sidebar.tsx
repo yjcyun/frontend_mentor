@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { ReactComponent as HamburgerIcon } from "../assets/icon-hamburger.svg";
 import { ReactComponent as ArrowIcon } from "../assets/icon-chevron.svg";
 
-import { menu } from "./header";
+import { colours } from "../data/colour-data";
 
 interface SidebarProps {
   open: boolean;
@@ -31,6 +31,9 @@ const StyledSidebar = styled.div<SidebarProps>`
   top: 6.8rem;
   width: 100%;
   padding: 44px 24px 0;
+  background: var(--navy);
+  z-index: 1;
+  height: calc(100vh - 68px);
 
   .mobile-nav {
     font-size: 1.5rem;
@@ -46,6 +49,7 @@ const StyledSidebar = styled.div<SidebarProps>`
     padding: 20px 5px 20px 0;
     align-items: center;
     justify-content: space-between;
+    color: var(--white);
 
     &:not(:last-child) {
       border-bottom: 1px solid var(--white-10);
@@ -57,6 +61,12 @@ const StyledSidebar = styled.div<SidebarProps>`
 
     &:last-child {
       padding-bottom: 0;
+    }
+
+    h4 {
+      font-size: 1.5rem;
+      line-height: 2.5rem;
+      letter-spacing: 1.36px;
     }
   }
 
@@ -87,16 +97,16 @@ export const Sidebar: React.FC = () => {
       </Hamburger>
       <StyledSidebar open={openMenu} aria-label="sidebar-nav">
         <nav className="mobile-nav">
-          {menu.map((m) => (
+          {colours.map((m) => (
             <Link
-              key={m.label}
-              to={m.label}
+              key={m.planet}
+              to={m.planet}
               className="link"
               onClick={() => setOpenMenu(false)}
             >
-              <div className="menu-item" key={m.label}>
-                <Marker bg={m.color} />
-                <h4>{m.label}</h4>
+              <div className="menu-item" key={m.planet}>
+                <Marker bg={m.menuColour} />
+                <h4>{m.planet}</h4>
               </div>
               <ArrowIcon />
             </Link>

@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Header } from "./components/header";
 import { PlanetPage } from "./pages/planet";
 
@@ -7,6 +7,7 @@ const App = () => {
     <BrowserRouter>
       <Header />
       <Routes>
+        <Route path="/" element={<Navigate to="/mercury" />} />
         <Route path="/:planetId" element={<PlanetPage />} />
       </Routes>
     </BrowserRouter>
