@@ -7,7 +7,7 @@ const App = () => {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Navigate to="/mercury" />} />
+        <Route path="/" element={<Navigate to="/earth" />} />
         <Route path="/:planetId" element={<PlanetPage />} />
       </Routes>
     </BrowserRouter>
