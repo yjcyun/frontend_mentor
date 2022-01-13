@@ -1,4 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
+import { AccordionMenu } from "./components/accordion-menu";
 import { BigSelection } from "./components/big-selection";
 import { Button } from "./components/button";
 
@@ -16,6 +17,8 @@ const App = () => {
         desc="Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
         active
       />
+      <AccordionMenu title="Sample Menu" />
+      <AccordionMenu title="Sample Menu" disabled />
     </BrowserRouter>
   );
 };

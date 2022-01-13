@@ -6,9 +6,11 @@ const GlobalStyle = createGlobalStyle`
     --dark-cyan: #0e8784;
     --dark-grey-blue: #333d4b;
     --grey: #83888f;
+    --grey-50: rgba(131,136,143,0.5);
     --pale-orange: #fdd6ba;
     --light-cream: #fefcf7;
     --white: #fff;
+
 
     /* fonts */
     --bodyFF: 'Barlow', sans-serif;
