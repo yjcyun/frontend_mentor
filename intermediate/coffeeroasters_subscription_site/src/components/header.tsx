@@ -10,15 +10,17 @@ const StyledHeader = styled.header`
 `;
 
 const StyledNav = styled.nav`
-  display: flex;
-  gap: 32px;
+  ul {
+    display: flex;
+    gap: 32px;
+  }
 
   a {
     transition: var(--transition);
     color: var(--grey);
   }
 
-  &:hover a {
+  li:hover a {
     color: var(--dark-grey-blue);
   }
 `;
@@ -28,15 +30,23 @@ export const Header = () => {
     <StyledHeader>
       <Logo />
       <StyledNav>
-        <Link to="/">
-          <p className="small">Home</p>
-        </Link>
-        <Link to="/about-us">
-          <p className="small">About us</p>
-        </Link>
-        <Link to="/create-your-plan">
-          <p className="small">create your plan</p>
-        </Link>
+        <ul>
+          <li>
+            <Link to="/">
+              <p className="small">Home</p>
+            </Link>
+          </li>
+          <li>
+            <Link to="/about-us">
+              <p className="small">About us</p>
+            </Link>
+          </li>
+          <li>
+            <Link to="/create-your-plan">
+              <p className="small">create your plan</p>
+            </Link>
+          </li>
+        </ul>
       </StyledNav>
     </StyledHeader>
   );
