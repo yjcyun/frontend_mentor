@@ -73,6 +73,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.5rem;
     letter-spacing: 1px;
     text-transform: uppercase;
+    font-weight: 700;
   }
 
   /* 3. Buttons */
