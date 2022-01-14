@@ -93,10 +93,29 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
-  @media (max-width: 996px) {
+  @media (max-width: 1024px) {
+    h1 {
+      font-size: 4.8rem;
+      line-height: 4.8rem;
+    }
+
+    
+    h2 {
+      font-size: 3.2rem;
+      line-height: 4rem;
+    }
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 4rem;
+      line-height: 4rem;
+    }
+
+    h2 {
+      font-size: 2.8rem;
+      line-height: 2.8rem;
+    }
   }
 `;
 
