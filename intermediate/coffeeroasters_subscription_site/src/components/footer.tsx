@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { ReactComponent as Logo } from "../assets/shared/desktop/logo.svg";
+import { ReactComponent as LogoDark } from "../assets/shared/desktop/logo-dark.svg";
 import { ReactComponent as Facebook } from "../assets/shared/desktop/icon-facebook.svg";
 import { ReactComponent as Instagram } from "../assets/shared/desktop/icon-instagram.svg";
 import { ReactComponent as Twitter } from "../assets/shared/desktop/icon-twitter.svg";
@@ -16,6 +16,17 @@ const StyledFooter = styled.footer`
     max-width: 622px;
     width: 100%;
     justify-content: space-between;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    padding: 54px 0;
+    align-items: center;
+
+    .inner-footer {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 `;
 
@@ -37,12 +48,24 @@ const StyledNav = styled.nav`
     color: var(--white);
   }
 
-  svg g path#logo-text {
-    fill: var(--white) !important;
-  }
-
   .small {
     white-space: nowrap;
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 32px;
+    margin-bottom: 65px;
+  }
+
+  @media (max-width: 640px) {
+    margin-top: 48.5px;
+    margin-bottom: 48.5px;
+
+    ul {
+      flex-direction: column;
+      gap: 24px;
+      text-align: center;
+    }
   }
 `;
 
@@ -55,13 +78,17 @@ const StyledShareIcons = styled.div`
   li:hover a {
     color: var(--dark-grey-blue);
   }
+
+  @media (max-width: 1024px) {
+    margin-left: 0;
+  }
 `;
 
 export const Footer: React.FC = () => {
   return (
     <StyledFooter>
       <div className="inner-footer">
-        <Logo />
+        <LogoDark />
         <StyledNav>
           <ul>
             <li>

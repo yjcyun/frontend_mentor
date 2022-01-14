@@ -10,6 +10,8 @@ const StyledHeader = styled.header`
 `;
 
 const StyledNav = styled.nav`
+  margin-top: 5px;
+
   ul {
     display: flex;
     gap: 32px;
