@@ -33,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: var(--bodyFF);
     color: var(--dark-grey-blue);
-    background-color: var(--white);
+    background-color: var(--light-cream);
   }
 
   /* 2. Typography */

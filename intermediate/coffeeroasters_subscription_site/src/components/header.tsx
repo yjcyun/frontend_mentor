@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { ReactComponent as Logo } from "../assets/shared/desktop/logo.svg";
+import { Sidebar } from "./sidebar";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -12,18 +13,24 @@ const StyledHeader = styled.header`
 const StyledNav = styled.nav`
   margin-top: 5px;
 
-  ul {
+  .desktop-ul {
     display: flex;
     gap: 32px;
+
+    a {
+      transition: var(--transition);
+      color: var(--grey);
+    }
+
+    li:hover a {
+      color: var(--dark-grey-blue);
+    }
   }
 
-  a {
-    transition: var(--transition);
-    color: var(--grey);
-  }
-
-  li:hover a {
-    color: var(--dark-grey-blue);
+  @media (max-width: 640px) {
+    .desktop-ul {
+      display: none;
+    }
   }
 `;
 
@@ -32,7 +39,8 @@ export const Header = () => {
     <StyledHeader>
       <Logo />
       <StyledNav>
-        <ul>
+        <Sidebar />
+        <ul className="desktop-ul">
           <li>
             <Link to="/">
               <p className="small">Home</p>
