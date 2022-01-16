@@ -1,8 +1,10 @@
+import styled from "styled-components";
+
 import granEspresso from "../assets/home/desktop/image-gran-espresso.png";
 import planalto from "../assets/home/desktop/image-planalto.png";
 import piccollo from "../assets/home/desktop/image-piccollo.png";
 import danche from "../assets/home/desktop/image-danche.png";
-import styled from "styled-components";
+
 import { CollectionItem } from "./collection-item";
 
 const collectionList = [
@@ -29,42 +31,91 @@ const collectionList = [
 ];
 
 const StyledCollection = styled.div`
-  margin-top: 262px;
+  margin: 160px auto 200px;
   position: relative;
   display: flex;
   justify-content: center;
-
-  .bg-text-overlay {
-    position: absolute;
-    top: -150px;
-    height: 196px;
-    width: 100%;
-    background: linear-gradient(rgba(254, 252, 247, 0.01), rgb(254, 252, 247));
-  }
-
-  .bg-text {
-    font-size: 15rem;
-    font-family: var(--headingFF);
-    line-height: 7.2rem;
-    color: var(--grey);
-    position: absolute;
-    top: -55px;
-    z-index: -1;
-    opacity: 0.5;
-  }
+  flex-direction: column;
 
   .collection-list-wrapper {
     display: flex;
     gap: 30px;
     justify-content: center;
   }
+
+  @media (max-width: 1024px) {
+    margin: 144px auto;
+
+    .collection-list-wrapper {
+      flex-direction: column;
+      width: 573px;
+      margin: auto;
+    }
+  }
+
+  @media (max-width: 767px) {
+    margin: 120px auto;
+
+    .collection-list-wrapper {
+      align-items: center;
+      gap: 48px;
+      width: 100%;
+    }
+  }
+`;
+
+const CollectionText = styled.div`
+  text-align: center;
+  position: relative;
+  margin-bottom: -5rem;
+  z-index: -1;
+
+  .bg-text-overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(rgba(254, 252, 247, 0.01), rgb(254, 252, 247));
+    z-index: 2;
+  }
+
+  h1 {
+    font-size: 15rem;
+    font-family: var(--headingFF);
+    line-height: 100%;
+    color: var(--grey);
+    z-index: -1;
+    opacity: 0.5;
+  }
+
+  @media (max-width: 1230px) {
+    margin-bottom: -3rem;
+
+    h1 {
+      font-size: 9.6rem;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 767px) {
+    margin-bottom: 30px;
+
+    h1 {
+      font-size: 4rem;
+    }
+  }
 `;
 
 export const Collection = () => {
   return (
     <StyledCollection>
-      <div className="bg-text-overlay"></div>
-      <div className="bg-text">our collection</div>
+      <CollectionText>
+        <div className="bg-text-overlay"></div>
+        <h1>our collection</h1>
+      </CollectionText>
 
       <div className="collection-list-wrapper">
         {collectionList.map((list) => (

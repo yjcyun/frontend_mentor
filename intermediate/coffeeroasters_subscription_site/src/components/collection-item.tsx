@@ -23,6 +23,40 @@ const StyledCollectionItem = styled.div`
       margin-bottom: 24px;
     }
   }
+
+  @media (max-width: 1024px) {
+    display: flex;
+    height: 193px;
+    max-width: 100%;
+    text-align: left;
+
+    img {
+      width: 255px;
+    }
+
+    .item-text {
+      margin-top: 0;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    width: 282px;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+
+    img {
+      width: 200px;
+      margin-left: 2rem;
+    }
+
+    .item-text {
+      margin-top: 24px;
+    }
+  }
 `;
 
 export const CollectionItem: React.FC<CollectionItemProps> = ({
