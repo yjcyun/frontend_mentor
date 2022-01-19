@@ -1,9 +1,9 @@
-import { Hero } from "../components/hero";
-
 import homeHero from "../assets/home/desktop/image-hero-coffeepress.jpg";
 import homeHeroMobile from "../assets/home/mobile/image-hero-coffeepress.jpg";
 
+import { Hero } from "../components/hero";
 import { Collection } from "../components/collection";
+import { ChooseUs } from "../components/choose-us";
 
 export const HomePage = () => {
   return (
@@ -17,6 +17,7 @@ export const HomePage = () => {
         title="Great coffe made simple."
       />
       <Collection />
+      <ChooseUs />
     </div>
   );
 };
