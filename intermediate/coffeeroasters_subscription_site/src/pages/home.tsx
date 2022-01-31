@@ -4,6 +4,7 @@ import homeHeroMobile from "../assets/home/mobile/image-hero-coffeepress.jpg";
 import { Hero } from "../components/hero";
 import { Collection } from "../components/collection";
 import { ChooseUs } from "../components/choose-us";
+import { HowItWorks } from "../components/how-it-works";
 
 export const HomePage = () => {
   return (
@@ -18,6 +19,7 @@ export const HomePage = () => {
       />
       <Collection />
       <ChooseUs />
+      <HowItWorks />
     </div>
   );
 };
