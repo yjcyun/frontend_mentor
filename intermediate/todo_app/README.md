@@ -37,8 +37,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Github](https://github.com/yjcyun/frontend_mentor/tree/master/intermediate/todo_app)
+- Live Site URL: [Vercel](https://todo-app-gules-gamma.vercel.app/)
 
 ## My process
 
