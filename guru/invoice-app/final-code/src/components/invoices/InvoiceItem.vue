@@ -11,17 +11,17 @@
       <div class="name body1">{{ clientName }}</div>
       <div class="price h3">{{ formatPrice }}</div>
 
-      <invoice-status :status="status"></invoice-status>
+      <base-status :status="status"></base-status>
       <img src="../../assets/icon-arrow-right.svg" alt="Arrow Right Icon" />
     </router-link>
   </li>
 </template>
 
 <script>
-import InvoiceStatus from "./InvoiceStatus.vue";
+import BaseStatus from "../ui/BaseStatus.vue";
 
 export default {
-  components: { InvoiceStatus },
+  components: { BaseStatus },
   props: ["id", "paymentDue", "clientName", "total", "status"],
   computed: {
     formatPrice() {
