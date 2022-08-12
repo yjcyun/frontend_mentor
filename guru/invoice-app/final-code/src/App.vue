@@ -1,15 +1,17 @@
 <template>
   <TheLayout>
-    <the-header></the-header>
-    <invoice-list :invoices="invoices"></invoice-list>
+    <the-header :numInvoices="invoices.length"></the-header>
+    <empty-invoice v-if="invoices.length === 0"></empty-invoice>
+    <invoice-list :invoices="invoices" v-else></invoice-list>
   </TheLayout>
 </template>
 
 <script>
 import InvoiceList from "./components/invoices/InvoiceList.vue";
 import TheHeader from "./components/header/TheHeader.vue";
-import devData from "../data.json";
 import TheLayout from "./components/layout/TheLayout.vue";
+import EmptyInvoice from "./components/invoices/EmptyInvoice.vue";
+import devData from "../data.json";
 
 export default {
   components: {
@@ -17,6 +19,7 @@ export default {
     TheHeader,
     TheLayout,
     TheLayout,
+    EmptyInvoice,
   },
   data() {
     return {
