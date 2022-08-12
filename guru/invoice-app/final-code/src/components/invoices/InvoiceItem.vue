@@ -1,21 +1,21 @@
 <template>
   <li>
     <div>{{ id }}</div>
-    <date>{{ paymentDue }}</date>
+    <div>{{ paymentDue }}</div>
     <div>{{ clientName }}</div>
     <div>{{ total }}</div>
     <div>{{ status }}</div>
+    <invoice-status :status="status"></invoice-status>
   </li>
 </template>
 
 <script>
+import InvoiceStatus from "./InvoiceStatus.vue";
+
 export default {
+  components: { InvoiceStatus },
   props: ["id", "paymentDue", "clientName", "total", "status"],
 };
 </script>
 
-<style scoped>
-.read-the-docs {
-  color: #888;
-}
-</style>
+<style scoped></style>
