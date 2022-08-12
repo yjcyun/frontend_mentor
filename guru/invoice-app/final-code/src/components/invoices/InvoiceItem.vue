@@ -45,6 +45,7 @@ a {
   border-radius: 8px;
   align-items: center;
   padding: 28px 32px;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
 }
 
 li div {
