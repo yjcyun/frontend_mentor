@@ -1,69 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap');
+
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+  --color-purple-7C: #7C5DFA;
+  --color-purple-92: #9277FF;
+  --color-navy-1E: #1E2139;
+  --color-navy-25: #252945;
+  --color-navy-37: #373B53;
+  --color-blue-DF: #DFE3FA;
+  --color-blue-88: #888EB0;
+  --color-blue-7E: #7E88C3;
+  --color-black-0C: #0C0E16;
+  --color-black-14: #141625;
+  --color-red-EC: #EC5757;
+  --color-red-FF: #FF9797;
+  --color-white-F8: #F8F8FB;
+  --color-white-F9: #F9FAFE;
+  --color-white: #FFFFFF;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --font-family: 'League Spartan', sans-serif;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
 }
 
-*{
+* {
   box-sizing: border-box;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
 
 body {
   margin: 0;
+  font-family: var(--font-family);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
 
 ul {
   list-style: none;
@@ -71,15 +39,45 @@ ul {
   margin: 0;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Typography */
+h1 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 36px;
+  letter-spacing: -1px;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 22px;
+  letter-spacing: -0.625px;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.8px;
+}
+
+h4 {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;  
+}
+
+p {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;  
+}
+
+small {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 18px;
+  letter-spacing: -0.229167px; 
 }
