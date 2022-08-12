@@ -1,26 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap');
 
 :root {
-  --color-purple-7C: rgb(124, 93, 250);
-  --color-purple-92: rgb(146, 119, 255);
-  --color-navy-1E: rgb(30, 33, 57);
-  --color-navy-25: rgb(37, 41, 69);
-  --color-navy-37: rgb(55, 59, 83);
+  --color-purple-7C: #7c5dfa;
+  --color-purple-92: #9277ff;
+  --color-navy-1E: #1e2139;
+  --color-navy-25: #252945;
+  --color-navy-37: #373b53;
   --color-navy-37-06: rgba(55,59,83,0.06);
-  --color-blue-DF: rgb(223, 227, 250);
-  --color-blue-88: rgb(136, 142, 176);
-  --color-blue-7E: rgb(126, 136, 195);
-  --color-black-0C: rgb(12, 14, 22);
-  --color-black-14: rgb(20, 22, 37);
-  --color-red-EC: rgb(236, 87, 87);
-  --color-red-FF: rgb(255, 151, 151);
-  --color-white-F8: rgb(248, 248, 251);
-  --color-white-F9: rgb(249, 250, 254);
-  --color-white: rgb(255, 255, 255);
+  --color-blue-DF: #dfe3fa;
+  --color-blue-88: #888eb0;
+  --color-blue-7E: #7e88c3;
+  --color-black-0C: #0c0e16;
+  --color-black-14: #141625;
+  --color-red-EC: #ec5757;
+  --color-red-FF: #ff9797;
+  --color-white-F8: #f8f8fb;
+  --color-white-F9: #f9fafe;
+  --color-white: #ffffff;
   --color-green-06:  rgba(51,214,159, 0.06);
-  --color-green:  rgb(51, 214, 159);
+  --color-green:  #33d69f;
   --color-orange-06:  rgba(255,143,0, 0.06);
-  --color-orange:  rgb(255, 143, 0);
+  --color-orange:  #ff8f00;
 
   --font-family: 'League Spartan', sans-serif;
 
@@ -34,6 +34,7 @@
 body {
   margin: 0;
   font-family: var(--font-family);
+  background-color: #F2F2F2;
 }
 
 
@@ -42,6 +43,11 @@ ul {
   list-style: none;
   padding-left: 0;
   margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color:inherit;
 }
 
 /* Typography */

@@ -20,3 +20,12 @@ export default {
   props: ["invoices"],
 };
 </script>
+
+<style scoped>
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 600px;
+}
+</style>

@@ -14,11 +14,13 @@ export default {
 <style scoped>
 .status-wrapper {
   display: inline-flex;
-  padding: 13px 30px;
+  padding: 13px 0;
   border-radius: 6px;
   text-transform: capitalize;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  width: 104px;
 }
 
 .paid {
