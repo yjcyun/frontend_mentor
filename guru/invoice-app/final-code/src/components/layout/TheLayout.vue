@@ -18,17 +18,24 @@ export default {
 <style scoped>
 .layout {
   display: flex;
-  min-height: 100vh;
+  flex-direction: column;
 }
 
 main {
   margin: auto;
   padding: 72px 24px;
   width: 100%;
+  min-height: 100vh;
 }
 
 .wrapper {
   max-width: 730px;
   margin: auto;
+}
+
+@media (min-width: 960px) {
+  .layout {
+    flex-direction: row;
+  }
 }
 </style>
