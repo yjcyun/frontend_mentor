@@ -9,7 +9,7 @@
         ><span class="text-blue-7E">{{ paymentDue }}</span>
       </div>
       <div class="name body1">{{ clientName }}</div>
-      <div class="price h3">{{ formatPrice }}</div>
+      <div class="price h3">{{ formattedPrice }}</div>
 
       <base-status :status="status"></base-status>
       <img src="../../assets/icon-arrow-right.svg" alt="Arrow Right Icon" />
@@ -19,16 +19,14 @@
 
 <script>
 import BaseStatus from "../ui/BaseStatus.vue";
+import formatPrice from "../../utils/format-price.js";
 
 export default {
   components: { BaseStatus },
   props: ["id", "paymentDue", "clientName", "total", "status"],
   computed: {
-    formatPrice() {
-      return new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "GBP",
-      }).format(this.total);
+    formattedPrice() {
+      return formatPrice(this.total);
     },
     linkPath() {
       return `/${this.id}`;
