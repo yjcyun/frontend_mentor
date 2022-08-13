@@ -33,6 +33,6 @@ export default {
 .info__sub-body {
   color: var(--color-blue-7E);
   margin-top: 8px;
-  max-width: 93px;
+  max-width: 100px;
 }
 </style>
