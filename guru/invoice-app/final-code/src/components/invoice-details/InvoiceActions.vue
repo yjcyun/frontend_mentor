@@ -29,6 +29,7 @@ export default {
   align-items: center;
   justify-content: space-between;
   padding: 24px 24px 27px;
+  margin-top: 32px;
 }
 
 .invoice-actions__status {
