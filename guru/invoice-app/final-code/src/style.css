@@ -23,6 +23,7 @@
   --color-orange:  #ff8f00;
 
   --font-family: 'League Spartan', sans-serif;
+  --box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
 
 }
 
@@ -107,4 +108,11 @@ body {
   font-size: 11px;
   line-height: 18px;
   letter-spacing: -0.229167px; 
+}
+
+/* Global Style */
+.box {
+  background-color: var(--color-white);
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
 }

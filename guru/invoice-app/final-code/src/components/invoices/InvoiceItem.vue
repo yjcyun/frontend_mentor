@@ -1,5 +1,5 @@
 <template>
-  <li>
+  <li class="box">
     <router-link :to="linkPath">
       <div class="id h4">
         <span class="text-blue-7E">#</span><span>{{ id }}</span>
@@ -41,11 +41,8 @@ export default {
 a {
   display: flex;
   flex-wrap: wrap;
-  background-color: var(--color-white);
-  border-radius: 8px;
   align-items: center;
-  padding: 28px 32px;
-  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  padding: 16px 32px 16px 24px;
 }
 
 li div {
