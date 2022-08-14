@@ -76,10 +76,10 @@ Typography of Spartan is now called League Spartan in Google Fonts.
 - Table component on invoice summary: How can I reduce the amount CSS? Should I have used CSS Grid / CSS flexbox instead of HTML table elements? Using CSS grid/flexbox might've been easier but what about semantic html? accessibility?
 Galaxy fold
 
-- I have a computed function which accepts an argument. Can I not pass in a prop as an argument? and call it in template?
-```
-  <td colspan="3" class="final-price">£ {{ formattedPrice(total) }}</td>
-```
+- I have a computed function which accepts an argument. Can I not pass in a prop as an argument? and call it in template? I need to use `methods` instead of `computed`
+
+- Need to create custom select component to customize the look
+
 ### Continued development
 
 Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.

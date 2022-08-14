@@ -22,6 +22,7 @@ aside {
   flex-direction: row;
   align-items: center;
   height: 72px;
+  z-index: 20;
 }
 
 .logo-wrapper {

@@ -1,4 +1,5 @@
 <template>
+  <form-dialog v-if="openForm"></form-dialog>
   <div class="the-header">
     <div>
       <h1 class="h1">Invoices</h1>
@@ -8,19 +9,32 @@
     </div>
     <div class="end">
       <div>Filter Component</div>
-      <base-button mode="btn-1">New Invoice</base-button>
+      <base-button mode="btn-1" @click="addInvoice">New Invoice</base-button>
     </div>
   </div>
 </template>
 
 <script>
+import FormDialog from "../invoice-form/FormDialog.vue";
+
 export default {
   props: ["numInvoices"],
+  components: { FormDialog },
+  data() {
+    return {
+      openForm: false,
+    };
+  },
   computed: {
     subHeadingContent() {
       return this.numInvoices
         ? `There are ${this.numInvoices} total invoices`
         : "No invoices";
+    },
+  },
+  methods: {
+    addInvoice() {
+      this.openForm = true;
     },
   },
 };

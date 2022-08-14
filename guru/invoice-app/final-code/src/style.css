@@ -37,12 +37,12 @@
 
 }
 
-* {
+*, *:after, *:before {
   box-sizing: border-box;
 }
 
 /* Reset default*/
-html, body, div, span, h1, h2, h3, h4, h5, h6, p, ol, ul, li, button, th, td{
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, ol, ul, li, button, th, td, dialog, input, fieldset, select{
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -67,7 +67,6 @@ button {
   cursor: pointer;
   border: none;
   background: transparent;
-
 }
 
 body {
@@ -75,6 +74,16 @@ body {
   font-family: var(--font-family);
   background-color: #F2F2F2;
   color: var(--color-black-0C);
+}
+
+input, select {
+  color: var(--color-black-0C);
+  background: var(--color-white);
+  border: 1px solid #dfe3fa;
+  border-radius: 4px;
+  padding: 16px 20px;
+  caret-color: var(--color-purple-7C);
+  width: 100%;
 }
 
 /* Typography */
