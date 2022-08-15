@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="submitForm">
+  <form @submit.prevent="addInvoice">
     <h2>New Invoice</h2>
     <div class="form__wrapper">
       <!-- Bill From -->
@@ -100,9 +100,11 @@ import FieldLabel from "../ui/BaseLabel.vue";
 import SelectField from "../ui/BaseSelect.vue";
 import ItemList from "./ItemList.vue";
 import FormFooter from "./FormFooter.vue";
+import generateUniqueId from "../../utils/unique-id";
 
 export default {
   components: { FieldLabel, SelectField, ItemList, FormFooter },
+  inject: ["invoices"],
   data() {
     return {
       paymentTermsOptions: [
@@ -124,9 +126,37 @@ export default {
       invoiceDate: "",
     };
   },
-  computed: {
-    submitForm() {
-      console.log("senderStreetAddress:", this.senderStreetAddress);
+  methods: {
+    addInvoice(
+      senderStreetAddress,
+      senderCity,
+      senderPostal,
+      senderCountry,
+      clientName,
+      clientEmail,
+      clientStreetAddress,
+      clientCity,
+      clientPostal,
+      clientCountry,
+      invoiceDate
+    ) {
+      const existingIds = this.invoices.map((inv) => inv.id);
+
+      const newInvoice = {
+        id: generateUniqueId(existingIds),
+        senderStreetAddress,
+        senderCity,
+        senderPostal,
+        senderCountry,
+        clientName,
+        clientEmail,
+        clientStreetAddress,
+        clientCity,
+        clientPostal,
+        clientCountry,
+        invoiceDate,
+      };
+      this.invoices.unshift(newInvoice);
     },
   },
 };

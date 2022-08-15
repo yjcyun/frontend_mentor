@@ -18,6 +18,9 @@ export default {
     TheHeader,
     EmptyInvoice,
   },
+  provide() {
+    return { invoices: this.invoices };
+  },
   data() {
     return {
       invoices: devData,
