@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form @submit.prevent="addInvoice">
     <h2>New Invoice</h2>
     <div class="form__wrapper">
       <!-- Bill From -->
@@ -7,9 +7,13 @@
         <legend class="form__section-title h4">Bill From</legend>
         <div class="form__form-control">
           <field-label for="senderStreetAddress" label="Street Address" />
-          <input-field type="text" id="senderStreetAddress" />
+          <input-field
+            type="text"
+            id="senderStreetAddress"
+            v-model="senderStreetAddress"
+          />
         </div>
-        <div class="form__col-group">
+        <!-- <div class="form__col-group">
           <div class="form__form-control">
             <field-label for="senderCity" label="City" />
             <input-field type="text" id="senderCity" />
@@ -22,10 +26,10 @@
             <field-label for="senderCountry" label="Country" />
             <input-field type="text" id="senderCountry" />
           </div>
-        </div>
+        </div> -->
       </fieldset>
       <!-- Bill To -->
-      <fieldset>
+      <!-- <fieldset>
         <legend class="form__section-title h4">Bill To</legend>
 
         <div class="form__form-control">
@@ -68,12 +72,13 @@
           <field-label for="description" label="Project Description" />
           <input type="text" id="description" />
         </div>
-      </fieldset>
+      </fieldset> -->
       <!-- Item List -->
-      <fieldset>
+      <!-- <fieldset>
         <legend class="h4">Item List</legend>
-      </fieldset>
+      </fieldset> -->
     </div>
+    <button type="submit">submit</button>
   </form>
 </template>
 
@@ -91,7 +96,13 @@ export default {
         { value: 14, label: "Net 14 Day" },
         { value: 30, label: "Net 30 Day" },
       ],
+      senderStreetAddress: "",
     };
+  },
+  methods: {
+    addInvoice() {
+      console.log("senderStreetAddress:", this.senderStreetAddress);
+    },
   },
 };
 </script>
