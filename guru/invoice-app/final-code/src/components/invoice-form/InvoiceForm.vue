@@ -1,93 +1,105 @@
 <template>
-  <form @submit.prevent="addInvoice">
+  <form @submit.prevent="submitForm">
     <h2>New Invoice</h2>
     <div class="form__wrapper">
       <!-- Bill From -->
       <fieldset>
         <legend class="form__section-title h4">Bill From</legend>
         <div class="form__form-control">
-          <field-label for="senderStreetAddress" label="Street Address" />
-          <input-field
+          <base-label for="senderStreetAddress" label="Street Address" />
+          <base-input
             type="text"
             id="senderStreetAddress"
             v-model="senderStreetAddress"
           />
         </div>
-        <!-- <div class="form__col-group">
+        <div class="form__col-group">
           <div class="form__form-control">
             <field-label for="senderCity" label="City" />
-            <input-field type="text" id="senderCity" />
+            <base-input type="text" id="senderCity" v-model="senderCity" />
           </div>
           <div class="form__form-control">
             <field-label for="senderPostal" label="Post Code" />
-            <input-field type="text" id="senderPostal" />
+            <base-input type="text" id="senderPostal" v-model="senderPostal" />
           </div>
           <div class="form__form-control">
             <field-label for="senderCountry" label="Country" />
-            <input-field type="text" id="senderCountry" />
+            <base-input
+              type="text"
+              id="senderCountry"
+              v-model="senderCountry"
+            />
           </div>
-        </div> -->
+        </div>
       </fieldset>
       <!-- Bill To -->
-      <!-- <fieldset>
+      <fieldset>
         <legend class="form__section-title h4">Bill To</legend>
 
         <div class="form__form-control">
           <field-label for="clientName" label="Client's Name" />
-          <input-field type="text" id="clientName" />
+          <base-input type="text" id="clientName" v-model="clientName" />
         </div>
         <div class="form__form-control">
           <field-label for="clientEmail" label="Client's Email" />
-          <input-field type="text" id="clientEmail" />
+          <base-input type="text" id="clientEmail" v-model="clientEmail" />
         </div>
         <div class="form__form-control">
           <field-label for="clientStreetAddress" label="Street Address" />
-          <input-field type="text" id="clientStreetAddress" />
+          <base-input
+            type="text"
+            id="clientStreetAddress"
+            v-model="clientStreetAddress"
+          />
         </div>
         <div class="form__col-group">
           <div class="form__form-control">
             <field-label for="clientCity" label="City" />
-            <input-field type="text" id="clientCity" />
+            <base-input type="text" id="clientCity" v-model="clientCity" />
           </div>
           <div class="form__form-control">
             <field-label for="clientPostal" label="Post Code" />
-            <input-field type="text" id="clientPostal" />
+            <base-input type="text" id="clientPostal" v-model="clientPostal" />
           </div>
           <div class="form__form-control">
             <field-label for="clientCountry" label="Country" />
-            <input-field type="text" id="clientCountry" />
+            <base-input
+              type="text"
+              id="clientCountry"
+              v-model="clientCountry"
+            />
           </div>
         </div>
         <div class="form__col-group">
           <div class="form__form-control">
             <field-label for="invoiceDate" label="Invoice Date" />
-            <input-field type="date" id="invoiceDate" />
+            <base-input type="date" id="invoiceDate" v-model="invoiceDate" />
           </div>
           <div class="form__form-control">
             <field-label for="paymentTerms" label="Payment Terms" />
-            <select-field :options="paymentTermsOptions"></select-field>
+            <base-select :options="paymentTermsOptions"></base-select>
           </div>
         </div>
         <div class="form__form-control">
           <field-label for="description" label="Project Description" />
           <input type="text" id="description" />
         </div>
-      </fieldset> -->
+      </fieldset>
       <!-- Item List -->
-      <!-- <fieldset>
+      <fieldset>
         <legend class="h4">Item List</legend>
-      </fieldset> -->
+      </fieldset>
     </div>
     <button type="submit">submit</button>
   </form>
 </template>
 
 <script>
-import InputField from "./InputField.vue";
-import FieldLabel from "./FieldLabel.vue";
-import SelectField from "./SelectField.vue";
+import FieldLabel from "../ui/BaseLabel.vue";
+import SelectField from "../ui/BaseSelect.vue";
+
 export default {
-  components: { InputField, FieldLabel, SelectField },
+  components: { FieldLabel, SelectField },
   data() {
     return {
       paymentTermsOptions: [
@@ -97,10 +109,20 @@ export default {
         { value: 30, label: "Net 30 Day" },
       ],
       senderStreetAddress: "",
+      senderCity: "",
+      senderPostal: "",
+      senderCountry: "",
+      clientName: "",
+      clientEmail: "",
+      clientStreetAddress: "",
+      clientCity: "",
+      clientPostal: "",
+      clientCountry: "",
+      invoiceDate: "",
     };
   },
   methods: {
-    addInvoice() {
+    submitForm() {
       console.log("senderStreetAddress:", this.senderStreetAddress);
     },
   },

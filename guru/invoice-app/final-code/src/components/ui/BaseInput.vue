@@ -1,10 +1,10 @@
 <template>
-  <input class="h4" :name="name" v-model="value" @blur="onBlur($event)" />
+  <input class="h4" v-model="value" @blur="onBlur($event)" />
 </template>
 
 <script>
 export default {
-  props: ["modelValue", "name"],
+  props: ["modelValue"],
   emits: ["update:modelValue"],
   computed: {
     value: {
