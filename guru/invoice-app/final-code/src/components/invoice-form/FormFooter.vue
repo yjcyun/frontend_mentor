@@ -2,7 +2,9 @@
   <div class="form-footer">
     <div class="form-footer__wrapper" :class="mode">
       <template v-if="mode === 'create'">
-        <base-button type="button" mode="btn-3">Discard</base-button>
+        <base-button type="button" mode="btn-3" @click="closeForm"
+          >Discard</base-button
+        >
         <div class="form-footer__flex">
           <base-button type="button" mode="btn-4">Save as Draft</base-button>
           <base-button type="submit" mode="btn-2">Save & Send</base-button>
@@ -10,7 +12,9 @@
       </template>
       <template v-else>
         <div class="form-footer__flex">
-          <base-button type="button" mode="btn-3">Cancel</base-button>
+          <base-button type="button" mode="btn-3" @click="closeForm">
+            Cancel
+          </base-button>
           <base-button type="submit" mode="btn-2">Save Changes</base-button>
         </div>
       </template>
@@ -26,6 +30,7 @@ export default {
       displayGradient: "",
     };
   },
+  inject: ["closeForm"],
   mounted() {
     this.scollbarHandler();
     window.addEventListener("resize", this.scollbarHandler);

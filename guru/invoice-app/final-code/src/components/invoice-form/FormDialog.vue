@@ -1,6 +1,6 @@
 <template>
   <teleport to="body">
-    <div class="overlay"></div>
+    <div class="overlay" @click="closeForm"></div>
     <dialog open>
       <the-form></the-form>
     </dialog>
@@ -9,8 +9,10 @@
 
 <script>
 import TheForm from "./TheForm.vue";
+
 export default {
   components: { TheForm },
+  inject: ["closeForm"],
 };
 </script>
 

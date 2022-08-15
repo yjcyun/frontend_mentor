@@ -36,6 +36,12 @@ export default {
     addInvoice() {
       this.openForm = true;
     },
+    closeForm() {
+      this.openForm = false;
+    },
+  },
+  provide() {
+    return { closeForm: this.closeForm };
   },
 };
 </script>

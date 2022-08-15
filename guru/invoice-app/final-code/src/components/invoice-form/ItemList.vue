@@ -25,7 +25,9 @@
         </button>
       </div>
     </div>
-    <base-button mode="btn-6" @click="addNewItem">+ Add New Item</base-button>
+    <base-button type="button" mode="btn-6" @click="addNewItem"
+      >+ Add New Item</base-button
+    >
   </div>
 </template>
 
