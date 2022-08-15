@@ -107,7 +107,7 @@ button {
 .btn-6 {
   background-color: var(--color-white-F9);
   color: var(--color-blue-7E);
-  width: 350px;
+  width: 100%;
 }
 
 .btn-6:hover {

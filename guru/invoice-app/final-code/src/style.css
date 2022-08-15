@@ -86,6 +86,11 @@ input, select {
   width: 100%;
 }
 
+input::placeholder{
+  color: #0C0E16;
+  opacity: 0.4;
+}
+
 /* Typography */
 .h1 {
   font-weight: 700;

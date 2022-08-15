@@ -87,7 +87,8 @@
       </fieldset>
       <!-- Item List -->
       <fieldset>
-        <legend class="h4">Item List</legend>
+        <legend class="h4 item-list">Item List</legend>
+        <item-list></item-list>
       </fieldset>
     </div>
     <button type="submit">submit</button>
@@ -97,9 +98,10 @@
 <script>
 import FieldLabel from "../ui/BaseLabel.vue";
 import SelectField from "../ui/BaseSelect.vue";
+import ItemList from "./ItemList.vue";
 
 export default {
-  components: { FieldLabel, SelectField },
+  components: { FieldLabel, SelectField, ItemList },
   data() {
     return {
       paymentTermsOptions: [
@@ -121,7 +123,7 @@ export default {
       invoiceDate: "",
     };
   },
-  methods: {
+  computed: {
     submitForm() {
       console.log("senderStreetAddress:", this.senderStreetAddress);
     },
@@ -132,15 +134,15 @@ export default {
 <style scoped>
 form {
   padding: 56px;
-  padding-right: 32px;
+  padding-right: 26px;
   height: 100vh;
 }
 
 .form__wrapper {
   overflow: auto;
-  height: 100%;
+  height: calc(100% - 48px);
   margin-top: 48px;
-  padding-right: 26px;
+  padding-right: 13px;
 }
 
 .form__col-group {
@@ -166,5 +168,13 @@ fieldset {
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+legend.item-list {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 32px;
+  letter-spacing: -0.375px;
+  color: #777f98;
 }
 </style>
