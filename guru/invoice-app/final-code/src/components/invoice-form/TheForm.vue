@@ -91,7 +91,7 @@
         <item-list></item-list>
       </fieldset>
     </div>
-    <button type="submit">submit</button>
+    <form-footer mode="create"></form-footer>
   </form>
 </template>
 
@@ -99,9 +99,10 @@
 import FieldLabel from "../ui/BaseLabel.vue";
 import SelectField from "../ui/BaseSelect.vue";
 import ItemList from "./ItemList.vue";
+import FormFooter from "./FormFooter.vue";
 
 export default {
-  components: { FieldLabel, SelectField, ItemList },
+  components: { FieldLabel, SelectField, ItemList, FormFooter },
   data() {
     return {
       paymentTermsOptions: [
@@ -136,6 +137,8 @@ form {
   padding: 56px;
   padding-right: 26px;
   height: 100vh;
+  display: grid;
+  grid-template-rows: min-content 1fr 55px;
 }
 
 .form__wrapper {
@@ -168,6 +171,10 @@ fieldset {
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+fieldset:last-child {
+  margin-bottom: 16px;
 }
 
 legend.item-list {

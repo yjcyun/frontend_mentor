@@ -2,15 +2,15 @@
   <teleport to="body">
     <div class="overlay"></div>
     <dialog open>
-      <invoice-form></invoice-form>
+      <the-form></the-form>
     </dialog>
   </teleport>
 </template>
 
 <script>
-import InvoiceForm from "./InvoiceForm.vue";
+import TheForm from "./TheForm.vue";
 export default {
-  components: { InvoiceForm },
+  components: { TheForm },
 };
 </script>
 

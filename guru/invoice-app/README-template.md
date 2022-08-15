@@ -76,9 +76,14 @@ Typography of Spartan is now called League Spartan in Google Fonts.
 - Table component on invoice summary: How can I reduce the amount CSS? Should I have used CSS Grid / CSS flexbox instead of HTML table elements? Using CSS grid/flexbox might've been easier but what about semantic html? accessibility?
 Galaxy fold
 
-- I have a computed function which accepts an argument. Can I not pass in a prop as an argument? and call it in template? I need to use `methods` instead of `computed`
+- I have a computed function which accepts an argument. Can I not pass in a prop as an argument? and call it in template? I need to use `methods` instead of `computed`. Still not sure when to use methods and when to use computed
 
 - Need to create custom select component to customize the look
+
+- When there's no scrollbar, linear gradient background in the form shouldn't be displayed vs when there's a scrollbar, it should be displayed. Learned to use VueJS lifecyle method. 1)mounted(): function will execute before creating the components. 2)beforeUnmount to clean up any event listeners. And using v-bind in CSS. How do execute scrollbarHandler function everytime `element.scrollHeight` and `element.clientHeight` change? Bug: When new items are added, scrollbar appears and the linear-gradient background should appear but that's not happening
+
+- How to use string literals to type props? for example: I want the `mode = 'create' | 'edit'` 
+
 
 ### Continued development
 
