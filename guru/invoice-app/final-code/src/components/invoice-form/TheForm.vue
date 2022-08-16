@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="addInvoice">
+  <form @submit.prevent="submitForm">
     <h2>New Invoice</h2>
     <div class="form__wrapper">
       <!-- Bill From -->
@@ -82,7 +82,7 @@
         </div>
         <div class="form__form-control">
           <field-label for="description" label="Project Description" />
-          <input type="text" id="description" />
+          <input type="text" id="description" v-model="description" />
         </div>
       </fieldset>
       <!-- Item List -->
@@ -100,11 +100,10 @@ import FieldLabel from "../ui/BaseLabel.vue";
 import SelectField from "../ui/BaseSelect.vue";
 import ItemList from "./ItemList.vue";
 import FormFooter from "./FormFooter.vue";
-import generateUniqueId from "../../utils/unique-id";
 
 export default {
   components: { FieldLabel, SelectField, ItemList, FormFooter },
-  inject: ["invoices"],
+  inject: ["invoices", "addInvoice"],
   data() {
     return {
       paymentTermsOptions: [
@@ -124,39 +123,25 @@ export default {
       clientPostal: "",
       clientCountry: "",
       invoiceDate: "",
+      description: "",
     };
   },
   methods: {
-    addInvoice(
-      senderStreetAddress,
-      senderCity,
-      senderPostal,
-      senderCountry,
-      clientName,
-      clientEmail,
-      clientStreetAddress,
-      clientCity,
-      clientPostal,
-      clientCountry,
-      invoiceDate
-    ) {
-      const existingIds = this.invoices.map((inv) => inv.id);
-
-      const newInvoice = {
-        id: generateUniqueId(existingIds),
-        senderStreetAddress,
-        senderCity,
-        senderPostal,
-        senderCountry,
-        clientName,
-        clientEmail,
-        clientStreetAddress,
-        clientCity,
-        clientPostal,
-        clientCountry,
-        invoiceDate,
-      };
-      this.invoices.unshift(newInvoice);
+    submitForm() {
+      this.addInvoice(
+        this.senderStreetAddress,
+        this.senderCity,
+        this.senderPostal,
+        this.senderCountry,
+        this.clientName,
+        this.clientEmail,
+        this.clientStreetAddress,
+        this.clientCity,
+        this.clientPostal,
+        this.clientCountry,
+        this.invoiceDate,
+        this.description
+      );
     },
   },
 };
