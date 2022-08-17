@@ -1,30 +1,40 @@
 <template>
-  <div class="select__wrapper">
-    <div class="select h4" :class="addVisibleClass" tabindex="0">
-      <div class="select__trigger" @click="toggleSelectDropdown">
-        <span>{{ selectedOption.label }}</span>
-        <div class="arrow" :class="addRotateClass">
-          <img src="../../assets/icon-arrow-down.svg" alt="" />
+  <FormControl>
+    <FormLabel :labelFor="name" :label="label" :isInvalid="isInvalid" />
+    <div class="select__wrapper">
+      <div class="select h4" :class="addVisibleClass" tabindex="0">
+        <div class="select__trigger" @click="toggleSelectDropdown">
+          <span>{{ selectedOption.label }}</span>
+          <div class="arrow" :class="addRotateClass">
+            <img src="../../assets/icon-arrow-down.svg" alt="" />
+          </div>
+        </div>
+        <div class="select__options">
+          <span
+            v-for="option of options"
+            :key="option.value"
+            :data-value="option.value"
+            :class="addSelectedClass(option)"
+            @click="selectOption(option)"
+            class="select__option"
+            >{{ option.label }}</span
+          >
         </div>
       </div>
-      <div class="select__options">
-        <span
-          v-for="option of options"
-          :key="option.value"
-          :data-value="option.value"
-          :class="addSelectedClass(option)"
-          @click="selectOption(option)"
-          class="select__option"
-          >{{ option.label }}</span
-        >
-      </div>
     </div>
-  </div>
+  </FormControl>
 </template>
 
 <script>
 export default {
-  props: ["options"],
+  props: {
+    name: { type: String, default: "" },
+    label: { type: String, default: "" },
+    options: { type: Array, default: [] },
+    modelValue: { type: String },
+    isInvalid: { type: Boolean, default: false },
+    onBlur: { type: Function },
+  },
   data() {
     return {
       showOptions: false,

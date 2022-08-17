@@ -1,21 +1,26 @@
 <template>
   <div class="invoice-items">
     <div class="invoice-items__labels">
-      <base-label label="Item Name"></base-label>
-      <base-label label="Qty."></base-label>
-      <base-label label="Price"></base-label>
-      <base-label label="Total"></base-label>
+      <FormLabel label="Item Name"></FormLabel>
+      <FormLabel label="Qty."></FormLabel>
+      <FormLabel label="Price"></FormLabel>
+      <FormLabel label="Total"></FormLabel>
     </div>
     <div class="invoice-items__item" v-for="item in items" :key="item.itemId">
-      <base-input type="text" v-model="item.itemName"></base-input>
-      <base-input type="number" v-model="item.itemQty"></base-input>
-      <base-input
+      <FormInput
+        type="text"
+        v-model="item.itemName"
+        name="itemName"
+        :isInvalid="isInvalid"
+      />
+      <FormInput type="number" min="0" v-model="item.itemQty" name="itemQty" />
+      <FormInput
         type="number"
         placeholder="0.00"
-        min="0.01"
-        step="0.01"
+        min="0.00"
         v-model="item.itemPrice"
-      ></base-input>
+        name="itemPrice"
+      />
       <div class="invoice-items__item-total">
         <div class="invoice-items__item-total-total h4">
           {{ calculatedTotal(item.itemQty, item.itemPrice) }}
@@ -35,18 +40,17 @@
 import { v4 as uuidv4 } from "uuid";
 
 export default {
-  data() {
-    return {
-      items: [],
-    };
+  props: {
+    items: { type: Array, default: [] },
+    isInvalid: { type: Boolean, default: false },
+    "v-model": {},
   },
-  computed: {},
   methods: {
     addNewItem() {
       const newItem = {
         itemId: uuidv4(),
         itemName: "",
-        itemQty: "",
+        itemQty: null,
         itemPrice: null,
         itemTotal: "",
       };

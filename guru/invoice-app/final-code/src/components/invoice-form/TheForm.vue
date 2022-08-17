@@ -1,94 +1,128 @@
 <template>
-  <form @submit.prevent="submitForm">
+  <form @submit.prevent="submitForm" ref="form_ref">
     <h2>New Invoice</h2>
     <div class="form__wrapper">
       <!-- Bill From -->
       <fieldset>
         <legend class="form__section-title h4">Bill From</legend>
-        <div class="form__form-control">
-          <base-label for="senderStreetAddress" label="Street Address" />
-          <base-input
-            type="text"
-            id="senderStreetAddress"
-            v-model="senderStreetAddress"
+
+        <FormInput
+          :isInvalid="v$.fromStreetAddress.$error"
+          :onBlur="v$.fromStreetAddress.$touch"
+          name="fromStreetAddress"
+          label="Street Address"
+          v-model="fromStreetAddress"
+        />
+        <div class="form__cols">
+          <FormInput
+            :isInvalid="v$.fromCity.$error"
+            :onBlur="v$.fromCity.$touch"
+            name="fromCity"
+            label="City"
+            v-model="fromCity"
           />
-        </div>
-        <div class="form__col-group">
-          <div class="form__form-control">
-            <field-label for="senderCity" label="City" />
-            <base-input type="text" id="senderCity" v-model="senderCity" />
-          </div>
-          <div class="form__form-control">
-            <field-label for="senderPostal" label="Post Code" />
-            <base-input type="text" id="senderPostal" v-model="senderPostal" />
-          </div>
-          <div class="form__form-control">
-            <field-label for="senderCountry" label="Country" />
-            <base-input
-              type="text"
-              id="senderCountry"
-              v-model="senderCountry"
-            />
-          </div>
+          <FormInput
+            :isInvalid="v$.fromPost.$error"
+            :onBlur="v$.fromPost.$touch"
+            name="fromPost"
+            label="Post Code"
+            v-model="fromPost"
+          />
+          <FormInput
+            :isInvalid="v$.fromCountry.$error"
+            :onBlur="v$.fromCountry.$touch"
+            name="fromCountry"
+            label="Country"
+            v-model="fromCountry"
+          />
         </div>
       </fieldset>
       <!-- Bill To -->
       <fieldset>
         <legend class="form__section-title h4">Bill To</legend>
 
-        <div class="form__form-control">
-          <field-label for="clientName" label="Client's Name" />
-          <base-input type="text" id="clientName" v-model="clientName" />
-        </div>
-        <div class="form__form-control">
-          <field-label for="clientEmail" label="Client's Email" />
-          <base-input type="text" id="clientEmail" v-model="clientEmail" />
-        </div>
-        <div class="form__form-control">
-          <field-label for="clientStreetAddress" label="Street Address" />
-          <base-input
-            type="text"
-            id="clientStreetAddress"
-            v-model="clientStreetAddress"
+        <FormInput
+          :isInvalid="v$.clientName.$error"
+          :onBlur="v$.clientName.$touch"
+          name="clientName"
+          label="Client's Name"
+          v-model="clientName"
+        />
+        <FormInput
+          :isInvalid="v$.clientEmail.$error"
+          :onBlur="v$.clientEmail.$touch"
+          :errorMessage="v$.clientEmail.$errors[0]"
+          name="clientEmail"
+          label="Client's Email"
+          v-model="clientEmail"
+          placeholder="e.g. email@example.com"
+        />
+        <FormInput
+          :isInvalid="v$.toStreetAddress.$error"
+          :onBlur="v$.toStreetAddress.$touch"
+          name="toStreetAddress"
+          label="Street Address"
+          v-model="toStreetAddress"
+        />
+        <div class="form__cols">
+          <FormInput
+            :isInvalid="v$.toCity.$error"
+            :onBlur="v$.toCity.$touch"
+            name="toCity"
+            label="City"
+            v-model="toCity"
+          />
+          <FormInput
+            :isInvalid="v$.toPost.$error"
+            :onBlur="v$.toPost.$touch"
+            name="toPost"
+            label="Post Code"
+            v-model="toPost"
+          />
+          <FormInput
+            :isInvalid="v$.toCountry.$error"
+            :onBlur="v$.toCountry.$touch"
+            name="toCountry"
+            label="Country"
+            v-model="toCountry"
           />
         </div>
-        <div class="form__col-group">
-          <div class="form__form-control">
-            <field-label for="clientCity" label="City" />
-            <base-input type="text" id="clientCity" v-model="clientCity" />
-          </div>
-          <div class="form__form-control">
-            <field-label for="clientPostal" label="Post Code" />
-            <base-input type="text" id="clientPostal" v-model="clientPostal" />
-          </div>
-          <div class="form__form-control">
-            <field-label for="clientCountry" label="Country" />
-            <base-input
-              type="text"
-              id="clientCountry"
-              v-model="clientCountry"
-            />
-          </div>
+        <FormInput
+          :isInvalid="v$.toCountry.$error"
+          :onBlur="v$.toCountry.$touch"
+          name="toCountry"
+          label="Country"
+          v-model="toCountry"
+        />
+        <div class="form__cols">
+          <FormInput
+            :isInvalid="v$.invoiceDate.$error"
+            :onBlur="v$.invoiceDate.$touch"
+            name="invoiceDate"
+            label="Invoice Date"
+            v-model="invoiceDate"
+            type="date"
+          />
+          <FormSelect
+            name="invoiceDate"
+            label="Invoice Date"
+            :options="paymentTermsOptions"
+          />
         </div>
-        <div class="form__col-group">
-          <div class="form__form-control">
-            <field-label for="invoiceDate" label="Invoice Date" />
-            <base-input type="date" id="invoiceDate" v-model="invoiceDate" />
-          </div>
-          <div class="form__form-control">
-            <field-label for="paymentTerms" label="Payment Terms" />
-            <base-select :options="paymentTermsOptions"></base-select>
-          </div>
-        </div>
-        <div class="form__form-control">
-          <field-label for="description" label="Project Description" />
-          <input type="text" id="description" v-model="description" />
-        </div>
+        <FormInput
+          :isInvalid="v$.description.$error"
+          :onBlur="v$.description.$touch"
+          name="description"
+          label="Description"
+          v-model="description"
+          placeholder="e.g. Graphic Design Service"
+        />
       </fieldset>
       <!-- Item List -->
       <fieldset>
         <legend class="h4 item-list">Item List</legend>
-        <item-list></item-list>
+        <ItemList :items="items" />
+        <div>{{ v$.items.itemName }}</div>
       </fieldset>
     </div>
     <form-footer mode="create"></form-footer>
@@ -96,14 +130,16 @@
 </template>
 
 <script>
-import FieldLabel from "../ui/BaseLabel.vue";
-import SelectField from "../ui/BaseSelect.vue";
+import { useVuelidate } from "@vuelidate/core";
+import { required, email, helpers } from "@vuelidate/validators";
+
 import ItemList from "./ItemList.vue";
 import FormFooter from "./FormFooter.vue";
 
 export default {
-  components: { FieldLabel, SelectField, ItemList, FormFooter },
+  components: { ItemList, FormFooter },
   inject: ["invoices", "addInvoice"],
+  setup: () => ({ v$: useVuelidate() }),
   data() {
     return {
       paymentTermsOptions: [
@@ -112,37 +148,70 @@ export default {
         { value: 14, label: "Net 14 Day" },
         { value: 30, label: "Net 30 Day" },
       ],
-      senderStreetAddress: "",
-      senderCity: "",
-      senderPostal: "",
-      senderCountry: "",
+      fromStreetAddress: "",
+      fromCity: "",
+      fromPost: "",
+      fromCountry: "",
       clientName: "",
       clientEmail: "",
-      clientStreetAddress: "",
-      clientCity: "",
-      clientPostal: "",
-      clientCountry: "",
+      toStreetAddress: "",
+      toCity: "",
+      toPost: "",
+      toCountry: "",
       invoiceDate: "",
       description: "",
+      items: [],
+      itemName: "",
     };
   },
   methods: {
     submitForm() {
+      this.v$.$validate();
+      if (!this.v$.$error) {
+        console.log("succesffully submited");
+      } else {
+        console.log("form failed");
+      }
       this.addInvoice(
-        this.senderStreetAddress,
-        this.senderCity,
-        this.senderPostal,
-        this.senderCountry,
+        this.fromStreetAddress,
+        this.fromCity,
+        this.fromPost,
+        this.fromCountry,
         this.clientName,
         this.clientEmail,
-        this.clientStreetAddress,
-        this.clientCity,
-        this.clientPostal,
-        this.clientCountry,
+        this.toStreetAddress,
+        this.toCity,
+        this.toPost,
+        this.toCountry,
         this.invoiceDate,
-        this.description
+        this.description,
+        this.items
       );
     },
+  },
+  validations() {
+    return {
+      fromStreetAddress: { required },
+      fromCity: { required },
+      fromPost: { required },
+      fromCountry: { required },
+      clientName: { required },
+      clientEmail: {
+        required: helpers.withMessage("can't be empty", required),
+        email,
+      },
+      toStreetAddress: { required },
+      toCity: { required },
+      toPost: { required },
+      toCountry: { required },
+      invoiceDate: { required },
+      description: { required },
+      items: {
+        itemName: { required },
+        itemQty: { required },
+        itemPrice: { required },
+      },
+    };
   },
 };
 </script>
@@ -163,7 +232,7 @@ form {
   padding-right: 13px;
 }
 
-.form__col-group {
+.form__cols {
   display: flex;
   width: 100%;
   gap: 24px;
@@ -172,13 +241,6 @@ form {
 .form__section-title {
   color: var(--color-purple-7C);
   margin-bottom: 24px;
-}
-
-.form__form-control {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
 }
 
 fieldset {

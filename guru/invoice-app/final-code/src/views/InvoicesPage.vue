@@ -43,7 +43,8 @@ export default {
       clientPostal,
       clientCountry,
       invoiceDate,
-      description
+      description,
+      items
     ) {
       const existingIds = this.invoices.map((inv) => inv.id);
 
@@ -68,7 +69,9 @@ export default {
           postCode: clientPostal,
           country: clientCountry,
         },
+        items,
       };
+      console.log(newInvoice);
       this.invoices.unshift(newInvoice);
     },
   },
