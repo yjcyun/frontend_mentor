@@ -32,17 +32,18 @@ export default {
   },
   methods: {
     addInvoice(
-      senderStreetAddress,
-      senderCity,
-      senderPostal,
-      senderCountry,
+      fromStreetAddress,
+      fromCity,
+      fromPost,
+      fromCountry,
       clientName,
       clientEmail,
-      clientStreetAddress,
-      clientCity,
-      clientPostal,
-      clientCountry,
+      toStreetAddress,
+      toCity,
+      toPost,
+      toCountry,
       invoiceDate,
+      paymentTerms,
       description,
       items
     ) {
@@ -53,21 +54,21 @@ export default {
         createdAt: invoiceDate, //Date.now()
         paymentDue: invoiceDate,
         description,
-        paymentTerms: 7, // replace
+        paymentTerms,
         clientName,
         clientEmail,
         status: "pending",
         senderAddress: {
-          street: senderStreetAddress,
-          city: senderCity,
-          postCode: senderPostal,
-          country: senderCountry,
+          street: fromStreetAddress,
+          city: fromCity,
+          postCode: fromPost,
+          country: fromCountry,
         },
         clientAddress: {
-          street: clientStreetAddress,
-          city: clientCity,
-          postCode: clientPostal,
-          country: clientCountry,
+          street: toStreetAddress,
+          city: toCity,
+          postCode: toPost,
+          country: toCountry,
         },
         items,
       };

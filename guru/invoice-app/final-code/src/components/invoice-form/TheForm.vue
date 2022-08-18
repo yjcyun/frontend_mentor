@@ -104,9 +104,10 @@
             type="date"
           />
           <FormSelect
-            name="invoiceDate"
-            label="Invoice Date"
+            name="paymentTerms"
+            label="Payment Terms"
             :options="paymentTermsOptions"
+            :defaultOption="paymentTermsOptions[2]"
           />
         </div>
         <FormInput
@@ -123,6 +124,11 @@
         <legend class="h4 item-list">Item List</legend>
         <ItemList :items="items" ref="itemsRef" />
       </fieldset>
+      <div class="form__errors">
+        <p v-for="(err, index) in errors" :key="index" class="label__error">
+          - {{ err }}
+        </p>
+      </div>
     </div>
     <form-footer mode="create"></form-footer>
   </form>
@@ -137,10 +143,8 @@ import FormFooter from "./FormFooter.vue";
 
 export default {
   components: { ItemList, FormFooter },
-  inject: ["invoices", "addInvoice"],
-  setup: () => {
-    return { v$: useVuelidate() };
-  },
+  inject: ["invoices", "addInvoice", "closeForm"],
+  setup: () => ({ v$: useVuelidate() }),
   data() {
     return {
       paymentTermsOptions: [
@@ -149,45 +153,71 @@ export default {
         { value: 14, label: "Net 14 Day" },
         { value: 30, label: "Net 30 Day" },
       ],
-      fromStreetAddress: "",
-      fromCity: "",
-      fromPost: "",
-      fromCountry: "",
-      clientName: "",
-      clientEmail: "",
-      toStreetAddress: "",
-      toCity: "",
-      toPost: "",
-      toCountry: "",
+      fromStreetAddress: "dd",
+      fromCity: "dd",
+      fromPost: "dd",
+      fromCountry: "dd",
+      clientName: "dd",
+      clientEmail: "dd@email.com",
+      toStreetAddress: "dd",
+      toCity: "dd",
+      toPost: "dd",
+      toCountry: "dd",
       invoiceDate: "",
-      description: "",
+      paymentTerms: {},
+      description: "dd",
       items: [],
+      errors: [],
     };
   },
+  computed: {
+    getErrorMessages(error) {
+      if (error.$propertyPath.includes("item")) {
+        this.errors.push("An item must be added");
+      }
+    },
+  },
   methods: {
-    submitForm() {
-      const validatedResult = this.v$.$validate();
+    async submitForm() {
+      const validatedResult = await this.v$.$validate();
 
       if (!validatedResult) {
-        console.log("form failed", validatedResult);
+        const itemErrorMsg = "An item must be added";
+        const fieldErrorMsg = "All fields must be added";
+
+        // Q. How can I make this code better?
+        this.v$.$errors.forEach((err) => {
+          if (
+            err.$propertyPath.includes("item") &&
+            this.errors.indexOf(itemErrorMsg) === -1
+          ) {
+            this.errors.push(itemErrorMsg);
+          } else if (
+            !err.$propertyPath.includes("item") &&
+            this.errors.indexOf(fieldErrorMsg) === -1
+          ) {
+            this.errors.push(fieldErrorMsg);
+          }
+        });
       } else {
-        console.log("succesffully submited");
+        this.addInvoice(
+          this.fromStreetAddress,
+          this.fromCity,
+          this.fromPost,
+          this.fromCountry,
+          this.clientName,
+          this.clientEmail,
+          this.toStreetAddress,
+          this.toCity,
+          this.toPost,
+          this.toCountry,
+          this.invoiceDate,
+          this.paymentTerms.value,
+          this.description,
+          this.items
+        );
+        this.closeForm();
       }
-      this.addInvoice(
-        this.fromStreetAddress,
-        this.fromCity,
-        this.fromPost,
-        this.fromCountry,
-        this.clientName,
-        this.clientEmail,
-        this.toStreetAddress,
-        this.toCity,
-        this.toPost,
-        this.toCountry,
-        this.invoiceDate,
-        this.description,
-        this.items
-      );
     },
   },
   validations() {
@@ -207,11 +237,7 @@ export default {
       toCountry: { required },
       invoiceDate: { required },
       description: { required },
-      items: {
-        itemName: { required },
-        itemQty: { required },
-        itemPrice: { required },
-      },
+      items: { required },
     };
   },
 };
@@ -251,8 +277,8 @@ fieldset {
   gap: 24px;
 }
 
-fieldset:last-child {
-  margin-bottom: 16px;
+fieldset:last-of-type {
+  margin-bottom: 32px;
 }
 
 legend.item-list {
@@ -262,5 +288,9 @@ legend.item-list {
   letter-spacing: -0.375px;
   color: #777f98;
   margin-bottom: 16px;
+}
+
+.form__errors {
+  margin-bottom: 13px;
 }
 </style>

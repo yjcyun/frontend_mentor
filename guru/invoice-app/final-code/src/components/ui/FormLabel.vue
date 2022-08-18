@@ -32,12 +32,4 @@ label span .error {
 .label__title.error {
   color: var(--color-red-EC);
 }
-
-.label__error {
-  color: var(--color-red-EC);
-  font-weight: 600;
-  font-size: 10px;
-  line-height: 15px;
-  letter-spacing: -0.208333px;
-}
 </style>

@@ -31,6 +31,7 @@ export default {
     name: { type: String, default: "" },
     label: { type: String, default: "" },
     options: { type: Array, default: [] },
+    defaultOption: { type: Object },
     modelValue: { type: String },
     isInvalid: { type: Boolean, default: false },
     onBlur: { type: Function },
@@ -38,7 +39,7 @@ export default {
   data() {
     return {
       showOptions: false,
-      selectedOption: this.options[3],
+      selectedOption: this.defaultOption,
     };
   },
   methods: {
@@ -48,6 +49,9 @@ export default {
     selectOption(el) {
       this.selectedOption = el;
       this.showOptions = false;
+
+      console.log(this.$parent[this.name]);
+      this.$parent[this.name] = el;
     },
     closeSelectDropdown(e) {
       if (!this.$el.contains(e.target)) {
@@ -68,6 +72,7 @@ export default {
   },
   mounted() {
     document.addEventListener("click", this.closeSelectDropdown);
+    this.$parent[this.name] = this.defaultOption;
   },
 };
 </script>
