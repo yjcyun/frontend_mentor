@@ -9,30 +9,29 @@
     />
     <input
       :class="isInvalid ? 'error' : ''"
-      :name="name"
       :id="name"
       :type="type"
-      :placeholder="placeholder"
-      :min="min"
       class="h4"
       v-model="value"
+      v-bind="$attrs"
       @blur="onBlur"
+      @input="onInput"
     />
   </FormControl>
 </template>
 
 <script>
 export default {
+  inheritAttrs: false,
   props: {
     name: { type: String, default: "" },
     type: { type: String, default: "text" },
-    min: { type: String, default: "" },
     label: { type: String, default: "" },
     errorMessage: { type: Object, default: { $message: "can't be empty" } },
     modelValue: { type: [String, Number] },
     isInvalid: { type: Boolean, default: false },
     onBlur: { type: Function },
-    placeholder: { type: String, default: "" },
+    onInput: { type: Function },
   },
   emits: ["update:modelValue"],
   computed: {
@@ -71,6 +70,13 @@ input[type="number"] {
 input::placeholder {
   color: var(--color-black-0C);
   opacity: 0.4;
+}
+
+input:disabled {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  color: var(--color-blue-88);
 }
 
 input.error {

@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="submitForm" ref="form_ref">
+  <form @submit.prevent="submitForm">
     <h2>New Invoice</h2>
     <div class="form__wrapper">
       <!-- Bill From -->
@@ -121,8 +121,7 @@
       <!-- Item List -->
       <fieldset>
         <legend class="h4 item-list">Item List</legend>
-        <ItemList :items="items" />
-        <div>{{ v$.items.itemName }}</div>
+        <ItemList :items="items" ref="itemsRef" />
       </fieldset>
     </div>
     <form-footer mode="create"></form-footer>
@@ -139,7 +138,9 @@ import FormFooter from "./FormFooter.vue";
 export default {
   components: { ItemList, FormFooter },
   inject: ["invoices", "addInvoice"],
-  setup: () => ({ v$: useVuelidate() }),
+  setup: () => {
+    return { v$: useVuelidate() };
+  },
   data() {
     return {
       paymentTermsOptions: [
@@ -161,16 +162,16 @@ export default {
       invoiceDate: "",
       description: "",
       items: [],
-      itemName: "",
     };
   },
   methods: {
     submitForm() {
-      this.v$.$validate();
-      if (!this.v$.$error) {
-        console.log("succesffully submited");
+      const validatedResult = this.v$.$validate();
+
+      if (!validatedResult) {
+        console.log("form failed", validatedResult);
       } else {
-        console.log("form failed");
+        console.log("succesffully submited");
       }
       this.addInvoice(
         this.fromStreetAddress,
@@ -260,5 +261,6 @@ legend.item-list {
   line-height: 32px;
   letter-spacing: -0.375px;
   color: #777f98;
+  margin-bottom: 16px;
 }
 </style>

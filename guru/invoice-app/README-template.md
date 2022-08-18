@@ -84,6 +84,10 @@ Galaxy fold
 
 - How to use string literals to type props? for example: I want the `mode = 'create' | 'edit'` 
 
+- How to get default props in custom input field?
+1) inheritAttrs: false
+2) `<input v-bind="$attrs"/>`
+
 
 ### Continued development
 
