@@ -2,16 +2,19 @@
   <teleport to="body">
     <div class="overlay" @click="closeForm"></div>
     <dialog open>
-      <the-form></the-form>
+      <InvoiceCreate />
+      <!-- <InvoiceEdit /> -->
     </dialog>
   </teleport>
 </template>
 
 <script>
 import TheForm from "./TheForm.vue";
+import InvoiceCreate from "./InvoiceCreate.vue";
+import InvoiceEdit from "./InvoiceEdit.vue";
 
 export default {
-  components: { TheForm },
+  components: { TheForm, InvoiceCreate, InvoiceEdit },
   inject: ["closeForm"],
 };
 </script>

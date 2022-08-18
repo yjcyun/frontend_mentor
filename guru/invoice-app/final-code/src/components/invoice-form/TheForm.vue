@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="submitForm">
-    <h2>New Invoice</h2>
+    <slot name="header"></slot>
     <div class="form__wrapper">
       <!-- Bill From -->
       <fieldset>
@@ -130,7 +130,7 @@
         </p>
       </div>
     </div>
-    <form-footer mode="create"></form-footer>
+    <slot name="footer"></slot>
   </form>
 </template>
 
@@ -143,7 +143,7 @@ import FormFooter from "./FormFooter.vue";
 
 export default {
   components: { ItemList, FormFooter },
-  inject: ["invoices", "addInvoice", "closeForm"],
+  inject: ["invoices", "sendInvoice", "closeForm"],
   setup: () => ({ v$: useVuelidate() }),
   data() {
     return {
@@ -153,19 +153,19 @@ export default {
         { value: 14, label: "Net 14 Day" },
         { value: 30, label: "Net 30 Day" },
       ],
-      fromStreetAddress: "dd",
-      fromCity: "dd",
-      fromPost: "dd",
-      fromCountry: "dd",
-      clientName: "dd",
-      clientEmail: "dd@email.com",
-      toStreetAddress: "dd",
-      toCity: "dd",
-      toPost: "dd",
-      toCountry: "dd",
+      fromStreetAddress: "",
+      fromCity: "",
+      fromPost: "",
+      fromCountry: "",
+      clientName: "",
+      clientEmail: "",
+      toStreetAddress: "",
+      toCity: "",
+      toPost: "",
+      toCountry: "",
       invoiceDate: "",
       paymentTerms: {},
-      description: "dd",
+      description: "",
       items: [],
       errors: [],
     };
@@ -200,7 +200,7 @@ export default {
           }
         });
       } else {
-        this.addInvoice(
+        this.sendInvoice(
           this.fromStreetAddress,
           this.fromCity,
           this.fromPost,

@@ -22,7 +22,7 @@ export default {
   provide() {
     return {
       invoices: this.invoices,
-      addInvoice: this.addInvoice,
+      sendInvoice: this.sendInvoice,
     };
   },
   data() {
@@ -31,7 +31,7 @@ export default {
     };
   },
   methods: {
-    addInvoice(
+    sendInvoice(
       fromStreetAddress,
       fromCity,
       fromPost,
