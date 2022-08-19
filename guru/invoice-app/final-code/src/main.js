@@ -11,10 +11,12 @@ import FormSelect from "./components/ui/FormSelect.vue";
 import FormControl from "./components/ui/FormControl.vue";
 
 import router from "./routes";
+import { store } from "./store";
 
 const app = createApp(App);
 
 app.use(router);
+app.use(store);
 
 app.component("base-button", BaseButton);
 app.component("base-status", BaseStatus);

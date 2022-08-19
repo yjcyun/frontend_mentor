@@ -2,41 +2,42 @@
   <div class="invoice-items__wrapper">
     <FormInput
       type="text"
-      v-model="itemName"
-      name="itemName"
-      :isInvalid="v$.itemName.$error"
-      :onBlur="v$.itemName.$touch"
-      @input="updateField($event, 'itemName')"
+      v-model="name"
+      name="name"
+      :isInvalid="v$.name.$error"
+      :onBlur="v$.name.$touch"
+      @input="updateField($event, 'name')"
     />
     <FormInput
       type="number"
       min="0"
-      v-model="itemQty"
-      name="itemQty"
-      :isInvalid="v$.itemQty.$error"
-      :onBlur="v$.itemQty.$touch"
-      @input="updateField($event, 'itemQty')"
+      v-model="quantity"
+      name="quantity"
+      :isInvalid="v$.quantity.$error"
+      :onBlur="v$.quantity.$touch"
+      @input="updateField($event, 'quantity')"
     />
     <FormInput
       type="number"
       placeholder="0.00"
       min="0.00"
-      v-model="itemPrice"
-      name="itemPrice"
-      :isInvalid="v$.itemPrice.$error"
-      :onBlur="v$.itemPrice.$touch"
-      @input="updateField($event, 'itemPrice')"
+      step="0.01"
+      v-model="price"
+      name="price"
+      :isInvalid="v$.price.$error"
+      :onBlur="v$.price.$touch"
+      @input="updateField($event, 'price')"
     />
     <div class="invoice-items__item-total">
       <FormInput
         type="number"
         min="0.00"
-        name="itemTotal"
-        v-model="itemTotal"
+        name="total"
+        v-model="total"
         disabled
         @input="calculateTotal"
       />
-      <button type="button" @click="removeItem(itemId)">
+      <button type="button" @click="removeItem(name)">
         <img src="../../assets/icon-delete.svg" alt="Trash can icon" />
       </button>
     </div>
@@ -46,43 +47,53 @@
 <script>
 import useVuelidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
+import { mapGetters } from "vuex";
 
 export default {
-  props: ["removeItem", "index", "itemId"],
+  props: ["removeItem", "index", "item"],
   setup() {
     return { v$: useVuelidate() };
   },
   data() {
     return {
-      itemName: "",
-      itemQty: null,
-      itemPrice: null,
-      itemTotal: Number(0).toFixed(2),
+      name: "",
+      quantity: null,
+      price: null,
+      total: Number(0).toFixed(2),
     };
+  },
+  created() {
+    if (this.getEditInvoice()) {
+      this.name = this.item.name;
+      this.quantity = this.item.quantity;
+      this.price = this.item.price;
+      this.total = Number(this.item.total).toFixed(2);
+    }
   },
   computed: {
     calculateTotal() {
-      // Calculate itemTotal
-      this.itemTotal =
-        this.itemQty && this.itemPrice
-          ? (+this.itemQty * +this.itemPrice).toFixed(2)
+      // Calculate total
+      this.total =
+        this.quantity && this.price
+          ? (+this.quantity * +this.price).toFixed(2)
           : Number(0).toFixed(2);
 
-      // Update itemTotal
-      this.$parent.items[this.index].itemTotal = this.itemTotal;
+      // Update total
+      this.$parent.items[this.index].total = this.total;
     },
   },
   methods: {
+    ...mapGetters(["getEditInvoice"]),
     updateField(event, name) {
       this.$parent.items[this.index][name] = event.target.value;
     },
   },
   validations() {
     return {
-      itemName: { required },
-      itemQty: { required },
-      itemPrice: { required },
-      itemTotal: { required },
+      name: { required },
+      quantity: { required },
+      price: { required },
+      total: { required },
     };
   },
 };

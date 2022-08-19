@@ -1,39 +1,42 @@
 <template>
   <form @submit.prevent="submitForm">
-    <slot name="header"></slot>
-    <div class="form__wrapper">
+    <h2 class="form__header">
+      {{ isEditMode ? "Edit" : "New Invoice" }} <span v-if="isEditMode">#</span
+      >{{ isEditMode ? newInvoice.id : "" }}
+    </h2>
+    <div class="form__body">
       <!-- Bill From -->
       <fieldset>
         <legend class="form__section-title h4">Bill From</legend>
 
         <FormInput
-          :isInvalid="v$.fromStreetAddress.$error"
-          :onBlur="v$.fromStreetAddress.$touch"
-          name="fromStreetAddress"
+          :isInvalid="getError('senderAddress.street')"
+          :onBlur="onBlur('senderAddress.street')"
+          name="senderAddress-street"
           label="Street Address"
-          v-model="fromStreetAddress"
+          v-model="newInvoice.senderAddress.street"
         />
         <div class="form__cols">
           <FormInput
-            :isInvalid="v$.fromCity.$error"
-            :onBlur="v$.fromCity.$touch"
-            name="fromCity"
+            :isInvalid="getError('senderAddress.city')"
+            :onBlur="onBlur('senderAddress.city')"
+            name="senderAddress-city"
             label="City"
-            v-model="fromCity"
+            v-model="newInvoice.senderAddress.city"
           />
           <FormInput
-            :isInvalid="v$.fromPost.$error"
-            :onBlur="v$.fromPost.$touch"
-            name="fromPost"
+            :isInvalid="getError('senderAddress.postCode')"
+            :onBlur="onBlur('senderAddress.postCode')"
+            name="senderAddress-postCode"
             label="Post Code"
-            v-model="fromPost"
+            v-model="newInvoice.senderAddress.postCode"
           />
           <FormInput
-            :isInvalid="v$.fromCountry.$error"
-            :onBlur="v$.fromCountry.$touch"
-            name="fromCountry"
+            :isInvalid="getError('senderAddress.country')"
+            :onBlur="onBlur('senderAddress.country')"
+            name="senderAddress-country"
             label="Country"
-            v-model="fromCountry"
+            v-model="newInvoice.senderAddress.country"
           />
         </div>
       </fieldset>
@@ -42,65 +45,58 @@
         <legend class="form__section-title h4">Bill To</legend>
 
         <FormInput
-          :isInvalid="v$.clientName.$error"
-          :onBlur="v$.clientName.$touch"
+          :isInvalid="getError('clientName')"
+          :onBlur="onBlur('clientName')"
           name="clientName"
           label="Client's Name"
-          v-model="clientName"
+          v-model="newInvoice.clientName"
         />
         <FormInput
-          :isInvalid="v$.clientEmail.$error"
-          :onBlur="v$.clientEmail.$touch"
-          :errorMessage="v$.clientEmail.$errors[0]"
+          :isInvalid="getError('clientEmail')"
+          :onBlur="onBlur('clientEmail')"
+          :errorMessage="v$.newInvoice.clientEmail.$errors[0]"
           name="clientEmail"
           label="Client's Email"
-          v-model="clientEmail"
+          v-model="newInvoice.clientEmail"
           placeholder="e.g. email@example.com"
         />
         <FormInput
-          :isInvalid="v$.toStreetAddress.$error"
-          :onBlur="v$.toStreetAddress.$touch"
-          name="toStreetAddress"
+          :isInvalid="getError('clientAddress.street')"
+          :onBlur="onBlur('clientAddress.street')"
+          name="clientAddress-street"
           label="Street Address"
-          v-model="toStreetAddress"
+          v-model="newInvoice.clientAddress.street"
         />
         <div class="form__cols">
           <FormInput
-            :isInvalid="v$.toCity.$error"
-            :onBlur="v$.toCity.$touch"
-            name="toCity"
+            :isInvalid="getError('clientAddress.city')"
+            :onBlur="onBlur('clientAddress.city')"
+            name="clientAddress-city"
             label="City"
-            v-model="toCity"
+            v-model="newInvoice.clientAddress.city"
           />
           <FormInput
-            :isInvalid="v$.toPost.$error"
-            :onBlur="v$.toPost.$touch"
-            name="toPost"
+            :isInvalid="getError('clientAddress.postCode')"
+            :onBlur="onBlur('clientAddress.postCode')"
+            name="clientAddress-postCode"
             label="Post Code"
-            v-model="toPost"
+            v-model="newInvoice.clientAddress.postCode"
           />
           <FormInput
-            :isInvalid="v$.toCountry.$error"
-            :onBlur="v$.toCountry.$touch"
-            name="toCountry"
+            :isInvalid="getError('clientAddress.country')"
+            :onBlur="onBlur('clientAddress.country')"
+            name="clientAddress-country"
             label="Country"
-            v-model="toCountry"
+            v-model="newInvoice.clientAddress.country"
           />
         </div>
-        <FormInput
-          :isInvalid="v$.toCountry.$error"
-          :onBlur="v$.toCountry.$touch"
-          name="toCountry"
-          label="Country"
-          v-model="toCountry"
-        />
         <div class="form__cols">
           <FormInput
-            :isInvalid="v$.invoiceDate.$error"
-            :onBlur="v$.invoiceDate.$touch"
+            :isInvalid="getError('createdAt')"
+            :onBlur="onBlur('createdAt')"
             name="invoiceDate"
             label="Invoice Date"
-            v-model="invoiceDate"
+            v-model="newInvoice.createdAt"
             type="date"
           />
           <FormSelect
@@ -111,18 +107,18 @@
           />
         </div>
         <FormInput
-          :isInvalid="v$.description.$error"
-          :onBlur="v$.description.$touch"
+          :isInvalid="getError('description')"
+          :onBlur="onBlur('description')"
           name="description"
           label="Description"
-          v-model="description"
+          v-model="newInvoice.description"
           placeholder="e.g. Graphic Design Service"
         />
       </fieldset>
       <!-- Item List -->
       <fieldset>
         <legend class="h4 item-list">Item List</legend>
-        <ItemList :items="items" ref="itemsRef" />
+        <ItemList :items="newInvoice.items" />
       </fieldset>
       <div class="form__errors">
         <p v-for="(err, index) in errors" :key="index" class="label__error">
@@ -130,20 +126,22 @@
         </p>
       </div>
     </div>
-    <slot name="footer"></slot>
+    <FormFooter :mode="isEditMode ? 'edit' : 'create'" />
   </form>
 </template>
 
 <script>
 import { useVuelidate } from "@vuelidate/core";
-import { required, email, helpers } from "@vuelidate/validators";
+import { required, email } from "@vuelidate/validators";
+import { mapActions, mapGetters } from "vuex";
 
 import ItemList from "./ItemList.vue";
 import FormFooter from "./FormFooter.vue";
+import generateUniqueId from "../../utils/unique-id";
+import { get } from "../../utils/get-value-object";
 
 export default {
   components: { ItemList, FormFooter },
-  inject: ["invoices", "sendInvoice", "closeForm"],
   setup: () => ({ v$: useVuelidate() }),
   data() {
     return {
@@ -153,31 +151,51 @@ export default {
         { value: 14, label: "Net 14 Day" },
         { value: 30, label: "Net 30 Day" },
       ],
-      fromStreetAddress: "",
-      fromCity: "",
-      fromPost: "",
-      fromCountry: "",
-      clientName: "",
-      clientEmail: "",
-      toStreetAddress: "",
-      toCity: "",
-      toPost: "",
-      toCountry: "",
-      invoiceDate: "",
-      paymentTerms: {},
-      description: "",
-      items: [],
+      newInvoice: {
+        id: this.getNewInvoiceId(),
+        status: "pending",
+        createdAt: null,
+        paymentDue: null,
+        description: "",
+        paymentTerms: "",
+        clientName: "",
+        clientEmail: "",
+        senderAddress: {
+          street: "",
+          city: "",
+          postCode: "",
+          country: "",
+        },
+        clientAddress: {
+          street: "",
+          city: "",
+          postCode: "",
+          country: "",
+        },
+        items: [],
+        total: null,
+      },
       errors: [],
     };
   },
+  created() {
+    if (this.getEditInvoice()) {
+      const currentInvoice = this.$store.getters.getInvoiceById(
+        this.$route.params.invoiceId
+      );
+      this.newInvoice = currentInvoice;
+
+      console.log(currentInvoice);
+    }
+  },
   computed: {
-    getErrorMessages(error) {
-      if (error.$propertyPath.includes("item")) {
-        this.errors.push("An item must be added");
-      }
+    isEditMode() {
+      return this.$store.getters.getEditInvoice;
     },
   },
   methods: {
+    ...mapActions(["toggleModal", "addInvoice", "saveInvoiceById"]),
+    ...mapGetters(["getInvoices", "getEditInvoice", "getInvoiceById"]),
     async submitForm() {
       const validatedResult = await this.v$.$validate();
 
@@ -199,46 +217,50 @@ export default {
             this.errors.push(fieldErrorMsg);
           }
         });
-      } else {
-        this.sendInvoice(
-          this.fromStreetAddress,
-          this.fromCity,
-          this.fromPost,
-          this.fromCountry,
-          this.clientName,
-          this.clientEmail,
-          this.toStreetAddress,
-          this.toCity,
-          this.toPost,
-          this.toCountry,
-          this.invoiceDate,
-          this.paymentTerms.value,
-          this.description,
-          this.items
-        );
-        this.closeForm();
+        return;
       }
+
+      if (this.isEditMode) {
+        this.saveInvoiceById({ id: this.newInvoice.id, data: this.newInvoice });
+      } else {
+        this.addInvoice(this.newInvoice);
+      }
+      this.toggleModal();
+    },
+    getNewInvoiceId() {
+      const invoices = this.getInvoices();
+      const existingIds = invoices.map((inv) => inv.id);
+
+      return generateUniqueId(existingIds);
+    },
+    onBlur(path) {
+      return get(this.v$.newInvoice, path).$touch;
+    },
+    getError(path) {
+      return get(this.v$.newInvoice, path).$error;
     },
   },
-  validations() {
-    return {
-      fromStreetAddress: { required },
-      fromCity: { required },
-      fromPost: { required },
-      fromCountry: { required },
-      clientName: { required },
-      clientEmail: {
-        required: helpers.withMessage("can't be empty", required),
-        email,
-      },
-      toStreetAddress: { required },
-      toCity: { required },
-      toPost: { required },
-      toCountry: { required },
-      invoiceDate: { required },
+  validations: {
+    newInvoice: {
+      createdAt: { required },
       description: { required },
+      paymentTerms: { required },
+      clientName: { required },
+      clientEmail: { required, email },
+      senderAddress: {
+        street: { required },
+        city: { required },
+        postCode: { required },
+        country: { required },
+      },
+      clientAddress: {
+        street: { required },
+        city: { required },
+        postCode: { required },
+        country: { required },
+      },
       items: { required },
-    };
+    },
   },
 };
 </script>
@@ -252,7 +274,14 @@ form {
   grid-template-rows: min-content 1fr 55px;
 }
 
-.form__wrapper {
+.form__header {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.5px;
+}
+
+.form__body {
   overflow: auto;
   height: calc(100% - 48px);
   margin-top: 48px;

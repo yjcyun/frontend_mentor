@@ -1,6 +1,7 @@
 <template>
   <div class="layout">
     <the-sidebar></the-sidebar>
+    <FormDialog v-if="isInvoiceModalOpen" />
     <main :class="smallPadding">
       <div class="wrapper"><slot></slot></div>
     </main>
@@ -9,12 +10,16 @@
 
 <script>
 import TheSidebar from "./TheSidebar.vue";
+import FormDialog from "../invoice-form/FormDialog.vue";
 
 export default {
-  components: { TheSidebar },
+  components: { TheSidebar, FormDialog },
   computed: {
     smallPadding() {
       return this.$route.params.invoiceId ? "sm-padding" : "";
+    },
+    isInvoiceModalOpen() {
+      return this.$store.state.invoiceModal;
     },
   },
 };

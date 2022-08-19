@@ -49,9 +49,8 @@ export default {
     selectOption(el) {
       this.selectedOption = el;
       this.showOptions = false;
-
-      console.log(this.$parent[this.name]);
-      this.$parent[this.name] = el;
+      // ! Todo: dynamic nested parent object
+      this.$parent.newInvoice[this.name] = el.value;
     },
     closeSelectDropdown(e) {
       if (!this.$el.contains(e.target)) {
@@ -72,7 +71,8 @@ export default {
   },
   mounted() {
     document.addEventListener("click", this.closeSelectDropdown);
-    this.$parent[this.name] = this.defaultOption;
+
+    this.$parent.newInvoice[this.name] = this.defaultOption.value;
   },
 };
 </script>

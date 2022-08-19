@@ -2,20 +2,22 @@
   <teleport to="body">
     <div class="overlay" @click="closeForm"></div>
     <dialog open>
-      <InvoiceCreate />
-      <!-- <InvoiceEdit /> -->
+      <TheForm />
     </dialog>
   </teleport>
 </template>
 
 <script>
 import TheForm from "./TheForm.vue";
-import InvoiceCreate from "./InvoiceCreate.vue";
-import InvoiceEdit from "./InvoiceEdit.vue";
 
 export default {
-  components: { TheForm, InvoiceCreate, InvoiceEdit },
-  inject: ["closeForm"],
+  components: { TheForm },
+
+  methods: {
+    closeForm() {
+      this.$store.commit("toggleModal");
+    },
+  },
 };
 </script>
 

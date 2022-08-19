@@ -8,11 +8,11 @@
     </div>
     <SingleItem
       v-for="(item, index) in items"
-      :key="item.itemId"
-      :itemId="item.itemId"
+      :key="item.name"
       :index="index"
-      :ref="item.itemId"
+      :ref="item.name"
       :removeItem="removeItem"
+      :item="item"
     />
     <base-button type="button" mode="btn-6" @click.prevent="addNewItem"
       >+ Add New Item</base-button
@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import { v4 as uuidv4 } from "uuid";
 import SingleItem from "./SingleItem.vue";
 
 export default {
@@ -33,16 +32,15 @@ export default {
   methods: {
     addNewItem() {
       const newItem = {
-        itemId: uuidv4(),
-        itemName: "",
-        itemQty: null,
-        itemPrice: null,
-        itemTotal: 0,
+        name: "",
+        quantity: null,
+        price: null,
+        total: null,
       };
       this.items.push(newItem);
     },
-    removeItem(itemId) {
-      const itemIndex = this.items.findIndex((item) => item.itemId === itemId);
+    removeItem(name) {
+      const itemIndex = this.items.findIndex((item) => item.name === name);
       this.items.splice(itemIndex, 1);
     },
   },

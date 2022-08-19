@@ -30,7 +30,6 @@ export default {
       displayGradient: "",
     };
   },
-  inject: ["closeForm"],
   mounted() {
     this.scollbarHandler();
     window.addEventListener("resize", this.scollbarHandler);
@@ -40,12 +39,15 @@ export default {
   },
   methods: {
     scollbarHandler() {
-      const element = document.querySelector(".form__wrapper");
+      const element = document.querySelector(".form__body");
       if (element.scrollHeight > element.clientHeight) {
         this.displayGradient = "block";
       } else {
         this.displayGradient = "none";
       }
+    },
+    closeForm() {
+      this.$store.commit("toggleModal");
     },
   },
 };

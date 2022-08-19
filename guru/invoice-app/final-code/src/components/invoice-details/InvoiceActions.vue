@@ -6,7 +6,7 @@
     </div>
 
     <div class="invoice-actions__cta">
-      <base-button mode="btn-3" @click="editInvoice">Edit</base-button>
+      <base-button mode="btn-3" @click="openInvoiceModal">Edit</base-button>
       <base-button mode="btn-5">Delete</base-button>
       <base-button mode="btn-2">Mark as Paid</base-button>
     </div>
@@ -21,8 +21,9 @@ export default {
   components: { BaseStatus, BaseButton },
   props: ["status"],
   methods: {
-    editInvoice() {
-      console.log("clicked!");
+    openInvoiceModal() {
+      this.$store.dispatch("toggleEditInvoice", true);
+      this.$store.commit("toggleModal");
     },
   },
 };
