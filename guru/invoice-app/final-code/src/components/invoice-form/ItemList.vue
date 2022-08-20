@@ -8,9 +8,8 @@
     </div>
     <SingleItem
       v-for="(item, index) in items"
-      :key="item.name"
+      :key="item.id || index"
       :index="index"
-      :ref="item.name"
       :removeItem="removeItem"
       :item="item"
     />
@@ -21,6 +20,8 @@
 </template>
 
 <script>
+import { v4 as uuidv4 } from "uuid";
+
 import SingleItem from "./SingleItem.vue";
 
 export default {
@@ -32,6 +33,7 @@ export default {
   methods: {
     addNewItem() {
       const newItem = {
+        id: uuidv4(),
         name: "",
         quantity: null,
         price: null,

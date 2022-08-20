@@ -134,11 +134,11 @@
 import { useVuelidate } from "@vuelidate/core";
 import { required, email } from "@vuelidate/validators";
 import { mapActions, mapGetters } from "vuex";
+import { cloneDeep, get } from "lodash";
 
 import ItemList from "./ItemList.vue";
 import FormFooter from "./FormFooter.vue";
 import generateUniqueId from "../../utils/unique-id";
-import { get } from "../../utils/get-value-object";
 
 export default {
   components: { ItemList, FormFooter },
@@ -179,13 +179,11 @@ export default {
     };
   },
   created() {
-    if (this.getEditInvoice()) {
+    if (this.isEditMode) {
       const currentInvoice = this.$store.getters.getInvoiceById(
         this.$route.params.invoiceId
       );
-      this.newInvoice = currentInvoice;
-
-      console.log(currentInvoice);
+      this.newInvoice = cloneDeep(currentInvoice);
     }
   },
   computed: {
@@ -196,6 +194,7 @@ export default {
   methods: {
     ...mapActions(["toggleModal", "addInvoice", "saveInvoiceById"]),
     ...mapGetters(["getInvoices", "getEditInvoice", "getInvoiceById"]),
+
     async submitForm() {
       const validatedResult = await this.v$.$validate();
 
@@ -223,6 +222,11 @@ export default {
       if (this.isEditMode) {
         this.saveInvoiceById({ id: this.newInvoice.id, data: this.newInvoice });
       } else {
+        const itemsTotal = this.newInvoice.items.reduce((acc, cur) => {
+          return acc + Number(cur.total);
+        }, 0);
+
+        this.newInvoice.total = itemsTotal;
         this.addInvoice(this.newInvoice);
       }
       this.toggleModal();
