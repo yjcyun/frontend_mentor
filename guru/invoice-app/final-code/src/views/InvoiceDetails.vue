@@ -1,12 +1,16 @@
 <template>
   <div>
     <back-button></back-button>
-    <invoice-actions :status="invoice.status"></invoice-actions>
+    <invoice-actions
+      :status="invoice.status"
+      :id="invoice.id"
+    ></invoice-actions>
     <invoice-summary
       :id="invoice.id"
       :description="invoice.description"
       :createdAt="invoice.createdAt"
       :paymentDue="invoice.paymentDue"
+      :paymentTerms="invoice.paymentTerms"
       :senderAddress="invoice.senderAddress"
       :clientName="invoice.clientName"
       :clientAddress="invoice.clientAddress"

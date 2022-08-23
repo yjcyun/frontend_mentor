@@ -6,7 +6,9 @@
           >Discard</base-button
         >
         <div class="form-footer__flex">
-          <base-button type="button" mode="btn-4">Save as Draft</base-button>
+          <base-button type="button" mode="btn-4" @click="saveAsDraft"
+            >Save as Draft</base-button
+          >
           <base-button type="submit" mode="btn-2">Save & Send</base-button>
         </div>
       </template>
@@ -24,7 +26,7 @@
 
 <script>
 export default {
-  props: ["mode"],
+  props: ["mode", "saveAsDraft"],
   data() {
     return {
       displayGradient: "",

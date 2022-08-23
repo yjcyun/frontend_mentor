@@ -36,6 +36,10 @@ export const store = createStore({
       const id = state.invoices.findIndex((inv) => inv.id === payload.id);
       state.invoices[id] = payload.data;
     },
+    updateStatusById(state, payload) {
+      const id = state.invoices.findIndex((inv) => inv.id === payload.id);
+      state.invoices[id].status = payload.status;
+    },
   },
   actions: {
     toggleModal(context) {
@@ -52,6 +56,9 @@ export const store = createStore({
     },
     saveInvoiceById(context, payload) {
       context.commit("saveInvoiceById", payload);
+    },
+    updateStatusById(context, payload) {
+      context.commit("updateStatusById", payload);
     },
   },
 });

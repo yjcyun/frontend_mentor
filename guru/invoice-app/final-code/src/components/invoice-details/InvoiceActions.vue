@@ -8,7 +8,9 @@
     <div class="invoice-actions__cta">
       <base-button mode="btn-3" @click="openInvoiceModal">Edit</base-button>
       <base-button mode="btn-5">Delete</base-button>
-      <base-button mode="btn-2">Mark as Paid</base-button>
+      <base-button mode="btn-2" @click="updateStatus" v-if="status !== 'paid'"
+        >Mark as Paid</base-button
+      >
     </div>
   </div>
 </template>
@@ -16,14 +18,19 @@
 <script>
 import BaseStatus from "../ui/BaseStatus.vue";
 import BaseButton from "../ui/BaseButton.vue";
+import { mapActions } from "vuex";
 
 export default {
   components: { BaseStatus, BaseButton },
-  props: ["status"],
+  props: ["status", "id"],
   methods: {
+    ...mapActions(["toggleModal", "toggleEditInvoice", "updateStatusById"]),
     openInvoiceModal() {
-      this.$store.dispatch("toggleEditInvoice", true);
-      this.$store.commit("toggleModal");
+      this.toggleEditInvoice(true);
+      this.toggleModal();
+    },
+    updateStatus() {
+      this.updateStatusById({ id: this.id, status: "paid" });
     },
   },
 };

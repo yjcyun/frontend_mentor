@@ -49,6 +49,7 @@ export default {
     "senderAddress",
     "createdAt",
     "paymentDue",
+    "paymentTerms",
     "clientName",
     "clientAddress",
     "clientEmail",
@@ -60,7 +61,13 @@ export default {
       return formatDate(this.createdAt);
     },
     formattedDueDate() {
-      return formatDate(this.paymentDue);
+      const createdAt = new Date(this.createdAt);
+      const dueDateInNumber = createdAt.setDate(
+        createdAt.getDate() + Number(this.paymentTerms)
+      );
+      const dueDate = new Date(dueDateInNumber);
+
+      return formatDate(this.paymentDue || dueDate);
     },
     formattedClientAddress() {
       return Object.values(this.clientAddress).join(" ");

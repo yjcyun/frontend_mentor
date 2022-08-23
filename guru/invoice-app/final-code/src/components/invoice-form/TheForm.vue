@@ -126,7 +126,10 @@
         </p>
       </div>
     </div>
-    <FormFooter :mode="isEditMode ? 'edit' : 'create'" />
+    <FormFooter
+      :mode="isEditMode ? 'edit' : 'create'"
+      :saveAsDraft="saveAsDraft"
+    />
   </form>
 </template>
 
@@ -139,6 +142,7 @@ import { cloneDeep, get } from "lodash";
 import ItemList from "./ItemList.vue";
 import FormFooter from "./FormFooter.vue";
 import generateUniqueId from "../../utils/unique-id";
+import formatDate from "../../utils/format-date";
 
 export default {
   components: { ItemList, FormFooter },
@@ -154,7 +158,7 @@ export default {
       newInvoice: {
         id: this.getNewInvoiceId(),
         status: "pending",
-        createdAt: null,
+        createdAt: "",
         paymentDue: null,
         description: "",
         paymentTerms: "",
@@ -183,6 +187,7 @@ export default {
       const currentInvoice = this.$store.getters.getInvoiceById(
         this.$route.params.invoiceId
       );
+
       this.newInvoice = cloneDeep(currentInvoice);
     }
   },
@@ -220,6 +225,7 @@ export default {
       }
 
       if (this.isEditMode) {
+        this.newInvoice.status = "pending";
         this.saveInvoiceById({ id: this.newInvoice.id, data: this.newInvoice });
       } else {
         const itemsTotal = this.newInvoice.items.reduce((acc, cur) => {
@@ -242,6 +248,13 @@ export default {
     },
     getError(path) {
       return get(this.v$.newInvoice, path).$error;
+    },
+    saveAsDraft() {
+      this.newInvoice.status = "draft";
+      this.newInvoice.createdAt = formatDate(new Date());
+      this.newInvoice.paymentTerms = "14";
+      this.addInvoice(this.newInvoice);
+      this.toggleModal();
     },
   },
   validations: {
