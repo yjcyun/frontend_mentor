@@ -20,9 +20,9 @@ export default {
 
 <style scoped>
 button {
-  padding: 17px 24px;
+  padding: 16px;
   border: none;
-  border-radius: 24px;
+  border-radius: 5rem;
   font-family: var(--font-family);
   cursor: pointer;
   font-weight: 700;
@@ -44,8 +44,8 @@ button {
 .btn-1 {
   display: inline-flex;
   align-items: center;
-  padding: 8px 15px 8px 8px;
-  gap: 16px;
+  padding: 6px 14px 6px 6px;
+  gap: 8px;
 }
 
 .btn-1,
@@ -112,5 +112,15 @@ button {
 
 .btn-6:hover {
   background-color: var(--color-blue-DF);
+}
+
+@media (min-width: 768px) {
+  button {
+    padding: 17px 24px;
+  }
+  .btn-1 {
+    padding: 8px 15px 8px 8px;
+    gap: 16px;
+  }
 }
 </style>

@@ -2,38 +2,63 @@
   <div class="the-header">
     <div>
       <h1 class="h1">Invoices</h1>
-      <p class="body1 sub-heading">
-        {{ subHeadingContent }}
-      </p>
+      <p class="body1 sub-heading">{{ displayInvoiceAmount }}</p>
     </div>
     <div class="end">
-      <div>Filter Component</div>
-      <base-button mode="btn-1" @click="openInvoiceModal"
-        >New Invoice</base-button
-      >
+      <FilterStatus />
+      <base-button mode="btn-1" @click="openInvoiceModal">{{
+        displayNewButtonLabel
+      }}</base-button>
     </div>
   </div>
 </template>
 
 <script>
 import { mapActions } from "vuex";
+import FilterStatus from "./FilterStatus.vue";
 
 export default {
   props: ["numInvoices"],
+  data() {
+    return { width: window.innerWidth };
+  },
+  created() {
+    window.addEventListener("resize", this.onResize);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.onResize);
+  },
   computed: {
-    subHeadingContent() {
-      return this.numInvoices
-        ? `There are ${this.numInvoices} total invoices`
-        : "No invoices";
+    displayInvoiceAmount() {
+      if (this.numInvoices) {
+        if (this.width > 650) {
+          return `There are ${this.numInvoices} total invoices`;
+        } else {
+          return `${this.numInvoices} invoices`;
+        }
+      } else {
+        return "No invoices";
+      }
+    },
+    displayNewButtonLabel() {
+      if (this.width > 650) {
+        return `New Invoice`;
+      } else {
+        return `New`;
+      }
     },
   },
   methods: {
     ...mapActions(["toggleModal", "toggleEditInvoice"]),
+    onResize() {
+      this.width = window.innerWidth;
+    },
     openInvoiceModal() {
       this.toggleEditInvoice(false);
       this.toggleModal();
     },
   },
+  components: { FilterStatus },
 };
 </script>
 
@@ -53,6 +78,12 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: 18px;
+}
+
+@media (min-width: 768px) {
+  .end {
+    gap: 40px;
+  }
 }
 </style>

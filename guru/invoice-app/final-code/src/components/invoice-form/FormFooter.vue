@@ -57,8 +57,6 @@ export default {
 
 <style scoped>
 .form-footer {
-  padding-left: 103px;
-  border-radius: 0px 20px 20px 0px;
   background-color: var(--color-white);
   position: absolute;
   bottom: 0;
@@ -67,13 +65,13 @@ export default {
 }
 
 .form-footer::before {
-  display: v-bind(displayGradient);
+  display: block;
   content: "";
-  height: 200px;
+  height: 64px;
   width: 100%;
   position: absolute;
   left: 0;
-  bottom: 51px;
+  bottom: 89px;
   z-index: -1;
   background: linear-gradient(
     180deg,
@@ -83,8 +81,9 @@ export default {
 }
 
 .form-footer__wrapper {
-  padding: 31px;
   display: flex;
+  gap: 7px;
+  padding: 21px 24px;
 }
 
 .form-footer__wrapper.create {
@@ -97,6 +96,28 @@ export default {
 
 .form-footer__flex {
   display: flex;
-  gap: 8px;
+  gap: 7px;
+}
+
+@media (min-width: 640px) {
+  .form-footer {
+    border-radius: 0px 20px 20px 0px;
+    padding-left: 56px;
+  }
+
+  .form-footer::before {
+    height: 200px;
+    bottom: 51px;
+  }
+
+  .form-footer__wrapper {
+    padding: 31px 56px 31px 0;
+  }
+}
+
+@media (min-width: 960px) {
+  .form-footer {
+    padding-left: 159px;
+  }
 }
 </style>

@@ -1,11 +1,13 @@
 @font-face {
   font-family: "Spartan";
+  font-weight: 700;
   src: local("Spartan"),
    url(./fonts/Spartan-Bold-700.ttf) format("truetype");
 }
 
 @font-face {
   font-family: "Spartan";
+  font-weight: 500;
   src: local("Spartan"),
    url(./fonts/Spartan-Medium-500.ttf) format("truetype");
 }
@@ -42,14 +44,13 @@
 }
 
 /* Reset default*/
-html, body, div, span, h1, h2, h3, h4, h5, h6, p, ol, ul, li, button, th, td, dialog, input, fieldset, select{
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, ol, ul, li, button, th, td, dialog, input, fieldset, select, menu{
 	margin: 0;
 	padding: 0;
 	border: 0;
 	outline: 0;
 	font-weight: inherit;
 	font-style: inherit;
-	/* font-size: 100%; */
 	font-family: inherit;
 	vertical-align: baseline;
 }
@@ -76,7 +77,11 @@ body {
   color: var(--color-black-0C);
 }
 
-input, select {
+body.modal {
+  overflow: hidden;
+}
+
+/* input, select {
   color: var(--color-black-0C);
   background: var(--color-white);
   border: 1px solid #dfe3fa;
@@ -84,14 +89,14 @@ input, select {
   padding: 16px 20px;
   caret-color: var(--color-purple-7C);
   width: 100%;
-}
+} */
 
 /* Typography */
 .h1 {
   font-weight: 700;
-  font-size: 32px;
-  line-height: 36px;
-  letter-spacing: -1px;
+  font-size: 20px;
+  line-height: 22px;
+  letter-spacing: -0.625px;
 }
 
 .h2 {
@@ -142,4 +147,12 @@ input, select {
   font-size: 10px;
   line-height: 15px;
   letter-spacing: -0.208333px;
+}
+
+@media (min-width: 640px) {
+  .h1 {
+    font-size: 32px;
+    line-height: 36px;
+    letter-spacing: -1px;
+  }
 }

@@ -11,8 +11,12 @@
       <div class="name body1">{{ clientName }}</div>
       <div class="price h3">{{ formattedPrice }}</div>
 
-      <base-status :status="status"></base-status>
-      <img src="../../assets/icon-arrow-right.svg" alt="Arrow Right Icon" />
+      <base-status :status="status" class="status"></base-status>
+      <img
+        src="../../assets/icon-arrow-right.svg"
+        alt="Arrow Right Icon"
+        class="arrow-right"
+      />
     </router-link>
   </li>
 </template>
@@ -37,18 +41,28 @@ export default {
 
 <style scoped>
 a {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 16px 32px 16px 24px;
-}
+  display: grid;
 
-li div {
-  flex: 1 1 0;
+  grid-template-areas: "id name" "date status" "price status";
+  grid-template-rows: 1fr 1fr 1fr;
+
+  padding: 24px;
+  align-items: center;
+  height: 134px;
 }
 
 .text-blue-7E {
   color: var(--color-blue-7E);
+}
+
+.id {
+  grid-area: id;
+}
+
+.dueDate {
+  grid-area: date;
+  align-self: flex-end;
+  padding-bottom: 3px;
 }
 
 .due {
@@ -56,10 +70,54 @@ li div {
 }
 
 .name {
+  text-align: right;
   color: #858bb2;
+  grid-area: name;
+}
+
+.status {
+  justify-self: flex-end;
+  align-self: flex-end;
+  display: flex;
+  grid-area: status;
 }
 
 .price {
-  text-align: right;
+  text-align: left;
+  grid-area: price;
+}
+
+.arrow-right {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  a {
+    grid-template-columns: 0.8fr 1.2fr 1.2fr 1fr 1fr 20px;
+    grid-template-areas: "id date name price status arrow";
+    grid-template-rows: 1fr;
+    padding: 16px 32px 16px 24px;
+    height: auto;
+  }
+
+  .name {
+    text-align: left;
+  }
+
+  .price {
+    text-align: right;
+    padding-right: 20px;
+  }
+
+  .dueDate {
+    align-self: center;
+    padding-bottom: 0;
+  }
+
+  .arrow-right {
+    display: flex;
+    justify-self: flex-end;
+    grid-area: arrow;
+  }
 }
 </style>

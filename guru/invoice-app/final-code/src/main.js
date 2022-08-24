@@ -9,6 +9,7 @@ import FormInput from "./components/ui/FormInput.vue";
 import FormLabel from "./components/ui/FormLabel.vue";
 import FormSelect from "./components/ui/FormSelect.vue";
 import FormControl from "./components/ui/FormControl.vue";
+import TheModal from "./components/ui/TheModal.vue";
 
 import router from "./routes";
 import { store } from "./store";
@@ -24,5 +25,6 @@ app.component("FormInput", FormInput);
 app.component("FormLabel", FormLabel);
 app.component("FormSelect", FormSelect);
 app.component("FormControl", FormControl);
+app.component("TheModal", TheModal);
 
 app.mount("#app");

@@ -50,7 +50,11 @@ export default {
   props: ["items", "total"],
   computed: {
     formattedPrice() {
-      return formatPrice(this.total);
+      const totalSum = this.items.reduce(
+        (prev, curr) => prev + Number(curr.total),
+        0
+      );
+      return formatPrice(totalSum || this.total);
     },
   },
 };

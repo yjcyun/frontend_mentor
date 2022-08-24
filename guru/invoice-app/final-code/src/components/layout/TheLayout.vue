@@ -36,6 +36,7 @@ main {
   padding: 72px 24px;
   width: 100%;
   min-height: 100vh;
+  position: relative;
 }
 
 .sm-padding {

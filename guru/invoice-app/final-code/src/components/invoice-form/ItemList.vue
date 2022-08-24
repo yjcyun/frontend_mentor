@@ -1,11 +1,11 @@
 <template>
   <div class="invoice-items">
-    <div class="invoice-items__labels">
+    <!-- <div class="invoice-items__labels">
       <FormLabel label="Item Name"></FormLabel>
       <FormLabel label="Qty."></FormLabel>
       <FormLabel label="Price"></FormLabel>
       <FormLabel label="Total"></FormLabel>
-    </div>
+    </div> -->
     <SingleItem
       v-for="(item, index) in items"
       :key="item.id || index"
@@ -55,5 +55,13 @@ export default {
   grid-template-columns: 214px 50px 100px 1fr;
   gap: 16px;
   margin-bottom: 16px;
+}
+
+@media (min-width: 640px) {
+  .invoice-items__labels {
+    grid-template-columns: 214px 50px 100px 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <FormControl>
+  <FormControl :class="$attrs.class">
     <FormLabel
       :labelFor="name"
       :label="label"
@@ -53,6 +53,16 @@ export default {
 </script>
 
 <style scoped>
+input {
+  color: var(--color-black-0C);
+  background: var(--color-white);
+  border: 1px solid #dfe3fa;
+  border-radius: 4px;
+  padding: 16px 20px;
+  caret-color: var(--color-purple-7C);
+  width: 100%;
+}
+
 input:focus {
   border: 1px solid var(--color-purple-92);
 }
@@ -74,7 +84,7 @@ input::placeholder {
 
 input:disabled {
   border: none;
-  padding: 0;
+  padding: 16px 0;
   background-color: transparent;
   color: var(--color-blue-88);
 }

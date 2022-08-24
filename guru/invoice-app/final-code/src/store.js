@@ -18,6 +18,9 @@ export const store = createStore({
     getEditInvoice(state) {
       return state.editInvoice;
     },
+    getInvoiceModal(state) {
+      return state.invoiceModal;
+    },
   },
   mutations: {
     toggleModal(state) {
@@ -40,6 +43,9 @@ export const store = createStore({
       const id = state.invoices.findIndex((inv) => inv.id === payload.id);
       state.invoices[id].status = payload.status;
     },
+    deleteInvoice(state, id) {
+      state.invoices = state.invoices.filter((inv) => inv.id !== id);
+    },
   },
   actions: {
     toggleModal(context) {
@@ -59,6 +65,9 @@ export const store = createStore({
     },
     updateStatusById(context, payload) {
       context.commit("updateStatusById", payload);
+    },
+    deleteInvoice(context, id) {
+      context.commit("deleteInvoice", id);
     },
   },
 });

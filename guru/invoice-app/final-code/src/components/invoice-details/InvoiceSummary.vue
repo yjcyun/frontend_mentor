@@ -82,6 +82,7 @@ export default {
 <style scoped>
 .summary {
   margin-top: 16px;
+  margin-bottom: 77px;
   padding: 24px;
 }
 
@@ -134,6 +135,7 @@ export default {
   .summary {
     margin-top: 24px;
     padding: 32px;
+    margin-bottom: 0;
   }
 
   .sender {

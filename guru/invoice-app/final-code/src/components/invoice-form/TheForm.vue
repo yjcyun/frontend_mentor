@@ -16,13 +16,14 @@
           label="Street Address"
           v-model="newInvoice.senderAddress.street"
         />
-        <div class="form__cols">
+        <div class="form__cols form__cols-3">
           <FormInput
             :isInvalid="getError('senderAddress.city')"
             :onBlur="onBlur('senderAddress.city')"
             name="senderAddress-city"
             label="City"
             v-model="newInvoice.senderAddress.city"
+            class="city"
           />
           <FormInput
             :isInvalid="getError('senderAddress.postCode')"
@@ -30,6 +31,7 @@
             name="senderAddress-postCode"
             label="Post Code"
             v-model="newInvoice.senderAddress.postCode"
+            class="postCode"
           />
           <FormInput
             :isInvalid="getError('senderAddress.country')"
@@ -37,6 +39,7 @@
             name="senderAddress-country"
             label="Country"
             v-model="newInvoice.senderAddress.country"
+            class="country"
           />
         </div>
       </fieldset>
@@ -67,13 +70,14 @@
           label="Street Address"
           v-model="newInvoice.clientAddress.street"
         />
-        <div class="form__cols">
+        <div class="form__cols form__cols-3">
           <FormInput
             :isInvalid="getError('clientAddress.city')"
             :onBlur="onBlur('clientAddress.city')"
             name="clientAddress-city"
             label="City"
             v-model="newInvoice.clientAddress.city"
+            class="city"
           />
           <FormInput
             :isInvalid="getError('clientAddress.postCode')"
@@ -81,6 +85,7 @@
             name="clientAddress-postCode"
             label="Post Code"
             v-model="newInvoice.clientAddress.postCode"
+            class="postCode"
           />
           <FormInput
             :isInvalid="getError('clientAddress.country')"
@@ -88,9 +93,10 @@
             name="clientAddress-country"
             label="Country"
             v-model="newInvoice.clientAddress.country"
+            class="country"
           />
         </div>
-        <div class="form__cols">
+        <div class="form__cols form__cols-2">
           <FormInput
             :isInvalid="getError('createdAt')"
             :onBlur="onBlur('createdAt')"
@@ -207,17 +213,16 @@ export default {
         const itemErrorMsg = "An item must be added";
         const fieldErrorMsg = "All fields must be added";
 
-        // Q. How can I make this code better?
         this.v$.$errors.forEach((err) => {
-          if (
-            err.$propertyPath.includes("item") &&
-            this.errors.indexOf(itemErrorMsg) === -1
-          ) {
+          const itemErrors =
+            err.$property === "name" ||
+            err.$property === "quantity" ||
+            err.$property === "price" ||
+            err.$property === "items";
+
+          if (itemErrors && this.errors.indexOf(itemErrorMsg) === -1) {
             this.errors.push(itemErrorMsg);
-          } else if (
-            !err.$propertyPath.includes("item") &&
-            this.errors.indexOf(fieldErrorMsg) === -1
-          ) {
+          } else if (!itemErrors && this.errors.indexOf(fieldErrorMsg) === -1) {
             this.errors.push(fieldErrorMsg);
           }
         });
@@ -284,11 +289,11 @@ export default {
 
 <style scoped>
 form {
-  padding: 56px;
-  padding-right: 26px;
-  height: 100vh;
+  padding: 32px 24px 80px 26px;
+  height: calc(100vh - 72px);
   display: grid;
   grid-template-rows: min-content 1fr 55px;
+  overflow: auto;
 }
 
 .form__header {
@@ -299,16 +304,34 @@ form {
 }
 
 .form__body {
-  overflow: auto;
-  height: calc(100% - 48px);
   margin-top: 48px;
-  padding-right: 13px;
 }
 
 .form__cols {
-  display: flex;
+  display: grid;
   width: 100%;
   gap: 24px;
+}
+
+.form__cols-2 {
+  grid-template-columns: 1fr;
+}
+
+.form__cols-3 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "city postCode" "country country";
+}
+
+.form__cols-3 .city {
+  grid-area: city;
+}
+
+.form__cols-3 .postCode {
+  grid-area: postCode;
+}
+
+.form__cols-3 .country {
+  grid-area: country;
 }
 
 .form__section-title {
@@ -338,5 +361,41 @@ legend.item-list {
 
 .form__errors {
   margin-bottom: 13px;
+}
+
+@media (min-width: 640px) {
+  form {
+    overflow: hidden;
+    height: 100vh;
+    padding: 56px 30px 56px 56px;
+  }
+
+  .form__body {
+    height: calc(100% - 128px);
+    overflow: auto;
+    padding-right: 28px;
+  }
+
+  .form__cols-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .form__cols-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "city postCode country";
+  }
+}
+
+@media (min-width: 960px) {
+  form {
+    padding-right: 26px;
+    display: grid;
+    grid-template-rows: min-content 1fr 55px;
+  }
+
+  .form__body {
+    height: calc(100% - 48px);
+    margin-top: 48px;
+  }
 }
 </style>
