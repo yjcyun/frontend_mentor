@@ -139,7 +139,7 @@ export default {
 }
 
 .invoice-items__item-total-total {
-  color: var(--color-blue-88);
+  color: var(--element-5);
 }
 
 .invoice-items__item-remove {

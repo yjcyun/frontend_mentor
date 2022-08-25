@@ -4,10 +4,7 @@
       <div class="id h4">
         <span class="text-blue-7E">#</span><span>{{ id }}</span>
       </div>
-      <div class="dueDate body1">
-        <span class="due">Due </span
-        ><span class="text-blue-7E">{{ paymentDue }}</span>
-      </div>
+      <div class="dueDate body1">Due {{ paymentDue }}</div>
       <div class="name body1">{{ clientName }}</div>
       <div class="price h3">{{ formattedPrice }}</div>
 
@@ -52,11 +49,16 @@ a {
 }
 
 .text-blue-7E {
-  color: var(--color-blue-7E);
+  color: var(--element-4);
 }
 
 .id {
   grid-area: id;
+}
+
+.dueDate,
+.name {
+  color: var(--element-5);
 }
 
 .dueDate {
@@ -65,13 +67,8 @@ a {
   padding-bottom: 3px;
 }
 
-.due {
-  color: var(--color-blue-88);
-}
-
 .name {
   text-align: right;
-  color: #858bb2;
   grid-area: name;
 }
 

@@ -54,17 +54,17 @@ export default {
 
 <style scoped>
 input {
-  color: var(--color-black-0C);
-  background: var(--color-white);
-  border: 1px solid #dfe3fa;
+  background: var(--text-5);
+  color: var(--text-0);
+  border: 1px solid var(--element-6);
   border-radius: 4px;
   padding: 16px 20px;
-  caret-color: var(--color-purple-7C);
+  caret-color: var(--helper-accent--primary);
   width: 100%;
 }
 
 input:focus {
-  border: 1px solid var(--color-purple-92);
+  border: 1px solid var(--helper-accent--dimmed);
 }
 
 input::-webkit-outer-spin-button,
@@ -73,12 +73,20 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 35px var(--text-5) inset !important;
+  -webkit-text-fill-color: var(--text-0) !important;
+}
+
 input[type="number"] {
   -moz-appearance: textfield;
 }
 
 input::placeholder {
-  color: var(--color-black-0C);
+  color: var(--text-5);
   opacity: 0.4;
 }
 
@@ -86,10 +94,10 @@ input:disabled {
   border: none;
   padding: 16px 0;
   background-color: transparent;
-  color: var(--color-blue-88);
+  color: var(--element-5);
 }
 
 input.error {
-  border: 1px solid var(--color-red-EC);
+  border: 1px solid var(--helper-danger--primary);
 }
 </style>

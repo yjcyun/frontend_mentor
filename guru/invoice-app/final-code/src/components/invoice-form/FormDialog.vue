@@ -39,6 +39,7 @@ dialog {
   z-index: 10;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   overflow: hidden;
+  background-color: var(--element-form-bg);
 }
 
 @media (min-width: 640px) {

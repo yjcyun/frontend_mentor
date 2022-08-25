@@ -18,12 +18,12 @@ export default {
 }
 
 .info__label {
-  color: var(--color-blue-7E);
+  color: var(--element-4);
   margin-bottom: 12px;
 }
 
 .info__body {
-  color: var(--color-black-0C);
+  color: var(--text-0);
   font-weight: 700;
   font-size: 15px;
   line-height: 20px;
@@ -31,7 +31,7 @@ export default {
 }
 
 .info__sub-body {
-  color: var(--color-blue-7E);
+  color: var(--element-4);
   margin-top: 8px;
   max-width: 100px;
 }

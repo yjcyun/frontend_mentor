@@ -3,7 +3,8 @@
     <div class="sender">
       <div class="sender__id">
         <h3 class="h3">
-          <span class="hash">#</span><span class="black">{{ id }}</span>
+          <span class="hash">#</span>
+          <span>{{ id }}</span>
         </h3>
         <p class="body1">{{ description }}</p>
       </div>
@@ -90,7 +91,7 @@ export default {
   display: flex;
   flex-direction: column;
   margin-bottom: 31px;
-  color: var(--color-blue-7E);
+  color: var(--element-4);
 }
 
 .sender__id {
@@ -98,11 +99,11 @@ export default {
 }
 
 .sender__id h3 {
-  color: var(--color-black-0C);
+  color: var(--text-0);
 }
 
 .sender__id h3 .hash {
-  color: var(--color-blue-88);
+  color: var(--element-5);
 }
 
 .sender__address {

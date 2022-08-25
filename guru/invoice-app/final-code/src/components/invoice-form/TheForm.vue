@@ -301,6 +301,7 @@ form {
   font-size: 24px;
   line-height: 32px;
   letter-spacing: -0.5px;
+  color: var(--text-0);
 }
 
 .form__body {
@@ -335,7 +336,7 @@ form {
 }
 
 .form__section-title {
-  color: var(--color-purple-7C);
+  color: var(--helper-accent--primary);
   margin-bottom: 24px;
 }
 

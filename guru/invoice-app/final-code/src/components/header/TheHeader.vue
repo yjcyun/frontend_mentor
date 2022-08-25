@@ -102,7 +102,7 @@ export default {
 
 .sub-heading {
   margin-top: 8px;
-  color: var(--color-blue-88);
+  color: var(--element-5);
 }
 
 .end {

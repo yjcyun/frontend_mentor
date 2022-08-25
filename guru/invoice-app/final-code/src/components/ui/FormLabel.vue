@@ -22,14 +22,14 @@ export default {
 label {
   display: flex;
   justify-content: space-between;
-  color: var(--color-blue-7E);
+  color: var(--element-4);
 }
 
 label span .error {
-  color: var(--color-red-EC);
+  color: var(--helper-danger--primary);
 }
 
 .label__title.error {
-  color: var(--color-red-EC);
+  color: var(--helper-danger--primary);
 }
 </style>

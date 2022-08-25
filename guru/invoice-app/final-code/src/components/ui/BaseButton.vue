@@ -20,7 +20,7 @@ export default {
 
 <style scoped>
 button {
-  padding: 16px;
+  padding: 16px 24px;
   border: none;
   border-radius: 5rem;
   font-family: var(--font-family);
@@ -34,7 +34,7 @@ button {
 .plus-icon-container {
   width: 32px;
   height: 32px;
-  background-color: var(--color-white);
+  background-color: #ffffff;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -50,68 +50,64 @@ button {
 
 .btn-1,
 .btn-2 {
-  background-color: var(--color-purple-7C);
-  color: var(--color-white);
+  background-color: var(--helper-accent--primary);
+  color: #ffffff;
 }
 
 .btn-1:hover,
 .btn-2:hover {
-  background-color: var(--color-purple-92);
+  background-color: var(--helper-accent--dimmed);
 }
 
 .btn-3 {
-  background-color: var(--color-white-F9);
-  color: var(--color-blue-7E);
+  background-color: var(--element-8);
+  color: var(--element-4);
 }
 
 .btn-3:hover {
-  background-color: var(--color-blue-DF);
+  background-color: var(--element-6);
 }
 
-.btn-3.dark {
-  background-color: var(--color-navy-25);
-  color: var(--color-blue-DF);
+.dark-theme .btn-3 {
+  background-color: #252945;
+  color: #dfe3fa;
 }
 
-.btn-3.dark:hover {
-  background-color: var(--color-white);
-  color: var(--color-blue-DF);
+.dark-theme .btn-3:hover {
+  background-color: #ffffff;
+  color: #7e88c3;
 }
 
 .btn-4 {
-  background-color: var(--color-navy-37);
-  color: var(--color-blue-88);
+  background-color: #373b53;
+  color: var(--element-5);
 }
 
 .btn-4:hover {
-  background-color: var(--color-black-0C);
+  background-color: #1e2139;
 }
 
-.btn-4.dark {
-  color: var(--color-blue-DF);
-}
-
-.btn-4:hover {
-  background-color: var(--color-navy-1E);
+.dark-theme .btn-4:hover {
+  background-color: #252945;
 }
 
 .btn-5 {
-  background-color: var(--color-red-EC);
-  color: var(--color-white);
+  background-color: var(--helper-danger--primary);
+  color: #ffffff;
 }
 
 .btn-5:hover {
-  background-color: var(--color-red-FF);
+  background-color: var(--helper-danger--dimmed);
 }
 
 .btn-6 {
-  background-color: var(--color-white-F9);
-  color: var(--color-blue-7E);
+  background-color: var(--element-8);
+  color: var(--element-4);
   width: 100%;
 }
 
 .btn-6:hover {
-  background-color: var(--color-blue-DF);
+  background-color: var(--element-6);
 }
 
 @media (min-width: 768px) {

@@ -4,7 +4,7 @@
       <img src="../../assets/logo.svg" alt="Invoices App Logo" />
     </div>
 
-    <button class="theme-toggler">
+    <button class="theme-toggler" @click="toggleTheme">
       <img src="../../assets/icon-moon.svg" alt="Moon Icon" />
     </button>
     <button class="user">
@@ -13,9 +13,52 @@
   </aside>
 </template>
 
+<script>
+export default {
+  mounted() {
+    const initUserTheme = this.getTheme() || this.getMediaPreference();
+    this.setTheme(initUserTheme);
+  },
+  data() {
+    return {
+      userTheme: "light-theme",
+    };
+  },
+  methods: {
+    toggleTheme() {
+      const activeTheme = localStorage.getItem("user-theme");
+      if (activeTheme === "light-theme") {
+        this.setTheme("dark-theme");
+      } else {
+        this.setTheme("light-theme");
+      }
+    },
+
+    getTheme() {
+      return localStorage.getItem("user-theme");
+    },
+
+    setTheme(theme) {
+      localStorage.setItem("user-theme", theme);
+      this.userTheme = theme;
+      document.documentElement.className = theme;
+    },
+
+    getMediaPreference() {
+      const hasDarkPreference = window.matchMedia(
+        "(prefers-color-theme: dark)"
+      ).matches;
+
+      if (hasDarkPreference) return "dark-theme";
+      else return "light-theme";
+    },
+  },
+};
+</script>
+
 <style scoped>
 aside {
-  background: var(--color-navy-37);
+  background-color: var(--element-1);
   position: sticky;
   top: 0px;
   display: flex;
@@ -31,7 +74,7 @@ aside {
   align-items: center;
   width: 72px;
   height: 72px;
-  background-color: var(--color-purple-7C);
+  background-color: var(--helper-accent--primary);
   position: relative;
   z-index: 1;
   border-radius: 0 20px 20px 0;
@@ -43,7 +86,7 @@ aside {
   position: absolute;
   width: 100%;
   height: 50%;
-  background-color: var(--color-purple-92);
+  background-color: var(--helper-accent--dimmed);
   left: 0;
   bottom: 0;
   border-radius: 20px 0;

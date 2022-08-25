@@ -80,7 +80,7 @@ dialog {
 }
 
 .modal__body p {
-  color: var(--color-blue-88);
+  color: var(--element-5);
 }
 
 .modal__menu {

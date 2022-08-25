@@ -62,7 +62,7 @@ export default {
 
 <style scoped>
 .table-wrapper {
-  background-color: #f9fafe;
+  background-color: var(--element-8);
   border-radius: 8px 8px 0px 0px;
   margin-top: 45px;
 }
@@ -108,12 +108,12 @@ tbody .total {
 .qty,
 .price,
 .unit-price {
-  color: var(--color-blue-7E);
+  color: var(--element-4);
 }
 
 tfoot {
-  background-color: var(--color-navy-37);
-  color: var(--color-white);
+  background-color: var(--element-summary-bg);
+  color: #ffffff;
 }
 
 tfoot td {
@@ -144,7 +144,7 @@ tfoot .final-price {
   thead th {
     text-align: left;
     padding: 32px 0px 16px 0px;
-    color: var(--color-blue-7E);
+    color: var(--element-4);
   }
 
   thead th:nth-child(1) {

@@ -94,7 +94,7 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  background: var(--color-white);
+  background: var(--text-5);
   padding: 21px 24px;
   display: flex;
   justify-content: flex-end;

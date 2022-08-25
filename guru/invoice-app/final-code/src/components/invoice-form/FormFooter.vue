@@ -57,7 +57,7 @@ export default {
 
 <style scoped>
 .form-footer {
-  background-color: var(--color-white);
+  background-color: var(--text-5);
   position: absolute;
   bottom: 0;
   left: 0;

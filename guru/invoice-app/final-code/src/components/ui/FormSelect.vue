@@ -88,15 +88,15 @@ export default {
   position: relative;
   display: flex;
   flex-direction: column;
-  color: var(--color-black-0C);
-  background: var(--color-white);
-  border: 1px solid #dfe3fa;
+  color: var(--text-5);
+  background: var(--text-5);
+  border: 1px solid var(--element-6);
   border-radius: 4px;
   cursor: pointer;
 }
 
 .select:focus {
-  border: 1px solid var(--color-purple-7C);
+  border: 1px solid var(--helper-accent--primary);
 }
 
 .select__trigger {
@@ -105,6 +105,7 @@ export default {
   align-items: center;
   justify-content: space-between;
   padding: 16px 20px;
+  color: var(--text-0);
 }
 
 .select__options {
@@ -114,7 +115,7 @@ export default {
   left: 0;
   right: 0;
   margin-top: 8px;
-  background: var(--color-white);
+  background: var(--text-5);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -134,11 +135,12 @@ export default {
   display: block;
   cursor: pointer;
   padding: 15px 24px;
+  color: var(--text-0);
 }
 
 .select__option:hover,
 .select__option.selected {
-  color: var(--color-purple-7C);
+  color: var(--helper-accent--primary);
 }
 
 .arrow {

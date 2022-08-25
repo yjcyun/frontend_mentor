@@ -5,7 +5,7 @@
       ref="ref_dropdown_button"
       @click="showDropdown = !showDropdown"
     >
-      <span class="h4">{{ label }}</span>
+      <span class="h4 filter__button--label">{{ label }}</span>
       <span class="filter__button--arrow" :class="addRotateClass">
         <img src="../../assets/icon-arrow-down.svg" alt="" />
       </span>
@@ -87,9 +87,13 @@ export default {
   height: 48px;
 }
 
+.filter__button--label {
+  color: var(--text-0);
+}
+
 .filter__dropdown {
-  background: var(--color-white);
-  box-shadow: 0px 10px 20px rgba(72, 84, 159, 0.25);
+  background-color: var(--element-dropbox-bg);
+  box-shadow: 0px 10px 20px var(--dropbox-box-shadow);
   border-radius: 8px;
   padding: 24px;
   width: 192px;
@@ -111,6 +115,10 @@ label {
   text-transform: capitalize;
 }
 
+label:hover .filter__checkbox {
+  border: 1px solid var(--helper-accent--primary);
+}
+
 .filter__button--arrow {
   transition: transform 0.2s ease;
 }
@@ -126,7 +134,7 @@ input[type="checkbox"] {
 }
 
 .filter__checkbox {
-  background-color: #dfe3fa;
+  background-color: var(--element-6);
   border-radius: 2px;
   width: 16px;
   height: 16px;
@@ -135,7 +143,7 @@ input[type="checkbox"] {
 }
 
 input:checked ~ .filter__checkbox {
-  background-color: var(--color-purple-7C);
+  background-color: var(--helper-accent--primary);
 }
 
 input:checked ~ .filter__checkbox::after {
@@ -143,7 +151,7 @@ input:checked ~ .filter__checkbox::after {
   top: 0;
   width: 3px;
   height: 8px;
-  border: solid var(--color-white);
+  border: solid #ffffff;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
   box-sizing: unset;

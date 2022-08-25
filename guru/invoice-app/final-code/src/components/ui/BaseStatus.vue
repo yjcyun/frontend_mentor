@@ -24,18 +24,18 @@ export default {
 }
 
 .paid {
-  background-color: var(--color-green-06);
-  color: var(--color-green);
+  background-color: var(--helper-success--dimmed);
+  color: var(--helper-success);
 }
 
 .pending {
-  background-color: var(--color-orange-06);
-  color: var(--color-orange);
+  background-color: var(--helper-warning--dimmed);
+  color: var(--helper-warning);
 }
 
 .draft {
-  background-color: var(--color-navy-37-06);
-  color: var(--color-navy-37);
+  background-color: var(--element-3--dimmed);
+  color: var(--element-3);
 }
 
 .circle {
@@ -45,14 +45,14 @@ export default {
 }
 
 .paid .circle {
-  background-color: var(--color-green);
+  background-color: var(--helper-success);
 }
 
 .pending .circle {
-  background-color: var(--color-orange);
+  background-color: var(--helper-warning);
 }
 
 .draft .circle {
-  background-color: var(--color-navy-37);
+  background-color: var(--element-3);
 }
 </style>
