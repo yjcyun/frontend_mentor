@@ -4,6 +4,7 @@ export const store = createStore({
   state: {
     invoiceModal: null,
     invoices: [],
+    filter: [],
     editInvoice: null,
   },
   getters: {
@@ -20,6 +21,19 @@ export const store = createStore({
     },
     getInvoiceModal(state) {
       return state.invoiceModal;
+    },
+    getFilter(state) {
+      return state.filter;
+    },
+    getInvoicesByFilter(state) {
+      const noFilters = !Object.values(state.filter).some(Boolean);
+      if (noFilters) return state.invoices;
+
+      return state.invoices.filter((inv) => {
+        return Object.entries(state.filter).some(
+          ([key, value]) => key === inv.status && value
+        );
+      });
     },
   },
   mutations: {
@@ -46,6 +60,9 @@ export const store = createStore({
     deleteInvoice(state, id) {
       state.invoices = state.invoices.filter((inv) => inv.id !== id);
     },
+    updateFilter(state, payload) {
+      state.filter = payload;
+    },
   },
   actions: {
     toggleModal(context) {
@@ -68,6 +85,9 @@ export const store = createStore({
     },
     deleteInvoice(context, id) {
       context.commit("deleteInvoice", id);
+    },
+    updateFilter(context, filter) {
+      context.commit("updateFilter", filter);
     },
   },
 });

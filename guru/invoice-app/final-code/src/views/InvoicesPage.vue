@@ -10,6 +10,7 @@
 import InvoiceList from "../components/invoices/InvoiceList.vue";
 import TheHeader from "../components/header/TheHeader.vue";
 import EmptyInvoice from "../components/invoices/EmptyInvoice.vue";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -19,8 +20,10 @@ export default {
   },
   methods: {},
   computed: {
+    ...mapGetters(["getInvoices", "getInvoicesByFilter"]),
+
     invoices() {
-      return this.$store.getters.getInvoices;
+      return this.getInvoicesByFilter;
     },
   },
 };
