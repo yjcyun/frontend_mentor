@@ -66,6 +66,7 @@ dialog {
   border-radius: 8px;
   overflow: hidden;
   padding: 48px;
+  background-color: var(--element-modal-bg);
 }
 
 .modal__header h2 {
@@ -73,6 +74,7 @@ dialog {
   font-size: 24px;
   line-height: 32px;
   letter-spacing: -0.5px;
+  color: var(--text-0);
 }
 
 .modal__body {
@@ -80,7 +82,7 @@ dialog {
 }
 
 .modal__body p {
-  color: var(--element-5);
+  color: var(--text-1);
 }
 
 .modal__menu {

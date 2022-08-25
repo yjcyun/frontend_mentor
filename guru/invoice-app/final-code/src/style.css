@@ -41,6 +41,7 @@
   --element-dropbox-bg: #ffffff;
   --element-summary-bg: #373b53;
   --element-form-bg: #ffffff;
+  --element-modal-bg: #ffffff;
 
   --dropbox-box-shadow: rgba(72, 84, 159, 0.25);
 
@@ -50,7 +51,7 @@
 
 :root.dark-theme {
   --text-0: #ffffff;
-  --text-1: #888eb0;
+  --text-1: #DFE3FA;
   --text-3: #858BB2;
   --text-4: #DFE3FA;
   --text-5: #1e2139;
@@ -68,6 +69,7 @@
   --element-dropbox-bg: #252945;
   --element-summary-bg: #0c0e16;
   --element-form-bg: #141625;
+  --element-modal-bg: #1E2139;;
 
   --dropbox-box-shadow: rgba(0, 0, 0, 0.25);
 }
