@@ -62,7 +62,7 @@ Users should be able to:
 
 ### What I learned
 
-This is my very first "big" project in VueJS. I know this will be a challenge project since I am not comfortable with this framework.
+This is my very first "big" project in VueJS.
 
 Learned to start a Vue project with Vite. 
 
