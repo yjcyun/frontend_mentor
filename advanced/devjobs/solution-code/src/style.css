@@ -2,12 +2,99 @@
 
 :root {
   --font-family: "Kumbh Sans", sans-serif;
+  --transition: all 0.15s ease;
+  --header-bg: url(./assets/mobile/bg-pattern-header.svg);
+  --max-width: 1190px;
+  --body-padding: 0 24px;
+
+  /* Primary Colours */
+  --color-violet: #5964E0;
+  --color-light-violet:  #939BF4;
+  --color-very-dark-blue: #19202D;
+  --color-midnight: #121721;
+
+  /* Secondary Colors */
+  --color-white: #FFFFFF;
+  --color-light-gray: #F4F6F8;
+  --color-grey: #9DAEC2;
+  --color-dark-grey: #6e8098;
 }
+
+/* Themes */
+[data-color-theme="dark"] {
+  --color-violet--dimmed-1: rgba(255, 255, 255, 0.1);
+  --color-violet--dimmed-35: rgba(255, 255, 255, 0.35);
+  --bg: var(--color-midnight);
+  --card-bg: var(--color-very-dark-blue);
+  --btn-text: var(--color-white);
+  --body-text: var(--color-grey);
+  --input-placeholder: rgba(255, 255, 255, 0.5);
+  --input-text: var(--color-white);
+  --input-checkbox: rgba(2255, 255, 255, 0.1);
+}
+
+[data-color-theme="light"] {
+  --color-violet--dimmed-1:rgba(89, 100, 224,0.1);
+  --color-violet--dimmed-35:rgba(89, 100, 224,0.35);
+  --bg: var(--color-light-gray);
+  --card-bg: var(--color-white);
+  --btn-text: var(--color-violet);
+  --body-text: var(--color-dark-grey);
+  --input-placeholder: rgba(25, 32, 45, 0.5);
+  --input-text: var(--color-very-dark-blue);
+  --input-checkbox: rgba(25, 32, 45, 0.1);
+}
+
+/* Resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
 
 body {
+  -webkit-font-smoothing: antialiased;
   font-family: var(--font-family);
+  background-color: var(--bg);
+  color: var(--body-text);
 }
 
-button {
-  font-family: var(--font-family);
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+  border: none;
+  padding: 0;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  :root {
+    --header-bg: url(./assets/tablet/bg-pattern-header.svg);
+    --max-width: 1190px;  
+    --body-padding: 0 40px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 996px) {
+  :root {
+    --header-bg: url(./assets/desktop/bg-pattern-header.svg);
+    --body-padding: 45px 40px 0;
+    --body-padding: 0 40px ;
+  }
 }
