@@ -1,5 +1,5 @@
 <template>
-  <div class="job-card">
+  <router-link class="job-card" :to="jobLink">
     <div class="job-card--logo">
       <img :src="imgPath" :alt="company" />
     </div>
@@ -9,7 +9,7 @@
       <p class="company">{{ company }}</p>
       <JobLocation :location="location" />
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -19,6 +19,9 @@ import JobLocation from "./JobLocation.vue";
 export default {
   components: { JobMeta, JobLocation },
   props: {
+    id: {
+      type: Number,
+    },
     logo: {
       type: String,
     },
@@ -45,11 +48,18 @@ export default {
     imgPath() {
       return "../../../static" + this.logo.substring(1);
     },
+    jobLink() {
+      return `/${this.id}`;
+    },
   },
 };
 </script>
 
 <style scoped>
+a {
+  text-decoration: none;
+}
+
 .job-card {
   background-color: var(--card-bg);
   padding: 49px 32px 32px;

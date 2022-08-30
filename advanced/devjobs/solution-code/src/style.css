@@ -71,10 +71,12 @@ img, picture, video, canvas, svg {
   max-width: 100%;
 }
 
-input, button, textarea, select {
+input, button, textarea, select, a {
   font: inherit;
   border: none;
   padding: 0;
+  text-decoration: none;
+  color: inherit;
 }
 
 p, h1, h2, h3, h4, h5, h6 {
@@ -97,4 +99,44 @@ p, h1, h2, h3, h4, h5, h6 {
     --body-padding: 45px 40px 0;
     --body-padding: 0 40px ;
   }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 28px;
+  line-height: 35px;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 30px;
+}
+
+h3{
+  font-size: 20px;
+  line-height: 25px;
+}
+
+h4 {
+  font-size: 14px;
+  line-height: 17px;
+}
+
+p,
+.text-body {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+p.text-body-2 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
 }

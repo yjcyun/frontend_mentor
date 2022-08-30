@@ -1,10 +1,11 @@
 <template>
-  <div class="jobs-list">
+  <div>
     <JobFilter />
-    <div class="jobs-list-container">
+    <div class="jobs-list">
       <JobCard
         v-for="job in jobs"
         :key="job.id"
+        :id="job.id"
         :logo="job.logo"
         :logoBackground="job.logoBackground"
         :postedAt="job.postedAt"
@@ -33,10 +34,6 @@ export default {
 
 <style scoped>
 .jobs-list {
-  margin-top: -40px;
-}
-
-.jobs-list-container {
   display: grid;
   grid-template-columns: 1fr;
   gap: 30px;
@@ -47,7 +44,7 @@ export default {
 }
 
 @media (min-width: 768px) {
-  .jobs-list-container {
+  .jobs-list {
     grid-template-columns: repeat(2, 1fr);
     gap: 11px;
     grid-row-gap: 65px;
@@ -57,7 +54,7 @@ export default {
 }
 
 @media (min-width: 996px) {
-  .jobs-list-container {
+  .jobs-list {
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     grid-row-gap: 65px;

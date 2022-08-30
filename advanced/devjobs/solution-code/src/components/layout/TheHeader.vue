@@ -1,7 +1,9 @@
 <template>
   <header>
     <div class="header-wrapper">
-      <img src="../../assets/logo.svg" alt="devjobs Logo" />
+      <router-link to="/">
+        <img src="../../assets/logo.svg" alt="devjobs Logo" />
+      </router-link>
       <div>Toggler</div>
     </div>
   </header>
