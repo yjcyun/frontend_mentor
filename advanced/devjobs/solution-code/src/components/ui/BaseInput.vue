@@ -55,9 +55,9 @@ export default {
   color: var(--input-placeholder);
 }
 
-.input-wrapper .input-wrapper--icon {
+/* .input-wrapper .input-wrapper--icon {
   display: none;
-}
+} */
 
 @media (min-width: 768px) {
   .input-wrapper {

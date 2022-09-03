@@ -21,6 +21,10 @@ export default {
 </script>
 
 <style scoped>
+.job-meta {
+  color: var(--color-dark-grey);
+}
+
 .job-meta--contract {
   padding-left: 12px;
 }

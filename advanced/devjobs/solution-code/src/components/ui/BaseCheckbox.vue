@@ -14,7 +14,7 @@ export default {
       required: true,
     },
     modelValue: {
-      type: [String, Number],
+      type: Boolean,
     },
   },
   emits: ["update:modelValue"],
@@ -42,6 +42,7 @@ label {
   font-size: 16px;
   line-height: 20px;
   color: var(--input-text);
+  white-space: nowrap;
 }
 
 input[type="checkbox"] {

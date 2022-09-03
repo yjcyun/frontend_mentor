@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <AppContainer>
     <JobFilter />
     <div class="jobs-list">
       <JobCard
@@ -15,18 +15,38 @@
         :location="job.location"
       />
     </div>
-  </div>
+    <div class="load-more" v-if="displayLoadMore">
+      <BaseButton @click="loadMore">Load More</BaseButton>
+    </div>
+  </AppContainer>
 </template>
 
 <script>
-import JobFilter from "../components/ui/JobFilter.vue";
-import JobCard from "../components/ui/JobCard.vue";
+import JobFilter from "../components/job-list/JobFilter.vue";
+import JobCard from "../components/job-list/JobCard.vue";
+import AppContainer from "../components/layout/AppContainer.vue";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
-  components: { JobFilter, JobCard },
+  components: { JobFilter, JobCard, AppContainer },
   computed: {
     jobs() {
-      return this.$store.getters.getJobs;
+      return this.$store.getters.getFilteredJobs;
+    },
+    displayLoadMore() {
+      return (
+        this.$store.getters.getFilteredJobs.length <
+          this.$store.getters.getJobs.length &&
+        this.$store.getters.getFilteredJobs.length >=
+          this.$store.getters.getJobsPerPage
+      );
+    },
+  },
+  methods: {
+    ...mapActions(["loadMoreJobs"]),
+    ...mapGetters(["getLoadMoreForm", "getJobsPerPage"]),
+    loadMore() {
+      this.loadMoreJobs();
     },
   },
 };
@@ -41,6 +61,11 @@ export default {
   padding: 57px 0 32px;
   max-width: 327px;
   margin: auto;
+}
+
+.load-more {
+  text-align: center;
+  padding-bottom: 62px;
 }
 
 @media (min-width: 768px) {
@@ -59,6 +84,10 @@ export default {
     gap: 30px;
     grid-row-gap: 65px;
     padding: 105px 0 56px;
+  }
+
+  .load-more {
+    padding-bottom: 104px;
   }
 }
 </style>

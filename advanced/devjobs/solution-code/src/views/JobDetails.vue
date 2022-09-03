@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <AppContainer detailsPage>
     <JobHeading
       :id="job.id"
       :logo="job.logo"
@@ -16,15 +16,18 @@
       :requirements="job.requirements"
       :role="job.role"
     />
-  </div>
+  </AppContainer>
+  <JobFooter :position="job.position" :company="job.company" />
 </template>
 
 <script>
 import JobHeading from "../components/job-details/JobHeading.vue";
 import JobDescription from "../components/job-details/JobDescription.vue";
+import JobFooter from "../components/job-details/JobFooter.vue";
+import AppContainer from "../components/layout/AppContainer.vue";
 
 export default {
-  components: { JobHeading, JobDescription },
+  components: { JobHeading, JobDescription, JobFooter, AppContainer },
   computed: {
     job() {
       const jobId = Number(this.$route.params.jobId);

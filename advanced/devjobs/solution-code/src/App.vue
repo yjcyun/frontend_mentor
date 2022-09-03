@@ -1,8 +1,6 @@
 <template>
   <TheHeader />
-  <AppContainer>
-    <router-view></router-view>
-  </AppContainer>
+  <router-view></router-view>
 </template>
 
 <script setup lang="ts">
@@ -10,7 +8,6 @@ import { onMounted } from "vue";
 import { useStore } from "vuex";
 
 import TheHeader from "./components/layout/TheHeader.vue";
-import AppContainer from "./components/layout/AppContainer.vue";
 
 import data from "./data.json";
 
@@ -20,6 +17,7 @@ onMounted(function () {
   document.documentElement.setAttribute("data-color-theme", "dark");
 
   store.dispatch("setJobs", data);
+  store.dispatch("setFilteredJobs", { data, count: 12 });
 });
 </script>
 

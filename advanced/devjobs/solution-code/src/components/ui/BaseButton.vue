@@ -5,13 +5,7 @@
 </template>
 
 <script lang="ts">
-import {
-  reactive,
-  computed,
-  CSSProperties,
-  defineComponent,
-  PropType,
-} from "vue";
+import { reactive, computed, defineComponent } from "vue";
 
 type Mode = "primary" | "secondary";
 

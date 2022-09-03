@@ -5,6 +5,7 @@
   --transition: all 0.15s ease;
   --header-bg: url(./assets/mobile/bg-pattern-header.svg);
   --max-width: 1190px;
+  --small-max-width:  810px;
   --body-padding: 0 24px;
 
   /* Primary Colours */
@@ -83,24 +84,6 @@ p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
 
-/* Tablet */
-@media (min-width: 768px) {
-  :root {
-    --header-bg: url(./assets/tablet/bg-pattern-header.svg);
-    --max-width: 1190px;  
-    --body-padding: 0 40px;
-  }
-}
-
-/* Desktop */
-@media (min-width: 996px) {
-  :root {
-    --header-bg: url(./assets/desktop/bg-pattern-header.svg);
-    --body-padding: 45px 40px 0;
-    --body-padding: 0 40px ;
-  }
-}
-
 h1,
 h2,
 h3,
@@ -109,8 +92,8 @@ h4 {
 }
 
 h1 {
-  font-size: 28px;
-  line-height: 35px;
+  font-size: 20px;
+  line-height: 25px;
 }
 
 h2 {
@@ -139,4 +122,28 @@ p.text-body-2 {
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  :root {
+    --header-bg: url(./assets/tablet/bg-pattern-header.svg);
+    --max-width: 1190px;  
+    --body-padding: 0 40px;
+  }
+
+  h1 {
+    font-size: 28px;
+    line-height: 35px;
+  }
+
+}
+
+/* Desktop */
+@media (min-width: 996px) {
+  :root {
+    --header-bg: url(./assets/desktop/bg-pattern-header.svg);
+    --body-padding: 45px 40px 0;
+    --body-padding: 0 40px ;
+  }
 }

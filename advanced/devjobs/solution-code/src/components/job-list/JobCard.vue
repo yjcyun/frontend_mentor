@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import JobMeta from "./JobMeta.vue";
-import JobLocation from "./JobLocation.vue";
+import JobMeta from "../ui/JobMeta.vue";
+import JobLocation from "../ui/JobLocation.vue";
 
 export default {
   components: { JobMeta, JobLocation },
