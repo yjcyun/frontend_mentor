@@ -1,7 +1,7 @@
 <template>
-  <div class="app-container" :class="{ details: this.detailsPage }">
+  <main class="app-container" :class="{ details: this.detailsPage }">
     <slot></slot>
-  </div>
+  </main>
 </template>
 
 <script>

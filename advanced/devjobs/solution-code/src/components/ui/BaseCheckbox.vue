@@ -77,4 +77,9 @@ input:checked ~ .checkbox::after {
   position: absolute;
   display: block;
 }
+
+input[type="checkbox"]:focus ~ .checkbox {
+  outline: var(--color-violet) solid 1px;
+  box-shadow: 0 0px 8px var(--color-violet);
+}
 </style>

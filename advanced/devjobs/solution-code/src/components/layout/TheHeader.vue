@@ -1,13 +1,20 @@
 <template>
-  <header>
+  <header title="Geometric patterns in blue-purple colours">
     <div class="header-wrapper">
       <router-link to="/">
         <img src="../../assets/logo.svg" alt="devjobs Logo" />
       </router-link>
-      <div>Toggler</div>
+      <theme-toggler></theme-toggler>
     </div>
   </header>
 </template>
+
+<script>
+import ThemeToggler from "../ui/ThemeToggler.vue";
+export default {
+  components: { ThemeToggler },
+};
+</script>
 
 <style scoped>
 header {

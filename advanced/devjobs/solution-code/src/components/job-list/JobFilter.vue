@@ -3,16 +3,19 @@
     <!-- Mobile View -->
     <JobFilterModal v-if="showModal" @close="closeModal">
       <form @submit.prevent="filterJobs">
-        <div class="form-control--mobile">
-          <BaseInput
-            :icon="icon.location"
-            placeholder="Filter by location…"
-            v-model="location"
-          />
-        </div>
-        <div class="form-control--mobile">
-          <BaseCheckbox :label="checkboxLabel" v-model="isFullTime" />
-        </div>
+        <fieldset>
+          <legend hidden>Filter Jobs</legend>
+          <div class="form-control--mobile">
+            <BaseInput
+              :icon="icon.location"
+              placeholder="Filter by location…"
+              v-model="location"
+            />
+          </div>
+          <div class="form-control--mobile">
+            <BaseCheckbox :label="checkboxLabel" v-model="isFullTime" />
+          </div>
+        </fieldset>
 
         <div class="form-control--mobile">
           <BaseButton mode="primary" type="submit">Search</BaseButton>
@@ -26,37 +29,40 @@
       class="filter"
       v-on:change="saveFormDataState"
     >
-      <div class="filter-col">
-        <BaseInput
-          :icon="icon.search"
-          :placeholder="searchPlaceholder"
-          v-model="title"
-        />
-      </div>
+      <fieldset>
+        <legend hidden>Filter Jobs</legend>
+        <div class="filter-col">
+          <BaseInput
+            :icon="icon.search"
+            :placeholder="searchPlaceholder"
+            v-model="title"
+          />
+        </div>
 
-      <!-- Desktop -->
-      <div class="filter-col filter-location">
-        <BaseInput
-          :icon="icon.location"
-          placeholder="Filter by location…"
-          v-model="location"
-        />
-      </div>
+        <!-- Desktop -->
+        <div class="filter-col filter-location">
+          <BaseInput
+            :icon="icon.location"
+            placeholder="Filter by location…"
+            v-model="location"
+          />
+        </div>
 
-      <div class="filter-col filter-submit">
-        <BaseCheckbox :label="checkboxLabel" v-model="isFullTime" />
-        <BaseButton mode="primary" type="submit">Search</BaseButton>
-      </div>
+        <div class="filter-col filter-submit">
+          <BaseCheckbox :label="checkboxLabel" v-model="isFullTime" />
+          <BaseButton mode="primary" type="submit">Search</BaseButton>
+        </div>
 
-      <!-- Mobile -->
-      <div class="filter-mobile-col">
-        <button class="filter-mobile-filter" @click="openModal" type="button">
-          <img src="../../assets/mobile/icon-filter.svg" alt="Filter Icon" />
-        </button>
-        <BaseButton class="filter-mobile-search">
-          <img src="../../assets/desktop/icon-search.svg" alt="Search Icon" />
-        </BaseButton>
-      </div>
+        <!-- Mobile -->
+        <div class="filter-mobile-col">
+          <button class="filter-mobile-filter" @click="openModal" type="button">
+            <img src="../../assets/mobile/icon-filter.svg" alt="Filter Icon" />
+          </button>
+          <BaseButton class="filter-mobile-search">
+            <img src="../../assets/desktop/icon-search.svg" alt="Search Icon" />
+          </BaseButton>
+        </div>
+      </fieldset>
     </form>
   </div>
 </template>
@@ -182,7 +188,7 @@ export default {
 </script>
 
 <style scoped>
-.filter {
+.filter fieldset {
   background-color: var(--card-bg);
   border-radius: 6px;
   height: 80px;
@@ -261,7 +267,7 @@ export default {
 }
 
 @media (min-width: 768px) {
-  .filter {
+  .filter fieldset {
     padding: 0 16px 0 8px;
   }
 

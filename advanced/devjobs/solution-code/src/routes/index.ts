@@ -9,6 +9,9 @@ const router = createRouter({
     { path: "/", component: JobsList },
     { path: "/:jobId", component: JobDetails },
   ],
+  scrollBehavior() {
+    return { top: 0 };
+  },
 });
 
 export default router;

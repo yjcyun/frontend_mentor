@@ -14,8 +14,6 @@ import data from "./data.json";
 const store = useStore();
 
 onMounted(function () {
-  document.documentElement.setAttribute("data-color-theme", "dark");
-
   store.dispatch("setJobs", data);
   store.dispatch("setFilteredJobs", { data, count: 12 });
 });

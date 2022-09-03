@@ -55,10 +55,6 @@ export default {
   color: var(--input-placeholder);
 }
 
-/* .input-wrapper .input-wrapper--icon {
-  display: none;
-} */
-
 @media (min-width: 768px) {
   .input-wrapper {
     border-right: 1px solid rgba(110, 128, 152, 0.2);
