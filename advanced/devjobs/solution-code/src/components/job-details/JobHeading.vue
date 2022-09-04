@@ -39,7 +39,7 @@ export default {
   },
   computed: {
     imgPath() {
-      return "../../../static" + this.logo.substring(1);
+      return this.logo.substring(1);
     },
     jobLink() {
       return `/${this.id.toString()}`;
