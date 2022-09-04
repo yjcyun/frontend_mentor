@@ -11,15 +11,14 @@
         <h2>{{ company }}</h2>
         <p>{{ companySite }}</p>
       </div>
-      <BaseButton mode="secondary"
-        ><a :href="website">Company Site</a></BaseButton
-      >
+      <BaseButton mode="secondary">
+        <a :href="website">Company Site</a>
+      </BaseButton>
     </div>
   </div>
 </template>
 
 <script>
-import BaseButton from "../ui/BaseButton.vue";
 export default {
   props: {
     id: {
@@ -49,7 +48,6 @@ export default {
       return this.company.toLowerCase() + ".com";
     },
   },
-  components: { BaseButton },
 };
 </script>
 

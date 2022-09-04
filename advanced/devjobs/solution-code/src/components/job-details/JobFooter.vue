@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import BaseButton from "../ui/BaseButton.vue";
 export default {
   props: {
     position: {
@@ -21,7 +20,6 @@ export default {
       type: String,
     },
   },
-  components: { BaseButton },
 };
 </script>
 

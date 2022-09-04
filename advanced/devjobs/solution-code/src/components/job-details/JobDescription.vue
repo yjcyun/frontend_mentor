@@ -38,12 +38,7 @@
 </template>
 
 <script>
-import JobMeta from "../ui/JobMeta.vue";
-import JobLocation from "../ui/JobLocation.vue";
-import BaseButton from "../ui/BaseButton.vue";
-
 export default {
-  components: { JobMeta, JobLocation, BaseButton },
   props: {
     postedAt: {
       type: String,

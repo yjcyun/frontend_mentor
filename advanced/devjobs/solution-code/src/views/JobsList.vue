@@ -22,29 +22,28 @@
 </template>
 
 <script>
-import JobFilter from "../components/job-list/JobFilter.vue";
-import JobCard from "../components/job-list/JobCard.vue";
-import AppContainer from "../components/layout/AppContainer.vue";
 import { mapActions, mapGetters } from "vuex";
+
+import JobFilter from "@/components/job-list/JobFilter.vue";
+import JobCard from "@/components/job-list/JobCard.vue";
+import AppContainer from "@/components/layout/AppContainer.vue";
 
 export default {
   components: { JobFilter, JobCard, AppContainer },
   computed: {
+    ...mapGetters(["filteredJobs", "allJobs", "jobsPerPage"]),
     jobs() {
-      return this.$store.getters.getFilteredJobs;
+      return this.filteredJobs;
     },
     displayLoadMore() {
       return (
-        this.$store.getters.getFilteredJobs.length <
-          this.$store.getters.getJobs.length &&
-        this.$store.getters.getFilteredJobs.length >=
-          this.$store.getters.getJobsPerPage
+        this.filteredJobs.length < this.allJobs.length &&
+        this.filteredJobs.length >= this.jobsPerPage
       );
     },
   },
   methods: {
     ...mapActions(["loadMoreJobs"]),
-    ...mapGetters(["getLoadMoreForm", "getJobsPerPage"]),
     loadMore() {
       this.loadMoreJobs();
     },
@@ -59,8 +58,6 @@ export default {
   gap: 30px;
   grid-row-gap: 50px;
   padding: 57px 0 32px;
-  max-width: 327px;
-  margin: auto;
 }
 
 .load-more {

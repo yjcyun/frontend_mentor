@@ -13,11 +13,7 @@
 </template>
 
 <script>
-import JobMeta from "../ui/JobMeta.vue";
-import JobLocation from "../ui/JobLocation.vue";
-
 export default {
-  components: { JobMeta, JobLocation },
   props: {
     id: {
       type: Number,

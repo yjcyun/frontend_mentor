@@ -10,7 +10,8 @@
 </template>
 
 <script>
-import ThemeToggler from "../ui/ThemeToggler.vue";
+import ThemeToggler from "@/components/ui/ThemeToggler.vue";
+
 export default {
   components: { ThemeToggler },
 };

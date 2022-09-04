@@ -36,19 +36,19 @@ const store = createStore<State>({
   },
 
   getters: {
-    getJobs(state) {
+    allJobs(state) {
       return state.jobs;
     },
-    getJobById: (state) => (id: string) => {
+    jobById: (state) => (id: string) => {
       return state.jobs.find((job) => job.id === id);
     },
-    getFilteredJobs(state) {
+    filteredJobs(state) {
       return state.filteredJobs;
     },
-    getLoadMoreForm(state) {
+    loadMoreFrom(state) {
       return state.loadMoreFrom;
     },
-    getJobsPerPage(state) {
+    jobsPerPage(state) {
       return state.jobsPerPage;
     },
   },
@@ -62,24 +62,8 @@ const store = createStore<State>({
       state.filteredJobs = data.slice(0, count);
     },
 
-    filterJobs(state, filters) {
-      const title = filters.title.toLowerCase();
-      const location = filters.location.toLowerCase();
-      const isFullTime = filters.isFullTime;
-
-      const filteredByTitle = state.jobs.filter((job) => {
-        return job.position.toLowerCase().includes(title);
-      });
-
-      const filteredByLocation = filteredByTitle.filter((job) =>
-        job.location.toLowerCase().includes(location)
-      );
-
-      const filteredByContract = isFullTime
-        ? filteredByLocation.filter((job) => job.contract === "Full Time")
-        : filteredByLocation;
-
-      state.filteredJobs = filteredByContract;
+    searchJobs(state, payload) {
+      state.filteredJobs = payload;
     },
 
     loadMore(state) {
@@ -106,8 +90,8 @@ const store = createStore<State>({
     setFilteredJobs(context, data) {
       context.commit("setFilteredJobs", data);
     },
-    filterJobs(context, data) {
-      context.commit("filterJobs", data);
+    searchJobs(context, data) {
+      context.commit("searchJobs", data);
     },
     loadMoreJobs(context, data) {
       context.commit("loadMore", data);

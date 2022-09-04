@@ -2,7 +2,7 @@
   <div>
     <!-- Mobile View -->
     <JobFilterModal v-if="showModal" @close="closeModal">
-      <form @submit.prevent="filterJobs">
+      <form @submit.prevent="searchJobs">
         <fieldset>
           <legend hidden>Filter Jobs</legend>
           <div class="form-control--mobile">
@@ -23,9 +23,8 @@
       </form>
     </JobFilterModal>
 
-    <!-- Desktop View -->
     <form
-      @submit.prevent="filterJobs"
+      @submit.prevent="searchJobs"
       class="filter"
       v-on:change="saveFormDataState"
     >
@@ -58,7 +57,7 @@
           <button class="filter-mobile-filter" @click="openModal" type="button">
             <img src="../../assets/mobile/icon-filter.svg" alt="Filter Icon" />
           </button>
-          <BaseButton class="filter-mobile-search">
+          <BaseButton class="filter-mobile-search" type="submit">
             <img src="../../assets/desktop/icon-search.svg" alt="Search Icon" />
           </BaseButton>
         </div>
@@ -71,18 +70,16 @@
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
 
-import Search from "../../assets/desktop/icon-search.svg";
-import Location from "../../assets/desktop/icon-location.svg";
+import Search from "@/assets/desktop/icon-search.svg";
+import Location from "@/assets/desktop/icon-location.svg";
+import BaseCheckbox from "@/components/ui/BaseCheckbox.vue";
+import BaseInput from "@/components/ui/BaseInput.vue";
 
-import BaseButton from "../ui/BaseButton.vue";
-import BaseCheckbox from "../ui/BaseCheckbox.vue";
-import BaseInput from "../ui/BaseInput.vue";
-
-import useWindowSize from "../../hooks/useWindowSize";
+import useWindowSize from "@/hooks/useWindowSize";
 import JobFilterModal from "./JobFilterModal.vue";
 
 export default {
-  components: { BaseInput, BaseCheckbox, BaseButton, JobFilterModal },
+  components: { BaseInput, BaseCheckbox, JobFilterModal },
   data() {
     return {
       icon: {
@@ -93,6 +90,7 @@ export default {
   },
   setup() {
     const { windowWidth } = useWindowSize();
+    const store = useStore();
 
     // Render different text for mobile and desktop views
     const checkboxLabel = computed(() => {
@@ -115,24 +113,36 @@ export default {
     const isFullTime = ref(false);
     const showModal = ref(false);
 
-    const store = useStore();
+    const searchJobs = () => {
+      const jobsUpdate = store.getters.allJobs.filter((job) => {
+        const filterTitle = job.position.toLowerCase().includes(title.value);
+        const filterLocation = job.location
+          .toLowerCase()
+          .includes(location.value);
+        const filterByContract =
+          !isFullTime.value || job.contract === "Full Time";
 
-    const filterJobs = () => {
-      store.dispatch("filterJobs", {
-        title: title.value,
-        location: location.value,
-        isFullTime: isFullTime.value,
+        return filterTitle && filterLocation && filterByContract;
       });
+
+      // Filter jobs list
+      store.dispatch("searchJobs", jobsUpdate);
+
+      // If in mobile, close the modal
       showModal.value = false;
+
+      // Truncate new filtered jobs list
       store.dispatch("setFilteredJobs", {
-        data: store.getters.getFilteredJobs,
-        count: store.getters.getLoadMoreForm,
+        data: store.getters.filteredJobs,
+        count: store.getters.loadMoreFrom,
       });
+
+      // Reset pagination values on new filtered jobs list
       store.dispatch("resetLoadValues");
     };
 
     // This allows to persist form data when browser leaves the page.
-    // Get form data in session storage
+    // Get form data from session storage
     const initFormDataState = () => {
       const formData = JSON.parse(sessionStorage.getItem("formData"));
       if (formData) {
@@ -142,7 +152,7 @@ export default {
       }
     };
 
-    // Save form data on form change
+    // Save form data on form change in session storage
     const saveFormDataState = () => {
       const formData = JSON.stringify({
         title: title.value,
@@ -161,7 +171,6 @@ export default {
     };
 
     // Control filter modal in mobile view
-
     const openModal = () => {
       showModal.value = true;
     };
@@ -174,7 +183,7 @@ export default {
     return {
       checkboxLabel,
       searchPlaceholder,
-      filterJobs,
+      searchJobs,
       title,
       location,
       isFullTime,

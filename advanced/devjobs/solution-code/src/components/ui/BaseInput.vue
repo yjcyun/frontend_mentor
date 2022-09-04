@@ -1,7 +1,7 @@
 <template>
   <div class="input-wrapper">
     <span class="input-wrapper--icon">
-      <img :src="icon" alt="" />
+      <img :src="icon" alt="input-icon" />
     </span>
     <input v-model="value" v-bind="$attrs" />
   </div>
