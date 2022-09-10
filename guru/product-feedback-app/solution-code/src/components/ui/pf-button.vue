@@ -46,6 +46,7 @@ button.btn {
   letter-spacing: 0;
   cursor: pointer;
   transition: var(--transition);
+  flex-shrink: 0;
 
   &.btn--primary {
     background-color: var(--color-magenta);
@@ -81,6 +82,8 @@ button.btn {
 
   &.btn--text {
     color: var(--color-dark-grey);
+    padding: 0;
+
     span {
       padding-left: 15px;
     }

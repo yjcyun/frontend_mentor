@@ -6,15 +6,26 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  onClick: {
+    type: Function,
+  },
+  selectedItem: {
+    type: String,
+  },
 });
 </script>
 
 <template>
   <div class="pf-dropdown">
     <ul>
-      <li v-for="item in items" key="item.label" class="pf-dropdown-item body1">
-        <p>{{ item.label }}</p>
-        <CheckIcon v-if="item.selected" />
+      <li
+        v-for="item in items"
+        key="item"
+        class="pf-dropdown-item body1"
+        @click="onClick(item)"
+      >
+        <p>{{ item }}</p>
+        <CheckIcon v-if="selectedItem === item" />
       </li>
     </ul>
   </div>
@@ -26,6 +37,9 @@ const props = defineProps({
   border-radius: var(--border-radius);
   box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
   width: 255px;
+  position: absolute;
+  top: calc(100% + 16px);
+  left: 0;
 }
 
 .pf-dropdown-item {
@@ -34,6 +48,7 @@ const props = defineProps({
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: var(--color-dark-grey);
 
   &:not(:last-child) {
     border-bottom: 1px solid rgba(58, 67, 116, 0.15);

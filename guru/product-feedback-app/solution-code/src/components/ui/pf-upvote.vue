@@ -2,7 +2,8 @@
 const props = defineProps({
   votes: {
     type: Number,
-    required: true,
+    required: false,
+    default: 0,
   },
   active: {
     type: Boolean,
@@ -31,12 +32,13 @@ const props = defineProps({
 .pf-upvote {
   background-color: var(--color-blue-gray);
   border-radius: var(--border-radius);
-  padding: 14px 11px 8px;
+  padding: 14px 0 8px;
   display: inline-flex;
   align-items: center;
   flex-direction: column;
   gap: 8px;
   cursor: pointer;
+  width: 40px;
 
   span {
     font-weight: 700;

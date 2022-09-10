@@ -21,6 +21,7 @@ const props = defineProps({
 <style lang="scss" scoped>
 .pf-chip {
   background-color: var(--color-blue-gray);
+  color: var(--color-blue);
   border-radius: var(--border-radius);
   padding: 5px 16px;
   display: inline;
