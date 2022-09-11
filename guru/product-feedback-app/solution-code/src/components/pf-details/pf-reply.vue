@@ -1,19 +1,15 @@
 <template>
   <div class="pf-reply">
-    <textarea name="" id=""></textarea>
+    <pf-textarea></pf-textarea>
     <pf-button>Post Reply</pf-button>
   </div>
 </template>
+
 <style lang="scss" scoped>
 .pf-reply {
   display: flex;
   gap: 16px;
-
-  textarea {
-    height: 80px;
-    width: 100%;
-    resize: none;
-  }
+  margin-top: 24px;
 
   button {
     align-self: flex-start;

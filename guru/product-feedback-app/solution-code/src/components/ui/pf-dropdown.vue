@@ -40,6 +40,7 @@ const props = defineProps({
   position: absolute;
   top: calc(100% + 16px);
   left: 0;
+  z-index: 10;
 }
 
 .pf-dropdown-item {

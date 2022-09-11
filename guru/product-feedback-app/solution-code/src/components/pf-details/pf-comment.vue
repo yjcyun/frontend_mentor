@@ -1,6 +1,14 @@
 <script setup>
+import { ref } from "vue";
 import PfReply from "./pf-reply.vue";
+
+const doesReply = ref(false);
+
+const replyToComment = () => {
+  doesReply.value = true;
+};
 </script>
+
 <template>
   <div class="pf-comment">
     <img
@@ -14,7 +22,7 @@ import PfReply from "./pf-reply.vue";
           <h4 class="name">Elijah Moss</h4>
           <p class="username">@hexagon.bestagon</p>
         </div>
-        <p class="body3 cta">Reply</p>
+        <p class="body3 cta" @click="replyToComment">Reply</p>
       </div>
       <p class="body2">
         Also, please allow styles to be applied based on system preferences. I
@@ -22,7 +30,7 @@ import PfReply from "./pf-reply.vue";
         device’s dark mode turns on without the bright background it currently
         has.
       </p>
-      <pf-reply></pf-reply>
+      <pf-reply v-if="doesReply"></pf-reply>
     </div>
   </div>
 </template>
@@ -31,6 +39,11 @@ import PfReply from "./pf-reply.vue";
 .pf-comment {
   display: flex;
   gap: 32px;
+  padding: 32px 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(140, 146, 179, 0.25);
+  }
 
   .pf-comment--avatar {
     width: 40px;

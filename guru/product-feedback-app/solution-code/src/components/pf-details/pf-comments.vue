@@ -16,7 +16,7 @@ import PfComment from "./pf-comment.vue";
 
 <style lang="scss" scoped>
 .pf-comments {
-  padding: 24px 34px;
+  padding: 24px 34px 16px;
   margin: 24px 0;
 
   .pf-comments--header {

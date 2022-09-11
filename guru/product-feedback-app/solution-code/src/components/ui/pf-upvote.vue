@@ -10,11 +10,26 @@ const props = defineProps({
     required: false,
     default: false,
   },
+  orientation: {
+    type: String,
+    default: "vertical",
+    validator: function (value) {
+      return ["vertical", "horizontal"].indexOf(value) !== -1;
+    },
+  },
 });
+console.log(props.orientation);
 </script>
 
 <template>
-  <div class="pf-upvote body3" :class="{ active: active }">
+  <div
+    class="pf-upvote body3"
+    :class="{
+      active: active,
+      vertical: orientation === 'vertical',
+      horizontal: orientation === 'horizontal',
+    }"
+  >
     <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M1 6l4-4 4 4"
@@ -55,6 +70,12 @@ const props = defineProps({
     span {
       color: var(--color-white);
     }
+  }
+
+  &.horizontal {
+    flex-direction: row;
+    padding: 11px 12.5px 11px 14px;
+    width: 69px;
   }
 
   &:hover:not(.active) {

@@ -16,10 +16,12 @@ const props = defineProps({
     <SuggestionIcon />
     <h3 class="pf-header--suggestions">{{ count }} Suggestions</h3>
     <pf-sort-select></pf-sort-select>
-    <pf-button>
-      <template #icon><PlusIcon /></template>
-      Add Feedback
-    </pf-button>
+    <router-link to="/add" class="pf-header--add">
+      <pf-button>
+        <template #icon><PlusIcon /></template>
+        Add Feedback
+      </pf-button>
+    </router-link>
   </header>
 </template>
 
@@ -36,7 +38,7 @@ header {
     margin: 0 38px 0 16px;
   }
 
-  button {
+  .pf-header--add {
     margin-left: auto;
   }
 }
