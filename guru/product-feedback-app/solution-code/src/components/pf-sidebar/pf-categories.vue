@@ -12,9 +12,9 @@ const props = defineProps({
     <div class="pf-categories">
       <pf-chip
         v-for="category in categories"
-        :text="category.label"
-        :key="category.label"
-        :active="category.active"
+        :text="category"
+        :key="category"
+        :active="false"
       />
     </div>
   </pf-card>
@@ -25,5 +25,6 @@ const props = defineProps({
   padding: 24px;
   display: inline-flex;
   gap: 8px;
+  flex-wrap: wrap;
 }
 </style>

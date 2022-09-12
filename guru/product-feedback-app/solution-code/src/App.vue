@@ -1,6 +1,4 @@
-<script setup>
-import PageSuggestions from "./pages/page-suggestions.vue";
-</script>
+<script setup></script>
 
 <template>
   <div>

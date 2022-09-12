@@ -1,11 +1,15 @@
 <script setup>
 import CommentIcon from "@/assets/shared/icon-comments.svg?component";
+
+const props = defineProps({
+  total: Number,
+});
 </script>
 
 <template>
   <div class="pf-comment-numbers">
     <CommentIcon />
-    <p class="body1">4</p>
+    <p class="body1">{{ total }}</p>
   </div>
 </template>
 

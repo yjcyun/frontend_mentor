@@ -2,18 +2,26 @@
 import CommentIcon from "@/assets/shared/icon-comments.svg?component";
 import PfUpvote from "@/components/ui/pf-upvote.vue";
 import PfCommentNumbers from "../ui/pf-comment-numbers.vue";
+
+const props = defineProps({
+  title: String,
+  description: String,
+  category: String,
+  upvotes: Number,
+  numOfComments: Number,
+});
 </script>
 
 <template>
   <pf-card>
     <div class="pf-suggestion-card">
-      <pf-upvote></pf-upvote>
+      <pf-upvote :votes="upvotes"></pf-upvote>
       <div class="pf-suggestion-card--text">
-        <h3>Add tags for solutions</h3>
-        <p>Easier to search for solutions based on a specific stack.</p>
-        <pf-chip text="Enhancement"></pf-chip>
+        <h3>{{ title }}</h3>
+        <p>{{ description }}</p>
+        <pf-chip :text="category"></pf-chip>
       </div>
-      <pf-comment-numbers />
+      <pf-comment-numbers :total="numOfComments" />
     </div>
   </pf-card>
 </template>

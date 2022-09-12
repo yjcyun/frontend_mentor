@@ -3,6 +3,7 @@ import "./global-style.css";
 import App from "./App.vue";
 
 import router from "./routes";
+import store from "./store";
 
 import PFCard from "./components/ui/pf-card.vue";
 import PFChip from "./components/ui/pf-chip.vue";
@@ -23,5 +24,6 @@ app.component("pf-goback", PFGoBack);
 app.component("pf-textarea", PFTextarea);
 
 app.use(router);
+app.use(store);
 
 app.mount("#app");

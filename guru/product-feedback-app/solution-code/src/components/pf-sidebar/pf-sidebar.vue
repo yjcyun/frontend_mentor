@@ -1,15 +1,25 @@
 <script setup>
+import { computed } from "vue";
+
 import PfLogo from "./pf-logo.vue";
 import PfCategories from "./pf-categories.vue";
 import PfRoadmap from "./pf-roadmap.vue";
+import store from "../../store";
+
+const storeCategories = computed(() => store.getters["feedback/allCategories"]);
+
+const allCategories = ["all", ...storeCategories.value].map((item) => {
+  if (item === "ui" || item === "ux") {
+    return item.toUpperCase();
+  }
+  return item[0].toUpperCase() + item.slice(1);
+});
 </script>
 
 <template>
   <aside>
     <pf-logo />
-    <pf-categories
-      :categories="[{ label: 'All', active: true }, { label: 'UI' }]"
-    />
+    <pf-categories :categories="allCategories" />
     <pf-roadmap
       :status="[
         { label: 'Planned', count: 2 },

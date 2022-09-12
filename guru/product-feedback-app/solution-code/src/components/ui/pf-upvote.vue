@@ -18,7 +18,6 @@ const props = defineProps({
     },
   },
 });
-console.log(props.orientation);
 </script>
 
 <template>
@@ -54,6 +53,7 @@ console.log(props.orientation);
   gap: 8px;
   cursor: pointer;
   width: 40px;
+  flex-shrink: 0;
 
   span {
     font-weight: 700;
